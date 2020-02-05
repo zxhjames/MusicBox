@@ -44,14 +44,22 @@ export default {
     async save() {
       /* 请求接口并且提交数据 */
       if (!this.id) {
+<<<<<<< HEAD
         await this.$http.post("/rest/categories", this.model);
+=======
+        await this.$http.post("categories", this.model);
+>>>>>>> origin/master
         this.$message({
           message: "保存成功",
           type: "success"
         });
       } else {
         /* 请求接口并且更新数据 */
+<<<<<<< HEAD
         await this.$http.put(`/rest/categories/${this.id}`, this.model);
+=======
+        await this.$http.put(`categories/${this.id}`, this.model);
+>>>>>>> origin/master
         this.$message({
           message: "更新成功",
           type: "success"
@@ -61,11 +69,19 @@ export default {
     },
     //获取产品的Name
     async fetch() {
+<<<<<<< HEAD
       const res = await this.$http.get(`rest/categories/${this.id}`);
       this.model = res.data;
     },
     async fetchParents() {
       const res = await this.$http.get(`rest/categories`);
+=======
+      const res = await this.$http.get(`categories/${this.id}`);
+      this.model = res.data;
+    },
+    async fetchParents() {
+      const res = await this.$http.get(`categories`);
+>>>>>>> origin/master
       this.parents = res.data;
     }
   },

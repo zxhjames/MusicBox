@@ -7,8 +7,11 @@ app.use(require('cors')())
 require('./plugins/db')(app)
 //引用api函数
 require('./routes/admin')(app)
+<<<<<<< HEAD
 //采用静态文件托管
 app.use('/uploads', express.static(__dirname + '/uploads'))
+=======
+>>>>>>> origin/master
 //监听3000端口
 app.listen(3000, () => {
     console.log('App listenning on port http://localhost:3000');

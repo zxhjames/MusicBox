@@ -4,10 +4,14 @@ import VueRouter from 'vue-router'
 import Main from './views/Main.vue'
 import CategoryEdit from './views/CategoryEdit.vue'
 import CategoryList from './views/CategoryList.vue'
+<<<<<<< HEAD
 import ItemEdit from './views/ItemEdit.vue'
 import ItemList from './views/ItemList.vue'
 import HeroEdit from './views/HeroEdit.vue'
 import HeroList from './views/HeroList.vue'
+=======
+
+>>>>>>> origin/master
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -27,6 +31,7 @@ export default new VueRouter({
             path: '/categories/edit/:id',
             component: CategoryEdit,
             props: true //注入到Categories页面里面
+<<<<<<< HEAD
         }, {
             /* 添加子路由 */
             path: '/items/create',
@@ -51,6 +56,8 @@ export default new VueRouter({
             path: '/heroes/edit/:id',
             component: HeroEdit,
             props: true //注入到Categories页面里面
+=======
+>>>>>>> origin/master
         }]
     }, ]
 })

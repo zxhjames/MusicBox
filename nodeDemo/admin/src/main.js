@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 
 /* 建立一个全局的数据接口 */
 Vue.prototype.$http = http
+<<<<<<< HEAD
 Vue.mixin({
   computed: {
     uploadUrl() {
@@ -21,6 +22,9 @@ Vue.mixin({
     }
   }
 })
+=======
+
+>>>>>>> origin/master
 new Vue({
   router,
   render: h => h(App)
