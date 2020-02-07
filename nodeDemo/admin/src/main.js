@@ -3,11 +3,10 @@ import App from './App.vue'
 import './plugins/element.js'
 import router from './router'
 import http from './http'
+import './views/style.css'
 Vue.config.productionTip = false
-
 /* 建立一个全局的数据接口 */
 Vue.prototype.$http = http
-<<<<<<< HEAD
 Vue.mixin({
   computed: {
     uploadUrl() {
@@ -22,9 +21,6 @@ Vue.mixin({
     }
   }
 })
-=======
-
->>>>>>> origin/master
 new Vue({
   router,
   render: h => h(App)

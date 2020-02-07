@@ -37,15 +37,9 @@ export default {
     this.fetch();
   },
   methods: {
-<<<<<<< HEAD
     async fetch() {
       //请求数据库显示数据
       await this.$http.get("rest/categories", this.model).then(res => {
-=======
-    fetch() {
-      //请求数据库显示数据
-      this.$http.get("categories", this.model).then(res => {
->>>>>>> origin/master
         this.items = res.data;
       });
     },
@@ -53,11 +47,7 @@ export default {
     //删除分类
     remove(id) {
       // eslint-disable-next-line no-unused-vars
-<<<<<<< HEAD
       this.$http.delete(`rest/categories/${id}`).then(res => {
-=======
-      this.$http.delete(`/categories/${id}`).then(res => {
->>>>>>> origin/master
         this.$message({
           message: "删除成功",
           type: "success"

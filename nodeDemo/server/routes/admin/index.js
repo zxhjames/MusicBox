@@ -3,7 +3,6 @@
 module.exports = app => {
 
     const express = require("express") /* 引入express模块 */
-<<<<<<< HEAD
     const router = express.Router({
         mergeParams: true //表示合并url参数
     }) /* 定义子路由 */
@@ -29,31 +28,11 @@ module.exports = app => {
     router.delete('/:id', async (req, res) => {
         //删除并且返回一个状态码
         await req.Model.findByIdAndDelete(req.params.id)
-=======
-    const router = express.Router() /* 定义子路由 */
-    const Category = require("../../models/Category")
-    //新增分类
-    router.post('/categories', async (req, res) => {
-        const model = await Category.create(req.body)
-        res.send(model)
-    })
-    //显示所有分类
-    router.get('/categories', async (req, res) => {
-        //关联到parent
-        const items = await Category.find().populate('parent').limit(10)
-        res.send(items)
-    })
-    //删除分类
-    router.delete('/categories/:id', async (req, res) => {
-        //删除并且返回一个状态码
-        await Category.findByIdAndDelete(req.params.id)
->>>>>>> origin/master
         res.send({
             status: true
         })
     })
     //获取详情页面
-<<<<<<< HEAD
     router.get('/:id', async (req, res) => {
         const model = await req.Model.findById(req.params.id)
         res.send(model)
@@ -86,16 +65,40 @@ module.exports = app => {
         res.send(file)
     })
 
-=======
-    router.get('/categories/:id', async (req, res) => {
-        const model = await Category.findById(req.params.id)
-        res.send(model)
+
+    //用户登录接口
+    app.post('/admin/api/login', async (req, res) => {
+        //解构赋值
+        const {
+            username,
+            password
+        } = req.body
+        //1.根据用户名找用户
+        const AdminUser = require('../../models/AdminUser')
+        const user = await AdminUser.findOne({
+            username
+        }).select('+password')
+        if (!user) {
+            /* 如果用户不存在直接返回给前台一个信息 */
+            return res.status(422).send({
+                message: '用户不存在'
+            })
+        }
+        //2.校验密码
+        const isValid = require('bcrypt').compareSync(password, user.password)
+        if (!isValid) {
+            return res.status(422).send({
+                message: '密码错误'
+            })
+        }
+        //3.返回token
+        const jwt = require('jsonwebtoken')
+        const token = jwt.sign({
+            id: user._id,
+        }, app.get('secret'))
+
+        res.send(token)
     })
-    //更新否个问题
-    router.put('/categories/:id', async (req, res) => {
-        const model = await Category.findByIdAndUpdate(req.params.id, req.body);
-        res.send(model);
-    })
-    app.use('/admin/api', router)
->>>>>>> origin/master
+
+
 }

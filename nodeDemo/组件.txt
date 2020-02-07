@@ -1,0 +1,8 @@
+express (server)
+axios (admin)
+mongoose (server)
+cors   跨域(server)
+inflection(server)
+vue Quill Editor 富文本编辑器(admin)
+npm i bcrypt   密码加密(server)
+multer (server) 文件上传
