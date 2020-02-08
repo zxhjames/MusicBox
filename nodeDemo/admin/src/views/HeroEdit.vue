@@ -155,7 +155,7 @@
                 <el-button
                   size="small"
                   type="danger"
-                  @click="model.skills.splice(0, 1)"
+                  @click="model.skills.splice(i, 1)"
                   >删除</el-button
                 >
               </el-form-item>
@@ -247,28 +247,4 @@ export default {
 };
 </script>
 
-<style>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-}
-.avatar {
-  width: 178px;
-  height: 178px;
-  display: block;
-}
-</style>
+

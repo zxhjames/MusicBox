@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-//定义一个模型的字段(分类)
+//定义一个模型的字段(文章)
 const schema = new mongoose.Schema({
     /* 标题 */
     title: {

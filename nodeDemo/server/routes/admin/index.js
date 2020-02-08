@@ -25,11 +25,11 @@ module.exports = app => {
         //校验用户是否登录
         //提取Bearer token 后面的token
         const token = String(req.headers.authorization || '').split(' ').pop()
-        assert(token, 401, '请提供jwt token')
+        assert(token, 401, 'token无效')
         const {
             id
         } = jwt.verify(token, app.get('secret')) //解析数据返回用户id
-        assert(id, 401, '无效的jwt token')
+        assert(id, 401, 'token无效')
         req.user = await AdminUser.findById(id)
         assert(req.user, 401, '请先登录')
         await next()

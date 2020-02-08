@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-//定义一个模型的字段(分类)
+//定义一个模型的字段(英雄)
 const schema = new mongoose.Schema({
     name: {
         type: String

@@ -1,0 +1,5 @@
+npm i -D sass sass-loader (web)
+ vue add router (web)
+ npm install vue-awesome-swiper --save
+ http://www.spritecow.com/ 一个很好的切图网站
+ 阿里图标库
