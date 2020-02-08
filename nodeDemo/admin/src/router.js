@@ -17,13 +17,18 @@ import AdminUserEdit from './views/AdminUserEdit.vue'
 import AdminUserList from './views/AdminUserList.vue'
 Vue.use(VueRouter)
 
-export default new VueRouter({
+
+const router = new VueRouter({
     routes: [
         /* 登录界面路由 */
         {
             path: '/login',
             name: 'login',
-            component: Login
+            component: Login,
+            /* 做登录的限制 */
+            meta: {
+                isPublic: true
+            }
         },
         /* 显示后台页面的路由 */
         {
@@ -125,3 +130,14 @@ export default new VueRouter({
         },
     ]
 })
+
+
+//添加导航守卫
+router.beforeEach((to, from, next) => {
+    //如果不是公开范文的页面而且本地的token不存在，直接跳转
+    if (!to.meta.isPublic && !localStorage.token) {
+        return next('/login')
+    }
+    next()
+})
+export default router

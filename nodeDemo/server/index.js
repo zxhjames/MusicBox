@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 /* 全局token秘钥 */
-app.set('secret', 'i282349nsn434b')
+app.set('secret', 'i282349nsn43ddddassf44b')
 app.use(express.json())
 //引入跨域模块
 app.use(require('cors')())
