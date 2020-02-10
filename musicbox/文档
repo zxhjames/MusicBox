@@ -1,0 +1,13 @@
+
+
+npm install --save-dev bootstrap
+
+在main.js中引入
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+然后运行，结果按照提示让执行这样的命令
+
+npm install --save popper.js
+

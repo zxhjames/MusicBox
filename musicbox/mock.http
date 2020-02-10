@@ -1,0 +1,30 @@
+@url = http://localhost:3000
+@json = Content-Type: application/json
+
+###登录
+GET {{url}}/login/cellphone?phone=13207987081&password=998317
+
+###获取用户的详情
+get {{url}}/user/detail?uid=289362408
+### 获取用户歌单信息
+get {{url}}/user/subcount
+
+### 登录
+POST {{url}}/login
+{{json}}
+
+###搜素
+get {{url}}/song/url?id=33894312
+
+###歌曲详情
+get {{url}}/song/detail?ids=347230
+
+
+###获取精品歌单
+get http://localhost:3000/top/playlist/highquality?before=1503639064232&limit=3
+
+###获取歌单详情
+get {{url}}/playlist/detail?id=22834906
+
+###获取歌手分类
+get {{url}}/artist/list?cat=1001&offset=2
