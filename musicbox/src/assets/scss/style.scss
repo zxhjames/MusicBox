@@ -63,6 +63,15 @@ $size in $font-sizes {
   white-space: nowrap;
 }
 
+.search {
+  margin-top: 10px;
+  background-position: 0 -99px;
+  background-color: #fff;
+  border-radius: 32px;
+  width: 140px;
+  height: 30px;
+}
+
 /* (新)定义主页边距 */
 .bgwidth {
   margin-left: 18%;
@@ -75,8 +84,12 @@ $size in $font-sizes {
 }
 
 .bar {
-  padding-left: 18%;
-  padding-right: 18%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.CustomImg {
+  padding: 0px
 }
 
 // width, height

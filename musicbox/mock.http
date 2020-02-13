@@ -1,4 +1,4 @@
-@url = http://localhost:3000
+@url = http://localhost:3003
 @json = Content-Type: application/json
 
 ###登录
@@ -28,3 +28,8 @@ get {{url}}/playlist/detail?id=22834906
 
 ###获取歌手分类
 get {{url}}/artist/list?cat=1001&offset=2
+
+###获取歌手详情
+get {{url}}/artist/desc?id=6452
+###歌手50守歌
+get {{url}}/artists?id=12429072

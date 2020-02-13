@@ -1,15 +1,18 @@
 <template>
   <div>
-    <div class="bg-dark d-flex ai-center bar pb-2 pt-2">
-      <img src="../assets/images/音乐.png" height="40" />
+    <div class=" topbar bg-dark d-flex ai-center bar pb-2 pt-2">
+      <el-avatar :size="small" :src="items.profile.avatarUrl"></el-avatar>
+      <!-- <img src="../assets/images/音乐.png" height="40" /> -->
       <div class="pl-2 flex-1">
         <div class="text-white">云音乐</div>
         <div class="text-white fs-xxs">音乐改变人生</div>
       </div>
-      <el-avatar :size="size" :src="items.profile.avatarUrl"></el-avatar>
+      <div class="form-group">
+        <input type="text" class="search" placeholder="  搜索歌曲" />
+      </div>
     </div>
 
-    <div class="bg-red pt-2 pb-2 bgwidth">
+    <div class="bg-red pt-2 pb-2">
       <div class="nav d-flex text-white jc-around pb-1">
         <div class="nav-item active">
           <!-- 表示首页一个链接 -->

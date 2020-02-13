@@ -11,3 +11,6 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 npm install --save popper.js
 
+npm i vue-aplayer 音乐盒
+
+页面回退

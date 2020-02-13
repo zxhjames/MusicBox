@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Main from '.././views/Main.vue'
 import Home from '../views/Home.vue'
 import Album from '../views/songs/Album.vue'
+import Singer from '../views/songs/Singer.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +34,10 @@ export default new Router({
         path: '/album',
         name: 'album',
         component: Album
+      }, {
+        path: '/singer',
+        name: 'singer',
+        component: Singer
       }
     ]
   }]
