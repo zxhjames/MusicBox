@@ -6,7 +6,7 @@ import axios from 'axios'
 /* 网易云api的接入地址 */
 Vue.prototype.$http = axios.create({
   //定义后端接口的根地址
-  baseURL: 'http://localhost:3003'
+  baseURL: 'http://192.168.0.104:3003'
 })
 //引入 npm i element-ui -S
 import ElementUI from 'element-ui'
@@ -34,8 +34,8 @@ import Banner from './components/Banner.vue'
 Vue.component('m-banner', Banner)
 
 
-
-
+//强制刷新组件
+// Vue.forseUpdate()
 import 'bootstrap'
 import 'jquery'
 import vueAplayer from 'vue-aplayer'

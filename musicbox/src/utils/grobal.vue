@@ -11,8 +11,14 @@ const GrobalMusic = {
     pic: "" //当前音乐的图片
   }
 };
+//初始歌单的当前页
+const Page = {
+  singerPage: 0,
+  musicAlbum: 1
+};
 export default {
   MusicUrl, //网易云音乐接口
-  GrobalMusic //aplayer是否全局显示
+  GrobalMusic, //aplayer是否全局显示
+  Page
 };
 </script>

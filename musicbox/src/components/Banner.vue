@@ -35,7 +35,6 @@ export default {
         })
         .then(res => {
           this.Banners = res.data;
-          console.log(this.Banners.banners[0].pic);
         });
     }
   }

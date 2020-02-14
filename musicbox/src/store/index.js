@@ -14,6 +14,10 @@ const store = new Vuex.Store({
             lrc: "", //当前音乐歌词
             pic: "" //当前音乐的图片
         }
+    },
+    Page: {
+        singerPage: 1,
+        musicAlbum: 1
     }
 })
 

@@ -31,16 +31,17 @@
     <!-- end of the bar -->
 
     <!-- 显示歌手 -->
+    <!-- params : {id  分类id ,  curPage 当前页面} -->
     <m-card icon="yinyue" title="歌手列表">
       <el-tabs v-model="activeName">
         <el-tab-pane
-          :label="i.name"
-          v-for="i in singerCategories"
-          :key="i"
+          :label="category.name"
+          v-for="category in singerCategories"
+          :key="category"
           @tab-click="showSinger"
         >
           <!-- 显示歌手 -->
-          <m-singer-pane :id="i.id"></m-singer-pane>
+          <m-singer-pane :id="category.id"></m-singer-pane>
         </el-tab-pane>
       </el-tabs>
     </m-card>

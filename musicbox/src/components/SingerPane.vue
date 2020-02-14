@@ -22,6 +22,7 @@
           </el-card>
         </router-link>
       </el-col>
+
       <div class="flexbox" style="margin-right:1%;margin-left:3%">
         <i class="el-icon-right" @click="change('next')"></i>
       </div>
@@ -37,7 +38,8 @@ export default {
 
   data() {
     return {
-      singer: []
+      singer: [],
+      cur: this.COMMON.Page.singerPage
     };
   },
 
@@ -51,7 +53,8 @@ export default {
         .get("/artist/list", {
           params: {
             cat: this.id,
-            limit: 4
+            limit: 4,
+            offset: this.COMMON.Page.singerPage
           }
         })
         .then(res => {
@@ -60,7 +63,15 @@ export default {
     },
 
     change(status) {
-      alert(status);
+      if (status == "back" && this.COMMON.Page.singerPage >= 4) {
+        this.COMMON.Page.singerPage -= 4;
+      } else if (status == "next") {
+        this.COMMON.Page.singerPage += 4;
+      }
+      // this.COMMON.Page.singerPage = status;
+      // this.$forceUpdate();
+      //暂时没有想到更好的方法，我想要的是局部刷新
+      this.fetch();
     }
   }
 };
