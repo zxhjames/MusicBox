@@ -15,3 +15,5 @@ npm i vue-aplayer 音乐盒
 
 页面回退
 npm run build 项目打包
+
+vue-video-player 视频播放器

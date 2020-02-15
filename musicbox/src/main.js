@@ -19,9 +19,12 @@ import './assets/scss/style.scss'
 Vue.config.productionTip = false
 
 
+//轮播图
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper, /* { default global options } */ )
-//定义插槽
+Vue.use(VueAwesomeSwiper)
+
+
+//定义组件
 import Card from './components/Card.vue'
 Vue.component('m-card', Card)
 import ListCard from './components/ListCard.vue'
@@ -32,13 +35,24 @@ import PlayBoard from './components/player.vue'
 Vue.component('m-player', PlayBoard)
 import Banner from './components/Banner.vue'
 Vue.component('m-banner', Banner)
-
+import Video from './components/Video.vue'
+Vue.component('m-video', Video)
 
 //强制刷新组件
 // Vue.forseUpdate()
 import 'bootstrap'
 import 'jquery'
+//音乐播放
 import vueAplayer from 'vue-aplayer'
+//mv播放
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+Vue.use(VideoPlayer)
+// The actual tech function is registered to video.js automatically; so, there
+// is no need to assign it to a variable.
+
+
 //y引入全局模块
 import global_ from './utils/grobal.vue'
 Vue.prototype.COMMON = global_

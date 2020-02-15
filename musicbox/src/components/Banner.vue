@@ -3,7 +3,7 @@
   <div>
     <el-carousel height="300">
       <!-- 获取数组长度 -->
-      <el-carousel-item v-for="item in Banners.banners.slice(4)" :key="item">
+      <el-carousel-item v-for="item in Banners.banners.slice(0, 4)" :key="item">
         <img class="w-100" :src="item.pic" height="300" />
       </el-carousel-item>
     </el-carousel>
