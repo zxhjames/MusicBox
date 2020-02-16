@@ -6,7 +6,8 @@ import axios from 'axios'
 /* 网易云api的接入地址 */
 Vue.prototype.$http = axios.create({
   //定义后端接口的根地址
-  baseURL: 'http://192.168.0.104:3003'
+  baseURL: process.env.VUE_APP_API_URL || '/'
+  // baseURL: 'http://192.168.0.104:3003'
 })
 //引入 npm i element-ui -S
 import ElementUI from 'element-ui'

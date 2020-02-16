@@ -53,7 +53,6 @@
             :id="item.id"
             :name="item.name"
             :pic="item.imgurl"
-            url="https://music.163.com/#/video?id=C21F4AB1236F999EA5D84F211F01A025"
           ></m-video>
         </div>
       </el-tab-pane>

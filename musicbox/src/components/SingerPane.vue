@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <span>{{ id }}</span> -->
     <div
       class="nav-icons bg-white mt-3 d-flex flex-wrap text-center pt-3 text-dark"
     >

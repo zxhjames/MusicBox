@@ -17,3 +17,18 @@ npm i vue-aplayer 音乐盒
 npm run build 项目打包
 
 vue-video-player 视频播放器
+
+
+
+
+
+云服务器端
+apt install nginx -y 安装nginx
+apt-install -y mongodb-server 安装mongodb
+apt-install -y git
+apt install -y nodejs
+apt install -y npm
+配置淘宝镜像 npm config set registry https://registry.npm.taobao.org
+apt install nrm 切换镜像
+npm i -g n 升级node
+n latest 获取最近版本的node
