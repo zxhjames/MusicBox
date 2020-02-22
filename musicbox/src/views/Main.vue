@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button :onclick="fun()">搜索</button>
     <div class=" topbar bg-dark d-flex ai-center bar pb-2 pt-2">
       <el-avatar :size="small" :src="items.profile.avatarUrl"></el-avatar>
       <!-- <img src="../assets/images/音乐.png" height="40" /> -->
@@ -7,9 +8,7 @@
         <div class="text-white">云音乐</div>
         <div class="text-white fs-xxs">音乐改变人生</div>
       </div>
-      <div class="form-group">
-        <input type="text" class="search" placeholder="  搜索歌曲" />
-      </div>
+      <div><m-search></m-search></div>
     </div>
 
     <div class="bg-red pt-2 pb-2">
@@ -33,6 +32,7 @@
 
     <!-- 子路由 -->
     <router-view></router-view>
+    <m-player></m-player>
   </div>
 </template>
 
@@ -48,6 +48,9 @@ export default {
     this.fetch();
   },
   methods: {
+    fun() {
+      this.$http1.get("/haha?id=" + 1000000);
+    },
     async fetch() {
       await this.$http
         .get(

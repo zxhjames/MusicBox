@@ -6,8 +6,12 @@ import axios from 'axios'
 /* 网易云api的接入地址 */
 Vue.prototype.$http = axios.create({
   //定义后端接口的根地址
-  baseURL: process.env.VUE_APP_API_URL || '/'
-  // baseURL: 'http://192.168.0.104:3003'
+  baseURL: "http://192.168.0.105:3000"
+})
+
+Vue.prototype.$http1 = axios.create({
+  //定义后端接口的根地址
+  baseURL: "http://localhost:8081"
 })
 //引入 npm i element-ui -S
 import ElementUI from 'element-ui'
@@ -23,9 +27,12 @@ Vue.config.productionTip = false
 //轮播图
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
-
-
+//下拉搜索框
+import vSelectSearch from 'v-select-search'
+Vue.use(vSelectSearch)
 //定义组件
+import Bar from './components/Bar.vue'
+Vue.component('m-bar', Bar)
 import Card from './components/Card.vue'
 Vue.component('m-card', Card)
 import ListCard from './components/ListCard.vue'
@@ -38,7 +45,10 @@ import Banner from './components/Banner.vue'
 Vue.component('m-banner', Banner)
 import Video from './components/Video.vue'
 Vue.component('m-video', Video)
-
+import Album from './components/Album.vue'
+Vue.component('m-album', Album)
+import Search from './components/Search.vue'
+Vue.component('m-search', Search)
 //强制刷新组件
 // Vue.forseUpdate()
 import 'bootstrap'
@@ -58,7 +68,7 @@ Vue.use(VideoPlayer)
 import global_ from './utils/grobal.vue'
 Vue.prototype.COMMON = global_
 
-import store from './store'
+import store from './store/index'
 Vue.prototype.$store = store
 
 Vue.use(vueAplayer)

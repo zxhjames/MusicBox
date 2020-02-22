@@ -3,36 +3,10 @@
   <div>
     <!-- 轮播图 -->
     <m-banner></m-banner>
-    <!-- end of swiper -->
-    <!-- 分类栏 -->
-    <div
-      class="nav-icons bg-white mt-3 d-flex flex-wrap text-center pt-3 text-dark"
-    >
-      <div class="nav-item mb-3">
-        <img src="../assets/images/音乐.png" height="30" />
-        <div>今日新歌</div>
-      </div>
-
-      <div class="nav-item mb-3">
-        <img src="../assets/images/社区.png" height="30" />
-        <div>发现音乐</div>
-      </div>
-
-      <div class="nav-item mb-3">
-        <img src="../assets/images/新闻.png" height="30" />
-        <div>全球音讯</div>
-      </div>
-
-      <div class="nav-item mb-3">
-        <img src="../assets/images/关于.png" height="30" />
-        <div>关于我们</div>
-      </div>
-    </div>
-    <!-- end of the bar -->
-
+    <m-bar></m-bar>
     <!-- 显示歌手 -->
     <!-- params : {id  分类id ,  curPage 当前页面} -->
-    <m-card icon="yinyue" title="歌手列表">
+    <m-card icon="yinyue" title="歌手分类">
       <el-tabs v-model="activeName">
         <el-tab-pane
           :label="category.name"
@@ -46,25 +20,8 @@
       </el-tabs>
     </m-card>
 
-    <!-- <m-list-card icon="caidan" title="新闻咨询" :categories="singerCategories">
-    </m-list-card> -->
-
-    <m-card icon="yinyue" title="热门推荐">
-      <div
-        class="nav-icons bg-white mt-3 d-flex flex-wrap text-center pt-3 text-dark"
-      >
-        <el-col
-          :span="6"
-          v-for="item in album.playlists"
-          :key="item"
-          :offset="index > 0 ? 2 : 0"
-        >
-          <el-card :body-style="{ padding: '3px' }" class="bgwidth">
-            <img :src="item.coverImgUrl" class="image" />
-            {{ item.name }}
-          </el-card>
-        </el-col>
-      </div>
+    <m-card icon="yinyue" title="歌单分类">
+      <m-album></m-album>
     </m-card>
   </div>
 </template>
@@ -73,10 +30,6 @@
 export default {
   data() {
     return {
-      //歌单
-      album: [],
-      //歌手
-      singer: [],
       //歌手分类栏
       singerCategories: [
         {
@@ -123,32 +76,76 @@ export default {
           name: "其他歌手",
           id: 1001
         }
+      ],
+      //歌单分类栏
+      albumCategories: [
+        {
+          id: 1,
+          name: "流行"
+        },
+        {
+          id: 2,
+          name: "摇滚"
+        },
+        {
+          id: 1001,
+          name: "民谣"
+        },
+        {
+          id: 2004,
+          name: "电子"
+        },
+        {
+          id: 10001,
+          name: "独立"
+        },
+        {
+          id: 2008,
+          name: "轻音乐"
+        },
+        {
+          id: 9001,
+          name: "影视原声"
+        },
+        {
+          id: 11002,
+          name: "ACG"
+        },
+        {
+          id: 1031,
+          name: "怀旧"
+        }
       ]
-      //广告栏
     };
-  },
-  created() {
-    this.fetch();
-  },
-
-  methods: {
-    async fetch() {
-      // 获取最热歌单
-      await this.$http
-        .get(
-          "/top/playlist/highquality",
-          {
-            params: {
-              before: 1503639064232,
-              limit: 4
-            }
-          },
-          this.album
-        )
-        .then(res => {
-          this.album = res.data;
-        });
-    }
   }
 };
 </script>
+
+<style>
+.el-row {
+  margin-bottom: 0px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.el-col {
+  border-radius: 4px;
+}
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.bg-purple {
+  background: #d3dce6;
+}
+.bg-purple-light {
+  background: #e5e9f2;
+}
+.grid-content {
+  border-radius: 4px;
+  min-height: 20px;
+}
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
+}
+</style>

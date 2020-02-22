@@ -49,17 +49,13 @@
       </el-tab-pane>
       <el-tab-pane label="歌手Mv">
         <div v-for="item in this.mvs" :key="item">
-          <m-video
-            :id="item.id"
-            :name="item.name"
-            :pic="item.imgurl"
-          ></m-video>
+          <m-video :id="item.id" :name="item.name" :pic="item.imgurl"></m-video>
         </div>
       </el-tab-pane>
       <el-tab-pane label="歌手详情"> </el-tab-pane>
     </el-tabs>
 
-    <m-player :musicBox="this.musicBox"></m-player>
+    <!-- <m-player></m-player> -->
   </div>
 </template>
 
@@ -75,8 +71,8 @@ export default {
         flag: false,
         music: {
           title: "",
-          author: "",
-          url: "",
+          artist: "",
+          src: "",
           lrc: "",
           pic: ""
         }
@@ -133,24 +129,33 @@ export default {
     },
 
     //异步播放
-    audio(id) {
-      this.$http
+    async audio(id) {
+      let curMusic;
+      await this.$http
         .get("/song/detail", {
           params: {
             ids: id
           }
         })
         .then(res => {
-          this.COMMON.GrobalMusic.flag = this.musicBox.flag = true;
-          this.COMMON.GrobalMusic.music.pic = this.musicBox.music.pic =
-            res.data.songs[0].al.picUrl;
-          this.COMMON.GrobalMusic.music.title = this.musicBox.music.title =
-            res.data.songs[0].name;
-          this.COMMON.GrobalMusic.music.author = this.musicBox.music.author =
-            res.data.songs[0].ar[0].name;
-          this.COMMON.GrobalMusic.music.url = this.musicBox.music.url =
-            this.COMMON.MusicUrl + id + ".mp3";
+          //将歌曲加入队列并且开始播放
+          curMusic = {
+            pic: res.data.songs[0].al.picUrl,
+            title: res.data.songs[0].name,
+            artist: res.data.songs[0].ar[0].name,
+            src: this.$store.state.MusicUrl + id + ".mp3",
+            lrc: ""
+          };
+          // this.musicBox.flag = true;
+          // this.musicBox.music.pic = res.data.songs[0].al.picUrl;
+          // this.musicBox.music.title = res.data.songs[0].name;
+          // this.musicBox.music.artist = res.data.songs[0].ar[0].name;
+          // this.musicBox.music.src = this.$store.state.MusicUrl + id + ".mp3";
         });
+      const res = await this.$http.get("/lyric?id=" + id);
+      curMusic.lrc = res.data.lrc.lyric;
+
+      await this.$store.commit("addMusic", curMusic);
     }
   }
 };

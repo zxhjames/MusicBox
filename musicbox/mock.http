@@ -1,4 +1,4 @@
-@url = http://localhost:3003
+@url = http://localhost:3000
 @json = Content-Type: application/json
 
 ###登录
@@ -33,3 +33,15 @@ get {{url}}/artist/list?cat=1001&offset=2
 get {{url}}/artist/desc?id=6452
 ###歌手50守歌
 get {{url}}/artists?id=12429072
+
+###歌单分类
+get {{url}}/playlist/hot
+
+###搜索
+get {{url}}/search?keywords="轻抚你的脸"&limit=20
+
+###默认搜索关键词
+get {{url}}/search/default
+
+###热门搜索列表
+get {{url}}/search/hot

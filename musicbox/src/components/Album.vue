@@ -9,14 +9,20 @@
       <el-col
         :span="4"
         style="margin-right:2%;margin-left:2%"
-        v-for="item in singer.artists"
+        v-for="item in album.playlists"
         :key="item"
+        :offset="index > 0 ? 2 : 0"
       >
-        <router-link :to="{ path: 'singer', query: { id: item.id } }"
-          ><el-card :body-style="{ padding: '0' }">
-            <img :src="item.img1v1Url" class="image" />
-            <font size="1%">{{ item.name }}</font>
-          </el-card>
+        <router-link :to="{ path: 'album', query: { id: item.id } }">
+          <el-tooltip content="Bottom center" placement="bottom" effect="light">
+            <el-card :body-style="{ padding: '0' }">
+              <img :src="item.coverImgUrl" class="image" />
+              <!-- 字体大小如何自适应 -->
+              <font size="1px">{{
+                item.name.length > 4 ? item.name.slice(0, 3) + "..." : item.name
+              }}</font>
+            </el-card>
+          </el-tooltip>
         </router-link>
       </el-col>
       <div class="flexbox" style="margin-right:1%;margin-left:3%">
@@ -28,45 +34,34 @@
 
 <script>
 export default {
-  props: {
-    id: { type: Number, required: true }
-  },
-
   data() {
     return {
-      singer: [],
-      cur: this.COMMON.Page.singerPage
+      album: []
     };
   },
 
   created() {
     this.fetch();
   },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.swiper;
-    }
-  },
+
   methods: {
     async fetch() {
       await this.$http
-        .get("/artist/list", {
+        .get("/top/playlist", {
           params: {
-            cat: this.id,
             limit: 4,
-            offset: this.COMMON.Page.singerPage
+            offset: this.COMMON.Page.albumPage
           }
         })
         .then(res => {
-          this.singer = res.data;
+          this.album = res.data;
         });
     },
-
     change(status) {
-      if (status == "back" && this.COMMON.Page.singerPage >= 4) {
-        this.COMMON.Page.singerPage -= 4;
+      if (status == "back" && this.COMMON.Page.albumPage >= 4) {
+        this.COMMON.Page.albumPage -= 4;
       } else if (status == "next") {
-        this.COMMON.Page.singerPage += 4;
+        this.COMMON.Page.albumPage += 4;
       }
       // this.COMMON.Page.singerPage = status;
       // this.$forceUpdate();

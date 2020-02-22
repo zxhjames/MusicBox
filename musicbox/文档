@@ -18,6 +18,7 @@ npm run build 项目打包
 
 vue-video-player 视频播放器
 
+v-select-search
 
 
 
@@ -32,3 +33,5 @@ apt install -y npm
 apt install nrm 切换镜像
 npm i -g n 升级node
 n latest 获取最近版本的node
+npm i -g
+npm i -g pm2

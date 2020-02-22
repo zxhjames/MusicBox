@@ -6,6 +6,7 @@ import Main from '.././views/Main.vue'
 import Home from '../views/Home.vue'
 import Album from '../views/songs/Album.vue'
 import Singer from '../views/songs/Singer.vue'
+import SearchList from '../views/songs/SearchList.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +39,10 @@ export default new Router({
         path: '/singer',
         name: 'singer',
         component: Singer
+      }, {
+        path: '/searchList',
+        name: 'searchList',
+        component: SearchList
       }
     ]
   }]
