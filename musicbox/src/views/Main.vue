@@ -1,8 +1,7 @@
 <template>
   <div>
-    <button :onclick="fun()">搜索</button>
     <div class=" topbar bg-dark d-flex ai-center bar pb-2 pt-2">
-      <el-avatar :size="small" :src="items.profile.avatarUrl"></el-avatar>
+      <!-- <el-avatar :size="small" :src="items.profile.avatarUrl"></el-avatar> -->
       <!-- <img src="../assets/images/音乐.png" height="40" /> -->
       <div class="pl-2 flex-1">
         <div class="text-white">云音乐</div>
@@ -48,9 +47,6 @@ export default {
     this.fetch();
   },
   methods: {
-    fun() {
-      this.$http1.get("/haha?id=" + 1000000);
-    },
     async fetch() {
       await this.$http
         .get(
