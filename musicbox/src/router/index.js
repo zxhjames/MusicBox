@@ -7,8 +7,6 @@ import Home from '../views/Home.vue'
 import Album from '../views/songs/Album.vue'
 import Singer from '../views/songs/Singer.vue'
 import SearchList from '../views/songs/SearchList.vue'
-
-import Community from '../views/Community.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -45,11 +43,6 @@ export default new Router({
         path: '/searchList',
         name: 'searchList',
         component: SearchList
-      }, {
-        //社区主页
-        path: '/Community',
-        name: Community,
-        component: Community
       }
     ]
   }]

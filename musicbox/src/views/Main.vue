@@ -47,6 +47,10 @@ export default {
     this.fetch();
   },
   methods: {
+    fun() {
+      let id = 1;
+      this.$http1.get(`/haha/${id}`);
+    },
     async fetch() {
       await this.$http
         .get(

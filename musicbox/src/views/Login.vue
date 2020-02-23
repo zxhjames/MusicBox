@@ -29,6 +29,7 @@ export default {
   methods: {
     async login() {
       //发送登录请求
+      this.$router.push("/Main");
       // await this.$http
       //   .get("/login/cellphone", {
       //     params: {
@@ -56,7 +57,6 @@ export default {
       //       });
       //     }
       //   });
-      this.$router.push("/Community");
     }
   }
 };
