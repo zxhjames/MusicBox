@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
+        resources: "http://localhost:8081/img/user/",
         //音乐url的Api
         MusicUrl: "https://music.163.com/song/media/outer/url?id=",
         //当前播放信息

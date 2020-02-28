@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class=" topbar bg-dark d-flex ai-center bar pb-2 pt-2">
-      <!-- <el-avatar :size="small" :src="items.profile.avatarUrl"></el-avatar> -->
-      <!-- <img src="../assets/images/音乐.png" height="40" /> -->
+      <m-userBar></m-userBar>
       <div class="pl-2 flex-1">
         <div class="text-white">云音乐</div>
         <div class="text-white fs-xxs">音乐改变人生</div>
@@ -12,14 +11,16 @@
 
     <div class="bg-red pt-2 pb-2">
       <div class="nav d-flex text-white jc-around pb-1">
-        <div class="nav-item active">
+        <div class="nav-item">
           <!-- 表示首页一个链接 -->
-          <router-link to="/" class="nav-link" tag="div">首页</router-link>
+          <router-link to="/Main" class="nav-link" tag="div">首页</router-link>
         </div>
 
         <div class="nav-item">
           <!-- 表示首页一个链接 -->
-          <router-link to="/" class="nav-link" tag="div">社区</router-link>
+          <router-link to="/Community" class="nav-link" tag="div"
+            >社区</router-link
+          >
         </div>
 
         <div class="nav-item">
@@ -40,34 +41,15 @@ export default {
   //传入user
   data() {
     return {
+      username: localStorage.getItem("username"),
       items: {}
     };
   },
-  created() {
-    this.fetch();
-  },
   methods: {
-    fun() {
-      let id = 1;
-      this.$http1.get(`/haha/${id}`);
-    },
-    async fetch() {
-      await this.$http
-        .get(
-          "/user/detail",
-          {
-            params: {
-              //获取用户的全部信息
-              uid: sessionStorage.getItem("uid")
-            }
-          },
-          this.items
-        )
-        .then(res => {
-          this.items = res.data;
-          // alert(this.items.profile.city);
-        });
-    }
+    //获取用户的用户名，头像
+    // async getAvatar(){
+    //   let res = await this.$http1.get('/getAvatar');
+    // }
   }
 };
 </script>

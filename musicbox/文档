@@ -20,7 +20,8 @@ vue-video-player 视频播放器
 
 v-select-search
 
-
+安装富文本编辑器
+npm install vue2-editor
 
 
 云服务器端

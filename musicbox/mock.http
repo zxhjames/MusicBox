@@ -1,6 +1,6 @@
 @url = http://localhost:3000
 @json = Content-Type: application/json
-
+@http = http://localhost:8081
 ###登录
 GET {{url}}/login/cellphone?phone=13207987081&password=998317
 
@@ -45,3 +45,12 @@ get {{url}}/search/default
 
 ###热门搜索列表
 get {{url}}/search/hot
+
+###
+post {{http}}/login
+
+{
+    username:'james',
+    password:123456,
+    token:''
+}

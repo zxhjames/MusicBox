@@ -9,6 +9,7 @@ Vue.prototype.$http = axios.create({
   baseURL: "http://192.168.0.105:3000"
 })
 
+//服务器地址
 Vue.prototype.$http1 = axios.create({
   //定义后端接口的根地址
   baseURL: "http://localhost:8081"
@@ -49,6 +50,13 @@ import Album from './components/Album.vue'
 Vue.component('m-album', Album)
 import Search from './components/Search.vue'
 Vue.component('m-search', Search)
+import UserBar from './components/user/userBar.vue'
+Vue.component('m-userBar', UserBar)
+// //用户主页曲库组件
+import U1 from './components/userMain/u1'
+Vue.component('m-u1', U1)
+import U4 from './components/userMain/u4'
+Vue.component('m-u4', U4)
 //强制刷新组件
 // Vue.forseUpdate()
 import 'bootstrap'
@@ -59,10 +67,14 @@ import vueAplayer from 'vue-aplayer'
 import VideoPlayer from 'vue-video-player'
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
+require('./assets/iconfont/iconfont')
 Vue.use(VideoPlayer)
 // The actual tech function is registered to video.js automatically; so, there
 // is no need to assign it to a variable.
 
+//富文本编辑器
+import Vue2Editor from "vue2-editor"
+Vue.use(Vue2Editor)
 
 //y引入全局模块
 import global_ from './utils/grobal.vue'
