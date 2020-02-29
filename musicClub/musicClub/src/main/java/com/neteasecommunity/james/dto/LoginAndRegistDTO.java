@@ -9,4 +9,6 @@ public class LoginAndRegistDTO {
     private String avatar_url;
     private String token;
     private Integer rank;
+    private Integer concerns;
+    private Integer followers;
 }

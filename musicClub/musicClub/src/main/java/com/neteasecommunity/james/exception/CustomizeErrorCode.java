@@ -5,7 +5,8 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode {
     ,
     EXIST_USER(2004,"用户名已存在,请你换个用户名"),
     NO_USER(2005,"用户不存在,请先注册"),
-    FILE_ERROR(2006,"文件异常");
+    FILE_ERROR(2006,"文件异常"),
+    SERVER_ERROR(2007,"服务器异常");
     private String message;
     private Integer code;
     @Override

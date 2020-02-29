@@ -29,6 +29,10 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
+        <table tableName="relationship" domainObjectName="Relationship"></table>
         <table tableName="user" domainObjectName="User"></table>
+        <table tableName="share" domainObjectName="Share"></table>
+        <table tableName="comments" domainObjectName="Comments"></table>
     </context>
+
 </generatorConfiguration>

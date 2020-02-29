@@ -45,6 +45,8 @@ public class UserService {
             u.setAvatar_url(dbUsers.get(0).getAvatarUrl());
             u.setRank(dbUsers.get(0).getRank());
             u.setToken(token);
+            u.setConcerns(dbUsers.get(0).getConcerns());
+            u.setFollowers(dbUsers.get(0).getFollowers());
             return ResultDTO.okOf(u);
         }
         return ResultDTO.errorOf(CustomizeErrorCode.ERROR_PWD);
