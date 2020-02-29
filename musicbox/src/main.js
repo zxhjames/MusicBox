@@ -55,8 +55,12 @@ Vue.component('m-userBar', UserBar)
 // //用户主页曲库组件
 import U1 from './components/userMain/u1'
 Vue.component('m-u1', U1)
+import U2 from './components/userMain/u2'
+Vue.component('m-u2', U2)
 import U4 from './components/userMain/u4'
 Vue.component('m-u4', U4)
+import Action from './components/Action.vue'
+Vue.component('m-action', Action)
 //强制刷新组件
 // Vue.forseUpdate()
 import 'bootstrap'
@@ -71,6 +75,7 @@ require('./assets/iconfont/iconfont')
 Vue.use(VideoPlayer)
 // The actual tech function is registered to video.js automatically; so, there
 // is no need to assign it to a variable.
+
 
 //富文本编辑器
 import Vue2Editor from "vue2-editor"

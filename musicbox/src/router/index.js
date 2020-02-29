@@ -73,17 +73,17 @@ const router = new Router({
 //全局守卫写在main中
 //router对象调用  
 //.beforeEach((进入到哪一个路由,从哪一个路由离开,对应的函数)=>{}) 
-router.beforeEach((to, form, next) => {
-  //如果进入到的路由是登录页或者注册页面，则正常展示
-  if (to.path == '/Login' || to.path == '/regist') {
-    next();
-  } else if (!(localStorage.getItem('token'))) {
-    alert("还没有登录，请先登录！");
-    next('/Login'); //转入login登录页面，登录成功后会将token存入localStorage
-  } else {
-    next();
-  }
-})
+// router.beforeEach((to, form, next) => {
+//   //如果进入到的路由是登录页或者注册页面，则正常展示
+//   if (to.path == '/Login' || to.path == '/regist') {
+//     next();
+//   } else if (!JSON.parse(localStorage.getItem('usermsg')).token) {
+//     alert("还没有登录，请先登录！");
+//     next('/Login'); //转入login登录页面，登录成功后会将token存入localStorage
+//   } else {
+//     next();
+//   }
+// })
 
 
 export default router

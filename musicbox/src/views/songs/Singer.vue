@@ -1,5 +1,5 @@
 <template>
-  <div class>
+  <div>
     <el-container>
       <!-- 歌手头像 -->
       <el-main>

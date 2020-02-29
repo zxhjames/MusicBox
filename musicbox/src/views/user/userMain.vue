@@ -4,19 +4,20 @@
       <!-- 歌手头像 -->
       <el-main>
         <img
-          :src="this.userAvatar"
+          :src="this.usermsg.avatar"
           width="100px"
           height="100px"
           class="img-circle"
         />
         <p>
-          <i class="el-icon-user">{{ this.username }}</i>
+          <i class="el-icon-user">{{ this.usermsg.username }}</i>
         </p>
       </el-main>
 
       <el-footer
-        ><span>关注 0</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <span>粉丝 0</span></el-footer
+        ><span>关注 {{ this.usermsg.concerns }}</span
+        >&nbsp;&nbsp;|&nbsp;&nbsp;
+        <span>粉丝 {{ this.usermsg.followers }}</span></el-footer
       >
     </el-container>
 
@@ -29,7 +30,7 @@
 
       <el-tab-pane>
         <span slot="label"><i class="el-icon-s-custom"></i> 我的动态</span>
-        我的行程
+        <m-u2></m-u2>
       </el-tab-pane>
       <el-tab-pane>
         <span slot="label"><i class="el-icon-s-help"></i> 好友动态</span>
@@ -46,8 +47,7 @@
 export default {
   data() {
     return {
-      username: localStorage.getItem("username"),
-      userAvatar: this.$store.state.resources + localStorage.getItem("avatar")
+      usermsg: JSON.parse(localStorage.getItem("usermsg"))
     };
   }
 };

@@ -3,7 +3,7 @@
     <el-dropdown trigger="click">
       <span class="el-dropdown-link">
         <el-avatar
-          :src="this.userAvatar"
+          :src="this.usermsg.avatar"
           height="40"
           type="primary"
           style="margin-left: 0px;"
@@ -20,7 +20,7 @@
             >我的空间
           </el-badge></el-dropdown-item
         >
-        <el-dropdown-item icon="el-icon-s-release" @click="loginOut()"
+        <el-dropdown-item icon="el-icon-s-release" @click.native="loginOut()"
           >注销账号</el-dropdown-item
         >
       </el-dropdown-menu>
@@ -31,18 +31,13 @@
 export default {
   data() {
     return {
-      username: localStorage.getItem("username"),
-      userAvatar: this.$store.state.resources + localStorage.getItem("avatar")
+      usermsg: JSON.parse(localStorage.getItem("usermsg"))
     };
   },
   methods: {
-    async loginOut() {
-      alert("aaa");
-      // localStorage.removeItem("token");
-      // localStorage.removeItem("username");
-      // localStorage.removeItem("avatar");
-      // localStorage.removeItem("rank");
-      // this.$router.push("/Login");
+    loginOut() {
+      localStorage.removeItem("usermsg");
+      this.$router.push("/Login");
     }
   }
 };

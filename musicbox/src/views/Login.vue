@@ -36,17 +36,24 @@ export default {
       this.model.token = localStorage.getItem("token");
       const res = await this.$http1.post("/login", this.model);
       console.log(res.data);
-      if (res.data.data != "redisOK") {
-        localStorage.token = res.data.data.token;
-        localStorage["rank"] = res.data.data.rank;
-        localStorage["avatar"] = res.data.data.avatar_url;
-      }
       if (res.data.code == 200) {
+        if (res.data.data != "redisOK") {
+          //客户端存储用户本地信息
+          let usermsg = {
+            username: this.model.username,
+            token: res.data.data.token,
+            rank: res.data.data.rank,
+            avatar: this.$store.state.resources + res.data.data.avatar_url,
+            concerns: res.data.data.concerns,
+            followers: res.data.data.followers
+          };
+          usermsg = JSON.stringify(usermsg);
+          localStorage.setItem("usermsg", usermsg);
+        }
         this.$message({
           message: "登录成功",
           type: "success"
         });
-        localStorage["username"] = this.model.username;
         this.$router.push("/Main");
       } else {
         this.$message({

@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="24"
         ><div class="grid-content">
-          <div class=" topbar  d-flex ai-center bar pb-2 pt-2">
+          <div class=" d-flex ai-center bar pb-2 pt-2">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-yinle"></use>
             </svg>
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="grid-content">
-          <div class=" topbar  d-flex ai-center bar pb-2 pt-2">
+          <div class="  d-flex ai-center bar pb-2 pt-2">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-yinle1"></use>
             </svg>
@@ -29,7 +29,7 @@
 
         <el-divider></el-divider>
 
-        <div class="topbar">
+        <div class="">
           <span class="text-black ">创建的歌单</span>
         </div>
       </el-col>

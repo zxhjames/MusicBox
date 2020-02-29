@@ -34,6 +34,20 @@
       "unicode_decimal": 58911
     },
     {
+      "icon_id": "1089296",
+      "name": "点赞",
+      "font_class": "buoumaotubiao16",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "1221242",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
       "icon_id": "1473537",
       "name": "音乐",
       "font_class": "yinyue",
@@ -43,7 +57,7 @@
     {
       "icon_id": "1638199",
       "name": "点赞",
-      "font_class": "dianzan",
+      "font_class": "dianzan1",
       "unicode": "e60c",
       "unicode_decimal": 58892
     },
@@ -90,11 +104,25 @@
       "unicode_decimal": 58928
     },
     {
+      "icon_id": "9526792",
+      "name": "评论区",
+      "font_class": "pinglunqu",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
       "icon_id": "10060829",
       "name": "社区",
       "font_class": "shequ",
       "unicode": "e628",
       "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "10061227",
+      "name": "转发",
+      "font_class": "zhuanfa1",
+      "unicode": "e642",
+      "unicode_decimal": 58946
     }
   ]
 }
