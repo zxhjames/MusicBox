@@ -12,7 +12,7 @@ Vue.prototype.$http = axios.create({
 //服务器地址
 Vue.prototype.$http1 = axios.create({
   //定义后端接口的根地址
-  baseURL: "http://localhost:8081"
+  baseURL: "http://192.168.0.105:8081"
 })
 //引入 npm i element-ui -S
 import ElementUI from 'element-ui'

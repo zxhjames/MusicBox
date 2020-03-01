@@ -35,7 +35,6 @@ export default {
           message: res.data.message
         });
         //刷新页面
-        this.$router.go(0);
       } else {
         this.$message({
           type: "error",

@@ -4,17 +4,21 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <div class=" d-flex ai-center ">
-          <m-userBar></m-userBar>
+          <el-avatar
+            :src="this.pic"
+            height="40"
+            type="primary"
+            style="margin-left: 0px;"
+          />
           <div class="pl-2 flex-1">
             <div class="text-black">{{ this.item.title }}</div>
-            <div class="text-grey fs-xxs">
-              作者:{{ this.item.creator }} |发布时间:{{
-                this.item.gmt_create | formatDate
+            <div class="text-grey fs-xxs pr-1">
+              {{ this.item.creator }} |时间:{{ this.time }} |浏览数:{{
+                this.item.viewCount
               }}
-              |浏览数:{{ this.item.viewCount }} |点赞数:{{
-                this.item.likeCount
+              |点赞数:{{ this.item.likeCount }} |评论数:{{
+                this.item.commentCount
               }}
-              |评论数:{{ this.item.commentCount }}
             </div>
           </div>
         </div>
@@ -45,20 +49,33 @@
   </div>
 </template>
 <script>
-import { formatDate } from "../utils/data";
+// import { formatDate } from "../utils/data";
 export default {
   props: {
     item: { type: Object, required: true }
   },
   data() {
-    return {};
+    return {
+      time: "",
+      pic: ""
+    };
   },
-  filters: {
-    formatDate(time) {
-      time = time * 1000;
-      let date = new Date(time);
-      console.log(new Date(time));
-      return formatDate(date, "yyyy-MM-dd hh:mm");
+  created() {
+    this.fetch();
+  },
+  methods: {
+    fetch() {
+      //转换时间
+      var unixTimestamp = new Date(this.item.gmtCreate);
+      this.time = unixTimestamp.toLocaleString();
+      console.log(this.item);
+      //判断是用户打开自己动态还是用户打开社区动态
+      if (!this.item.user) {
+        this.pic = JSON.parse(localStorage.getItem("usermsg")).avatar;
+      } else {
+        this.pic = this.$store.state.resources + this.item.user.avatarUrl;
+        console.log(this.pic);
+      }
     }
   }
 };
@@ -87,6 +104,6 @@ export default {
 .content img {
   display: block;
   max-width: 100% !important;
-  height: 100%;
+  width: 100%;
 }
 </style>

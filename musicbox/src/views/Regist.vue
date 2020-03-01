@@ -55,20 +55,24 @@ export default {
         });
         return;
       }
-      this.$http1.post("/register", formData).then(res => {
-        if (res.data.code == 200) {
-          this.$message({
-            type: "success",
-            message: "注册成功"
-          });
-          this.$router.push("/login");
-        } else {
+      this.$http1
+        .post("/register", formData)
+        .then(res => {
+          console.log(res.data);
+          if (res.data.code == 200) {
+            this.$message({
+              type: "success",
+              message: "注册成功"
+            });
+            this.$router.push("/login");
+          }
+        })
+        .catch(() => {
           this.$message({
             type: "error",
-            message: "用户名已存在!"
+            message: "用户名已存在请你换一个"
           });
-        }
-      });
+        });
     }
   }
 };
