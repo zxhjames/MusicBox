@@ -22,7 +22,11 @@ public class UserService {
 
     //用户注册
     public ResultDTO UserRegister(User user){
-        return userMapper.insert(user) == 1?ResultDTO.okOf():ResultDTO.errorOf(CustomizeErrorCode.EXIST_USER);
+        int status =  userMapper.insert(user);
+        if(status == 1){
+            return ResultDTO.okOf();
+        }
+        return ResultDTO.errorOf(CustomizeErrorCode.EXIST_USER);
     }
 
 

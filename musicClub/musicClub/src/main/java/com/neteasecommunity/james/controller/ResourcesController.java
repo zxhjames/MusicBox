@@ -27,4 +27,9 @@ public class ResourcesController {
     public List<Share> getUserActions(@PathVariable(name="username") String username){
         return shareService.getUserActionsByName(username);
     }
+
+    @GetMapping("/getAllUserActions")
+    public List<ActionsDTO> getAllUserActions(){
+        return shareService.getAllUserActions();
+    }
 }

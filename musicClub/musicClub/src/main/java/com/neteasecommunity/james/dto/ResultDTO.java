@@ -5,6 +5,7 @@ import com.neteasecommunity.james.exception.CustomizeException;
 import lombok.Data;
 
 @Data
+//错误处理工具类
 public class ResultDTO<T> {
     private Integer code;
     private String message;

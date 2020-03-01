@@ -69,6 +69,7 @@ public class AuthorizeController {
     public Object Register(HttpServletRequest request) {
         MultipartHttpServletRequest params = ((MultipartHttpServletRequest)request);
         MultipartFile file = params.getFile("file");
+        System.out.println(file);
         try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
