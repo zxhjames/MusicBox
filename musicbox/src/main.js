@@ -32,23 +32,23 @@ Vue.use(VueAwesomeSwiper)
 import vSelectSearch from 'v-select-search'
 Vue.use(vSelectSearch)
 //定义组件
-import Bar from './components/Bar.vue'
+import Bar from './components/music/Bar.vue'
 Vue.component('m-bar', Bar)
-import Card from './components/Card.vue'
+import Card from './components/music/Card.vue'
 Vue.component('m-card', Card)
-import ListCard from './components/ListCard.vue'
+import ListCard from './components/music/ListCard.vue'
 Vue.component('m-list-card', ListCard)
-import SingerPane from './components/SingerPane.vue'
+import SingerPane from './components/music/SingerPane.vue'
 Vue.component('m-singer-pane', SingerPane)
-import PlayBoard from './components/player.vue'
+import PlayBoard from './components/music/player.vue'
 Vue.component('m-player', PlayBoard)
-import Banner from './components/Banner.vue'
+import Banner from './components/music/Banner.vue'
 Vue.component('m-banner', Banner)
-import Video from './components/Video.vue'
+import Video from './components/music/Video.vue'
 Vue.component('m-video', Video)
-import Album from './components/Album.vue'
+import Album from './components/music/Album.vue'
 Vue.component('m-album', Album)
-import Search from './components/Search.vue'
+import Search from './components/music/Search.vue'
 Vue.component('m-search', Search)
 import UserBar from './components/user/userBar.vue'
 Vue.component('m-userBar', UserBar)
@@ -59,8 +59,34 @@ import U2 from './components/userMain/u2'
 Vue.component('m-u2', U2)
 import U4 from './components/userMain/u4'
 Vue.component('m-u4', U4)
-import Action from './components/Action.vue'
+
+//用户动态组件
+import Action from './components/actions/Action.vue'
 Vue.component('m-action', Action)
+
+//用户转发组件
+import Repost from './components/actions/repost.vue'
+Vue.component('m-repost', Repost)
+//用户一级评论组件
+import FirstComments from './components/comments/FirstComments.vue'
+Vue.component('m-firstcomments', FirstComments)
+//用户二级评论组件
+import SecondComments from './components/comments/SecondComments.vue'
+Vue.component('m-secondcomments', SecondComments)
+//用来发布评论
+import PublishComments from './components/comments/PublishComments.vue'
+Vue.component('m-publishcomments', PublishComments)
+
+
+
+
+
+
+
+
+
+
+
 //强制刷新组件
 // Vue.forseUpdate()
 import 'bootstrap'

@@ -1,15 +1,13 @@
 package com.neteasecommunity.james.service;
 
 import com.neteasecommunity.james.dto.ActionsDTO;
+import com.neteasecommunity.james.dto.CommentsDTO;
 import com.neteasecommunity.james.dto.ResultDTO;
 import com.neteasecommunity.james.exception.CustomizeErrorCode;
 import com.neteasecommunity.james.mapper.ShareExtMapper;
 import com.neteasecommunity.james.mapper.ShareMapper;
 import com.neteasecommunity.james.mapper.UserMapper;
-import com.neteasecommunity.james.model.Share;
-import com.neteasecommunity.james.model.ShareExample;
-import com.neteasecommunity.james.model.User;
-import com.neteasecommunity.james.model.UserExample;
+import com.neteasecommunity.james.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,6 +47,8 @@ public class ShareService {
         ShareExample shareExample = new ShareExample();
         //这里如果数据库的content要使用blob字段
         //后来在手机上测试又改为了longText
+        //根据时间降序排序
+        shareExample.setOrderByClause("gmt_modified");
         shareExample.createCriteria().andCreatorEqualTo(username);
         return shareMapper.selectByExampleWithBLOBs(shareExample);
     }
@@ -76,4 +76,10 @@ public class ShareService {
         }
         return actionsDTOList;
     }
+
+    public Object deleteOneActionByActionId(Integer id) {
+        return shareMapper.deleteByPrimaryKey(id) == 1?ResultDTO.okOf():ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
+    }
+
+
 }

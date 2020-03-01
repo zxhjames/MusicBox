@@ -77,7 +77,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../assets/scss/_variables.scss";
+@import "../../assets/scss/_variables.scss";
 .pagination-home {
   opacity: 1;
   border-radius: 0.1538rem;

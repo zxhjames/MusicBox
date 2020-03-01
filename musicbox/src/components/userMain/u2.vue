@@ -27,7 +27,6 @@ export default {
       //获得用户所有的动态
       let res = await this.$http1.get(`/getUserActions/${this.username}`);
       this.actions = res.data;
-      console.log(res.data);
     }
   }
 };

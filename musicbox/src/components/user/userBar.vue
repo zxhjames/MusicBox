@@ -15,11 +15,7 @@
           ><router-link to="/UserMain">我的主页</router-link></el-dropdown-item
         >
 
-        <el-dropdown-item icon="el-icon-s-help">
-          <el-badge :value="12" class="item"
-            >我的空间
-          </el-badge></el-dropdown-item
-        >
+        <el-dropdown-item icon="el-icon-s-help">我的空间 </el-dropdown-item>
         <el-dropdown-item icon="el-icon-s-release" @click.native="loginOut()"
           >注销账号</el-dropdown-item
         >

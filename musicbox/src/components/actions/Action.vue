@@ -13,37 +13,53 @@
           <div class="pl-2 flex-1">
             <div class="text-black">{{ this.item.title }}</div>
             <div class="text-grey fs-xxs pr-1">
-              {{ this.item.creator }} |时间:{{ this.time }} |浏览数:{{
+              By&nbsp;{{ this.item.creator }} |时间:{{ this.time }} |浏览:{{
                 this.item.viewCount
               }}
-              |点赞数:{{ this.item.likeCount }} |评论数:{{
-                this.item.commentCount
-              }}
+              |点赞:{{ this.item.likeCount }} |评论:{{ this.item.commentCount }}
             </div>
           </div>
         </div>
       </div>
       <div>
-        <div v-html="this.item.content" class="content">
-          {{ this.item.content }}
+        <div v-if="this.item.type == 0">
+          <div v-html="this.item.content" class="content">
+            {{ this.item.content }}
+          </div>
         </div>
+        <div v-if="this.item.type == 1"><m-repost></m-repost></div>
       </div>
       <div>
         <svg class="icon1" aria-hidden="true" style="margin-left:10px">
-          <use xlink:href="#icon-dianzan"></use>
+          <use xlink:href="#icon-dianzan1"></use>
         </svg>
-        <svg class="icon1" aria-hidden="true" style="margin-left:10px">
-          <use xlink:href="#icon-pinglunqu"></use>
-        </svg>
-        <svg class="icon1" aria-hidden="true" style="margin-left:10px">
-          <use xlink:href="#icon-zhuanfa1"></use>
-        </svg>
-        <el-button style="float: right; padding: 3px 10px" type="text"
-          >编辑</el-button
+        <svg
+          class="icon1"
+          aria-hidden="true"
+          style="margin-left:10px"
+          @click="showComments"
         >
-        <el-button style="float: right; padding: 3px 0" type="text"
+          <use xlink:href="#icon-review"></use>
+        </svg>
+        <svg class="icon1" aria-hidden="true" style="margin-left:10px">
+          <use xlink:href="#icon-zhuanfa2"></use>
+        </svg>
+        <el-button
+          v-if="!this.item.user"
+          style="float: right; padding: 3px 0"
+          type="text"
+          @click.native="deleteAction"
           >删除</el-button
         >
+      </div>
+
+      <!-- 评论功能 -->
+      <!-- flag面板状态(折叠/展开) id动态的id -->
+      <div v-if="this.flag">
+        <m-firstcomments
+          :id="this.item.id"
+          :type="this.item.type"
+        ></m-firstcomments>
       </div>
     </el-card>
   </div>
@@ -56,6 +72,7 @@ export default {
   },
   data() {
     return {
+      flag: false,
       time: "",
       pic: ""
     };
@@ -68,7 +85,6 @@ export default {
       //转换时间
       var unixTimestamp = new Date(this.item.gmtCreate);
       this.time = unixTimestamp.toLocaleString();
-      console.log(this.item);
       //判断是用户打开自己动态还是用户打开社区动态
       if (!this.item.user) {
         this.pic = JSON.parse(localStorage.getItem("usermsg")).avatar;
@@ -76,6 +92,34 @@ export default {
         this.pic = this.$store.state.resources + this.item.user.avatarUrl;
         console.log(this.pic);
       }
+    },
+    showComments() {
+      this.flag = !this.flag;
+    },
+    async deleteAction() {
+      //删除动态
+      this.$confirm("删除此条动态吗, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(async () => {
+          //执行删除操作
+          let res = await this.$http1.delete(`/deleteActions/${this.item.id}`);
+          if (res.data.code == 200) {
+            this.$message({
+              type: "success",
+              message: "删除成功!"
+            });
+          }
+          this.$router.go(0);
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除"
+          });
+        });
     }
   }
 };

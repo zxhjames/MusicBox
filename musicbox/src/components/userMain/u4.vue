@@ -1,12 +1,10 @@
 <template>
   <div>
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="动态名称">
+    <el-form ref="form" :model="form">
+      <el-form-item label="名称">
         <el-input v-model="form.title"></el-input>
       </el-form-item>
-      <el-form-item label="动态内容">
-        <vue-editor v-model="form.content" />
-      </el-form-item>
+      <vue-editor v-model="form.content" />
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
         <el-button type="primary" @click="clear">清空</el-button>
@@ -35,6 +33,7 @@ export default {
           message: res.data.message
         });
         //刷新页面
+        this.clear();
       } else {
         this.$message({
           type: "error",

@@ -13,6 +13,20 @@
       "unicode_decimal": 58900
     },
     {
+      "icon_id": "485760",
+      "name": "评 论",
+      "font_class": "pinglun",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "809963",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
       "icon_id": "991960",
       "name": "菜单",
       "font_class": "caidan",
@@ -41,9 +55,16 @@
       "unicode_decimal": 58895
     },
     {
+      "icon_id": "1120964",
+      "name": "点赞",
+      "font_class": "dianzan1",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
       "icon_id": "1221242",
       "name": "点赞",
-      "font_class": "dianzan",
+      "font_class": "dianzan2",
       "unicode": "e609",
       "unicode_decimal": 58889
     },
@@ -57,14 +78,14 @@
     {
       "icon_id": "1638199",
       "name": "点赞",
-      "font_class": "dianzan1",
+      "font_class": "dianzan3",
       "unicode": "e60c",
       "unicode_decimal": 58892
     },
     {
       "icon_id": "1766251",
       "name": "操作-评论",
-      "font_class": "pinglun",
+      "font_class": "pinglun1",
       "unicode": "e66d",
       "unicode_decimal": 58989
     },
@@ -83,6 +104,13 @@
       "unicode_decimal": 59541
     },
     {
+      "icon_id": "2325705",
+      "name": "点赞",
+      "font_class": "dianzan4",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
       "icon_id": "4485681",
       "name": "转发",
       "font_class": "zhuanfa",
@@ -97,11 +125,39 @@
       "unicode_decimal": 58998
     },
     {
+      "icon_id": "5532895",
+      "name": "评论",
+      "font_class": "pinglun2",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "7134740",
+      "name": "转发",
+      "font_class": "zhuanfa1",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
       "icon_id": "7199857",
       "name": "音乐",
       "font_class": "yinle1",
       "unicode": "e630",
       "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "7417089",
+      "name": "转发",
+      "font_class": "zhuanfa2",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "7716733",
+      "name": "转发",
+      "font_class": "zhuanfa3",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
     },
     {
       "icon_id": "9526792",
@@ -120,9 +176,16 @@
     {
       "icon_id": "10061227",
       "name": "转发",
-      "font_class": "zhuanfa1",
+      "font_class": "zhuanfa4",
       "unicode": "e642",
       "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "10937696",
+      "name": "评论",
+      "font_class": "review",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
     }
   ]
 }
