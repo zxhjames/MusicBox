@@ -1,6 +1,7 @@
 package com.neteasecommunity.james.controller;
 
 import com.neteasecommunity.james.dto.ActionsDTO;
+import com.neteasecommunity.james.dto.CommentsDTO;
 import com.neteasecommunity.james.dto.ResultDTO;
 import com.neteasecommunity.james.model.Comments;
 import com.neteasecommunity.james.model.Share;
@@ -52,10 +53,9 @@ public class ResourcesController {
     }
 
     @GetMapping("/getAllcommentsById/{id}/{type}")
-    public Object getAllcommentsById(@PathVariable(name="id") Integer id,@PathVariable(name="type") Integer type){
+    public List<CommentsDTO> getAllcommentsById(@PathVariable(name="id") Integer id, @PathVariable(name="type") Integer type){
         //id 动态的id或者是一级评论的id
         //type 表示id是来自动态还是来自一级id
-        System.out.println(id + " " + type);
         return commentService.getAllcommentsById(id,type);
     }
 

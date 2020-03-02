@@ -11,32 +11,13 @@
       >
       </el-input>
     </div>
+
     <div class=" d-flex  pr-0 ">
       <el-button plain @click="submit">评论</el-button>
       <el-button plain @click="clear">清空</el-button>
     </div>
 
-    <div class=" d-flex ai-center pt-3 ">
-      <el-avatar :size="30" shape="square" style="margin-left: 0px;" />
-      <div class="pl-2 flex-1">
-        <div class="text-black">111</div>
-        <div class="text-grey fs-xxs pr-1">
-          By&nbsp;{{ 111 }} |时间:{{ 111 }}
-        </div>
-      </div>
-
-      <svg class="icon1" aria-hidden="true" style="margin-left:10px">
-        <use xlink:href="#icon-dianzan4"></use>
-      </svg>
-    </div>
-    <div class=" d-flex ai-center pt-3 pb-3">
-      <div class=" flex-1">
-        <div class="pl-5 text-black">{{ 111 }}</div>
-      </div>
-    </div>
-
-    <!-- 二级评论 -->
-    <m-secondcomments></m-secondcomments>
+    <!-- 一级评论 -->
   </div>
 </template>
 <script>
@@ -55,7 +36,7 @@ export default {
         type: this.type,
         parentId: this.id
       },
-      Allcomments: ""
+      Allcomments: {}
     };
   },
   created() {
@@ -88,10 +69,11 @@ export default {
 
     async fetch() {
       //获取这个动态的所有评论,传递两个参数一个 id 一个type
-      let res = await this.$http1.get(
+      const res = await this.$http1.get(
         `/getAllcommentsById/${this.id}/${this.type}`
       );
-      console.log(res);
+      //要将数组转换为json
+      console.log(res.data);
     }
   }
 };

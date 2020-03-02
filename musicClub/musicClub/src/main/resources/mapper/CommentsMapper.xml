@@ -13,6 +13,7 @@
     <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
     <result column="commentator" jdbcType="VARCHAR" property="commentator" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
     <result column="like_count" jdbcType="INTEGER" property="likeCount" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.neteasecommunity.james.model.Comments">
