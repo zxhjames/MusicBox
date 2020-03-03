@@ -39,7 +39,7 @@ export default {
       this.comments.content = this.textarea;
       console.log(this.comments);
       let res = await this.$http1.post(`/pushComments`, this.comments);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.code == 200) {
         this.$message({
           type: "success",

@@ -48,7 +48,7 @@ public class ResourcesController {
 
     @PostMapping("/pushComments")
     public Object pushComments(@RequestBody Comments comments){
-        System.out.println(comments.getContent());
+        System.out.println(comments.getType());
         return commentService.pushComments(comments);
     }
 

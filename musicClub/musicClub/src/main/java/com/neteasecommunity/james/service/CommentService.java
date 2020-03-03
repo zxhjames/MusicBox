@@ -31,16 +31,28 @@ public class CommentService {
     }
 
     public List<CommentsDTO> getAllcommentsById(Integer id, Integer type) {
+//        if(type == 1){
+//            System.out.println(id+"....."+type);
+//        }
         CommentsExample commentsExample = new CommentsExample();
+        //做一次判断
+
         commentsExample.createCriteria().andParentIdEqualTo(id).andTypeEqualTo(type);
+        commentsExample.setOrderByClause("gmt_modified");
         List<Comments> comments = commentsMapper.selectByExampleWithBLOBs(commentsExample);
+        if(comments.size() == 0){
+            return null;
+        }
         List<CommentsDTO> commentsDTOList = new ArrayList<>();
         for(Comments cm : comments){
             CommentsDTO commentsDTO = new CommentsDTO();
             UserExample userExample = new UserExample();
             userExample.createCriteria().andUsernameEqualTo(cm.getCommentator());
             List<User> users = userMapper.selectByExample(userExample);
+            String realUrl = "http://localhost:8081/img/user/" + users.get(0).getAvatarUrl();
+            users.get(0).setAvatarUrl(realUrl)  ;
             commentsDTO.setUser(users.get(0));
+
             BeanUtils.copyProperties(cm, commentsDTO);
             commentsDTOList.add(commentsDTO);
         }

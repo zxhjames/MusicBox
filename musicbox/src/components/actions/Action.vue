@@ -23,8 +23,11 @@
       </div>
       <div>
         <div v-if="this.item.type == 0">
-          <div v-html="this.item.content" class="content">
-            {{ this.item.content }}
+          <div
+            class="text-black"
+            style="word-wrap:break-word; word-break:break-all;"
+          >
+            <div v-html="this.item.content" class="content"></div>
           </div>
         </div>
         <div v-if="this.item.type == 1"><m-repost></m-repost></div>
@@ -33,6 +36,7 @@
         <svg class="icon1" aria-hidden="true" style="margin-left:10px">
           <use xlink:href="#icon-dianzan1"></use>
         </svg>
+        {{ this.item.likeCount }}
         <svg
           class="icon1"
           aria-hidden="true"
@@ -41,6 +45,7 @@
         >
           <use xlink:href="#icon-review"></use>
         </svg>
+        {{ this.item.commentCount }}
         <svg class="icon1" aria-hidden="true" style="margin-left:10px">
           <use xlink:href="#icon-zhuanfa2"></use>
         </svg>
@@ -56,10 +61,7 @@
       <!-- 评论功能 -->
       <!-- flag面板状态(折叠/展开) id动态的id -->
       <div v-if="this.flag">
-        <m-firstcomments
-          :id="this.item.id"
-          :type="this.item.type"
-        ></m-firstcomments>
+        <m-firstcomments :id="this.item.id" :type="0"></m-firstcomments>
       </div>
     </el-card>
   </div>
@@ -74,7 +76,8 @@ export default {
     return {
       flag: false,
       time: "",
-      pic: ""
+      pic: "",
+      id: ""
     };
   },
   created() {
@@ -85,12 +88,14 @@ export default {
       //转换时间
       var unixTimestamp = new Date(this.item.gmtCreate);
       this.time = unixTimestamp.toLocaleString();
+      // console.log(this.item.id);
+      this.id = parseInt(this.item.id);
       //判断是用户打开自己动态还是用户打开社区动态
       if (!this.item.user) {
         this.pic = JSON.parse(localStorage.getItem("usermsg")).avatar;
       } else {
         this.pic = this.$store.state.resources + this.item.user.avatarUrl;
-        console.log(this.pic);
+        // console.log(this.pic);
       }
     },
     showComments() {

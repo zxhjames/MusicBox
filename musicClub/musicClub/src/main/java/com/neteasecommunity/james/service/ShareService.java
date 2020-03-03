@@ -37,7 +37,7 @@ public class ShareService {
         share.setGmtCreate(System.currentTimeMillis());
         share.setGmtModified(share.getGmtCreate());
         share.setViewCount(0);
-        share.setCommentCount(0);
+        share.setCommentCount(share.getCommentCount()+1);
         share.setLikeCount(0);
         share.setType(0);
         return shareMapper.insert(share) == 1 ? ResultDTO.okOf("发布成功") : ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
@@ -55,7 +55,9 @@ public class ShareService {
 
     public List<ActionsDTO> getAllUserActions() {
         //首先获取所有动态
-        List<Share> shares = shareExtMapper.selectAllByExampleWithDate(new ShareExample());
+        ShareExample shareExample = new ShareExample();
+        shareExample.setOrderByClause("gmt_modified");
+        List<Share> shares = shareExtMapper.selectAllByExampleWithDate(shareExample);
         //每次遍历一次单条动态,同时拷贝到ActionsDTO中,返回给前端
         List<ActionsDTO> actionsDTOList = new ArrayList<>();
         for(Share share : shares){
@@ -63,7 +65,11 @@ public class ShareService {
             userExample.createCriteria().andUsernameEqualTo(share.getCreator());
             List<User> user = userMapper.selectByExample(userExample);
             ActionsDTO actionsDTO = new ActionsDTO();
+//            String realUrl = "http://localhost:8081/img/user/" + user.get(0).getAvatarUrl();
+//            user.get(0).setAvatarUrl(realUrl)  ;
             actionsDTO.setUser(user.get(0));
+            //原来是我字段复制不完整啊
+            actionsDTO.setId(share.getId());
             actionsDTO.setContent(share.getContent());
             actionsDTO.setTitle(share.getTitle());
             actionsDTO.setType(share.getType());

@@ -13,7 +13,7 @@
 <script>
 export default {
   data() {
-    return { actions: [] };
+    return { actions: [{}] };
   },
   created() {
     this.fetch();
@@ -23,6 +23,7 @@ export default {
     async fetch() {
       let res = await this.$http1.get(`/getAllUserActions`);
       this.actions = res.data;
+      // console.log("thisc" + this.actions);
     }
   }
 };
