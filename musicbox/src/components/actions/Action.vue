@@ -16,7 +16,6 @@
               By&nbsp;{{ this.item.creator }} |时间:{{ this.time }} |浏览:{{
                 this.item.viewCount
               }}
-              |点赞:{{ this.item.likeCount }} |评论:{{ this.item.commentCount }}
             </div>
           </div>
         </div>
@@ -88,7 +87,7 @@ export default {
       //转换时间
       var unixTimestamp = new Date(this.item.gmtCreate);
       this.time = unixTimestamp.toLocaleString();
-      // console.log(this.item.id);
+      console.log(this.item);
       this.id = parseInt(this.item.id);
       //判断是用户打开自己动态还是用户打开社区动态
       if (!this.item.user) {

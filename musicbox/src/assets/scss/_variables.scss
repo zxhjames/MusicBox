@@ -17,7 +17,8 @@ $colors: ('primary': #db9e3f,
     'dark-1': #343440,
     'dark':rgb(36, 36, 36),
     'black': #000,
-    'red':rgb(164, 0, 17));
+    'red':rgb(164, 0, 17),
+    'red-1':rgb(228, 114, 114));
 $border-color: map-get($colors, 'light-1');
 // font size
 $base-font-size: 1rem;

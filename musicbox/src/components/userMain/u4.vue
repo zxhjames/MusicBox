@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       form: {
-        username: JSON.parse(localStorage.getItem("usermsg")).username,
+        creator: JSON.parse(localStorage.getItem("usermsg")).username,
         title: "",
         content: ""
       }

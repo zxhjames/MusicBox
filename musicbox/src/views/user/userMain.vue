@@ -15,10 +15,21 @@
       </el-main>
 
       <el-footer
-        ><span>关注 {{ this.usermsg.concerns }}</span
-        >&nbsp;&nbsp;|&nbsp;&nbsp;
-        <span>粉丝 {{ this.usermsg.followers }}</span></el-footer
-      >
+        ><span>关注 {{ this.usermsg.concerns }}</span>
+        <el-divider direction="vertical"></el-divider>
+        <span>粉丝 {{ this.usermsg.followers }}</span>
+        <el-divider direction="vertical"></el-divider>
+        <span>
+          <el-button
+            id="Concern"
+            type="primary"
+            :size="mini"
+            style="padding:0.5rem"
+            @click="concern"
+            >{{ this.status }}</el-button
+          >
+        </span>
+      </el-footer>
     </el-container>
 
     <!-- 要不要做个组件 -->
@@ -47,8 +58,20 @@
 export default {
   data() {
     return {
+      status: "关注他",
       usermsg: JSON.parse(localStorage.getItem("usermsg"))
     };
+  },
+  methods: {
+    concern() {
+      if (this.status == "关注他") {
+        this.status = "已关注";
+        document.getElementById("Concern").style.backgroundColor = "lightcoral";
+      } else {
+        this.status = "关注他";
+        document.getElementById("Concern").style.backgroundColor = "#409eff";
+      }
+    }
   }
 };
 </script>
@@ -79,7 +102,7 @@ export default {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
-  line-height: 160px;
+  line-height: 100px;
 }
 
 body > .el-container {
@@ -93,5 +116,10 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
+}
+
+.el-button--primary {
+  background-color: #409eff;
+  border-color: #409eff;
 }
 </style>

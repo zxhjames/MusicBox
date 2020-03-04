@@ -122,7 +122,11 @@ export default {
       };
 
       //插入到数组的前面
-      this.Allcomments.unshift(obj);
+      if (!this.Allcomments) {
+        this.Allcomments.push(obj);
+      } else {
+        this.Allcomments.unshift(obj);
+      }
 
       if (res.data.code == 200) {
         this.$message({
