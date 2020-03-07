@@ -11,11 +11,15 @@
 </template>
 <script>
 export default {
+  props: {
+    uname: { type: String, required: true }
+    // type: { type: Boolean, required: true }
+  },
   data() {
     return {
-      username: JSON.parse(localStorage.getItem("usermsg")).username,
       actions: [],
-      len: ""
+      len: "",
+      username: ""
     };
   },
 
@@ -25,6 +29,7 @@ export default {
   methods: {
     async fetch() {
       //获得用户所有的动态
+      this.username = this.uname;
       let res = await this.$http1.get(`/getUserActions/${this.username}`);
       this.actions = res.data;
       console.log(this.actions);

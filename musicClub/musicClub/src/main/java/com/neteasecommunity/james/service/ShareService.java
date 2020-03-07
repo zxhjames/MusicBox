@@ -10,10 +10,10 @@ import com.neteasecommunity.james.mapper.UserMapper;
 import com.neteasecommunity.james.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
 //注入bean
 @Component
 public class ShareService {
@@ -31,13 +31,14 @@ public class ShareService {
      */
     public Object insertActions(ActionsDTO actionsDTO) {
         Share share = new Share();
-        share.setCreator(actionsDTO.getUsername());
+        System.out.println(actionsDTO.getCreator());
+        share.setCreator(actionsDTO.getCreator());
         share.setTitle(actionsDTO.getTitle());
         share.setContent(actionsDTO.getContent());
         share.setGmtCreate(System.currentTimeMillis());
         share.setGmtModified(share.getGmtCreate());
         share.setViewCount(0);
-        share.setCommentCount(share.getCommentCount()+1);
+        share.setCommentCount(0);
         share.setLikeCount(0);
         share.setType(0);
         return shareMapper.insert(share) == 1 ? ResultDTO.okOf("发布成功") : ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
@@ -70,6 +71,7 @@ public class ShareService {
             actionsDTO.setUser(user.get(0));
             //原来是我字段复制不完整啊
             actionsDTO.setId(share.getId());
+            actionsDTO.setCreator(share.getCreator());
             actionsDTO.setContent(share.getContent());
             actionsDTO.setTitle(share.getTitle());
             actionsDTO.setType(share.getType());
@@ -80,6 +82,7 @@ public class ShareService {
             actionsDTO.setViewCount(share.getViewCount());
             actionsDTOList.add(actionsDTO);
         }
+        actionsDTOList.stream().map(ActionsDTO::getCreator).forEach(System.out::println);
         return actionsDTOList;
     }
 

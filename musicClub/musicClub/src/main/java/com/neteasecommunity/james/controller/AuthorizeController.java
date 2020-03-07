@@ -31,32 +31,23 @@ public class AuthorizeController {
     @Autowired
     private UserService userService;
 
-    @Value("${prop.upload-folder}")
-    private String UPLOAD_FOLDER;
 
 
     /**
      *用户登录逻辑
      * @param loginAndRegistDTO
-     * @return 用户登录状态码
+     * @return Object
+     * 用户登录状态码
      */
     @PostMapping("/login")
     public Object Login(@RequestBody LoginAndRegistDTO loginAndRegistDTO) {
-        //第一次登录首先去查找数据库,如果用户存在则登录成功,返回一个token到客户端,同时存储在redis数据库上
-        String username = loginAndRegistDTO.getUsername();
-        String pwd = loginAndRegistDTO.getPassword();
-        String token = loginAndRegistDTO.getToken();
-        String accessToken = redisTemplate.opsForValue().get(username);
-
-        //之前遇到的坑
-        if (accessToken != null && accessToken.equals(token)) {
-            return ResultDTO.okOf("redisOK");
-        }
-        //第一次登录去查数据库
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(pwd);
-        return userService.UserLogin(user);
+        /**
+         *  第一次登录首先去查找数据库,
+         *  如果用户存在则登录成功,
+         *  返回一个token到客户端,
+         *  同时存储在redis数据库上
+         */
+        return userService.UserLogin(loginAndRegistDTO);
     }
 
 
@@ -67,36 +58,7 @@ public class AuthorizeController {
      */
     @PostMapping("/register")
     public Object Register(HttpServletRequest request) {
-        MultipartHttpServletRequest params = ((MultipartHttpServletRequest)request);
-        MultipartFile file = params.getFile("file");
-        System.out.println(file);
-        try {
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
-            //如果没有files文件夹，则创建
-            if (!Files.isWritable(path)) {
-                Files.createDirectories(Paths.get(UPLOAD_FOLDER));
-            }
-            //文件写入指定路径
-            Files.write(path, bytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResultDTO.errorOf(CustomizeErrorCode.FILE_ERROR);
-        }
-        User user = new User();
-        user.setUsername(params.getParameter("username"));
-        user.setPassword(params.getParameter("password"));
-        user.setRank(1);
-        user.setGmtCreate(System.currentTimeMillis());
-        user.setGmtModified(user.getGmtCreate());
-        user.setAvatarUrl(file.getOriginalFilename());
-        return userService.UserRegister(user);
+        return userService.UserRegister(request);
     }
 
-
-
-    @GetMapping("/demo")
-    public Object demo(){
-        return ResultDTO.okOf(UUID.randomUUID());
-    }
 }

@@ -35,15 +35,14 @@ export default {
       //发送登录请求
       this.model.token = localStorage.getItem("token");
       const res = await this.$http1.post("/login", this.model);
-      console.log(res.data);
       if (res.data.code == 200) {
-        if (res.data.data != "redisOK") {
+        if (res.data.data != "loginCache") {
           //客户端存储用户本地信息
           let usermsg = {
             username: this.model.username,
             token: res.data.data.token,
             rank: res.data.data.rank,
-            avatar: this.$store.state.resources + res.data.data.avatar_url,
+            avatar: this.$store.state.resources + res.data.data.avatarUrl,
             concerns: res.data.data.concerns,
             followers: res.data.data.followers
           };

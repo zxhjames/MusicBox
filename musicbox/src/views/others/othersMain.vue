@@ -4,7 +4,7 @@
       <!-- 歌手头像 -->
       <el-main>
         <img
-          :src="this.usermsg.avatar"
+          :src="this.usermsg.avatarUrl"
           width="100px"
           height="100px"
           class="img-circle"
@@ -40,16 +40,8 @@
       </el-tab-pane>
 
       <el-tab-pane>
-        <span slot="label"><i class="el-icon-s-custom"></i> 我的动态</span>
-        <m-u2 :uname="this.usermsg.username" :type="true"></m-u2>
-      </el-tab-pane>
-      <el-tab-pane>
-        <span slot="label"><i class="el-icon-s-help"></i> 好友动态</span>
-        我的行程
-      </el-tab-pane>
-      <el-tab-pane>
-        <span slot="label"><i class="el-icon-plus"></i> 发布动态</span>
-        <m-u4></m-u4>
+        <span slot="label"><i class="el-icon-s-custom"></i> 他的动态</span>
+        <m-u2 :uname="this.$route.query.username"></m-u2>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -59,10 +51,22 @@ export default {
   data() {
     return {
       status: "关注他",
-      usermsg: JSON.parse(localStorage.getItem("usermsg"))
+      usermsg: {}
     };
   },
+  created() {
+    this.fetch();
+  },
+
   methods: {
+    async fetch() {
+      //获取用户的所有信息
+      let res = await this.$http1.get(
+        `/getUserInfoByUsername/${this.$route.query.username}`
+      );
+      this.usermsg = res.data;
+      console.log(this.usermsg);
+    },
     concern() {
       if (this.status == "关注他") {
         this.status = "已关注";

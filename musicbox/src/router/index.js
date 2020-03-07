@@ -10,6 +10,7 @@ import SearchList from '../views/songs/SearchList.vue'
 import Regist from '../views/Regist.vue'
 import UserMain from '../views/user/userMain.vue'
 import Community from '../views/Community.vue'
+import OthersMain from '../views/others/othersMain.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -65,6 +66,10 @@ const router = new Router({
         path: '/Community',
         name: 'Comminuty',
         component: Community
+      }, {
+        path: '/OthersMain',
+        name: 'OthersMain',
+        component: OthersMain
       }
     ]
   }]

@@ -7,9 +7,11 @@ import lombok.Data;
 public class LoginAndRegistDTO {
     private String username;
     private String password;
-    private String avatar_url;
+    private String avatarUrl;
     private String token;
     private Integer rank;
     private Integer concerns;
     private Integer followers;
+    private Long gmtCreate;
+    private Long gmtModified;
 }

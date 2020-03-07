@@ -4,12 +4,20 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <div class=" d-flex ai-center ">
-          <el-avatar
-            :src="this.pic"
-            height="40"
-            type="primary"
-            style="margin-left: 0px;"
-          />
+          <router-link
+            :to="{
+              path: '/OthersMain',
+              query: { username: this.item.creator }
+            }"
+          >
+            <el-avatar
+              :src="this.pic"
+              height="40"
+              type="primary"
+              style="margin-left: 0px;"
+            />
+          </router-link>
+
           <div class="pl-2 flex-1">
             <div class="text-black">{{ this.item.title }}</div>
             <div class="text-grey fs-xxs pr-1">

@@ -8,7 +8,7 @@ import lombok.Data;
 public class ActionsDTO {
     private User user; //上传动态的用户个人信息
     private Integer id;
-    private String username;//上传者
+    private String creator;//上传者
     private String title; //动态标题
     private String content; //动态内容
     private Integer type; //动态类型 type为0表示插入 为1表示更新

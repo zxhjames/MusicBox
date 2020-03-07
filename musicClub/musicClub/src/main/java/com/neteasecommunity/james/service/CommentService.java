@@ -12,10 +12,11 @@ import com.neteasecommunity.james.model.UserExample;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Transactional
 @Component
 public class CommentService {
     @Autowired
@@ -24,6 +25,9 @@ public class CommentService {
     private UserMapper userMapper;
     //插入一条评论
     public Object pushComments(Comments comments) {
+        Integer parentId  = comments.getParentId();
+
+        //在share表中,将id为parentId的share的commentCount加一,可以和点赞一起做成一个函数吗?
         comments.setGmtCreate(System.currentTimeMillis());
         comments.setGmtModified(comments.getGmtCreate());
         comments.setLikeCount(0);
@@ -31,12 +35,7 @@ public class CommentService {
     }
 
     public List<CommentsDTO> getAllcommentsById(Integer id, Integer type) {
-//        if(type == 1){
-//            System.out.println(id+"....."+type);
-//        }
         CommentsExample commentsExample = new CommentsExample();
-        //做一次判断
-
         commentsExample.createCriteria().andParentIdEqualTo(id).andTypeEqualTo(type);
         commentsExample.setOrderByClause("gmt_modified");
         List<Comments> comments = commentsMapper.selectByExampleWithBLOBs(commentsExample);
@@ -52,7 +51,6 @@ public class CommentService {
             String realUrl = "http://localhost:8081/img/user/" + users.get(0).getAvatarUrl();
             users.get(0).setAvatarUrl(realUrl)  ;
             commentsDTO.setUser(users.get(0));
-
             BeanUtils.copyProperties(cm, commentsDTO);
             commentsDTOList.add(commentsDTO);
         }

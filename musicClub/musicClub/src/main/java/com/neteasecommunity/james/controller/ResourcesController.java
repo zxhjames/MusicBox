@@ -2,24 +2,33 @@ package com.neteasecommunity.james.controller;
 
 import com.neteasecommunity.james.dto.ActionsDTO;
 import com.neteasecommunity.james.dto.CommentsDTO;
-import com.neteasecommunity.james.dto.ResultDTO;
 import com.neteasecommunity.james.model.Comments;
 import com.neteasecommunity.james.model.Share;
+import com.neteasecommunity.james.model.User;
 import com.neteasecommunity.james.service.CommentService;
 import com.neteasecommunity.james.service.ShareService;
+import com.neteasecommunity.james.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin
 @RestController
+@Transactional
 public class ResourcesController {
     @Autowired
     private ShareService shareService;
     @Autowired
     private CommentService commentService;
-
+    @Autowired
+    private UserService userService;
+    //获取某个用户的信息
+    @GetMapping("/getUserInfoByUsername/{username}")
+    public User getUserInfo(@PathVariable(name="username") String username){
+        return userService.getUserInfo(username);
+    }
     //用户执行上传的动态的业务
     @PostMapping("/actions")
     public Object doUserActions(@RequestBody ActionsDTO actionsDTO){
@@ -46,12 +55,14 @@ public class ResourcesController {
         return shareService.deleteOneActionByActionId(id);
     }
 
+    //用户发布评论
     @PostMapping("/pushComments")
     public Object pushComments(@RequestBody Comments comments){
         System.out.println(comments.getType());
         return commentService.pushComments(comments);
     }
 
+    //用户根据id获取评论内容
     @GetMapping("/getAllcommentsById/{id}/{type}")
     public List<CommentsDTO> getAllcommentsById(@PathVariable(name="id") Integer id, @PathVariable(name="type") Integer type){
         //id 动态的id或者是一级评论的id

@@ -35,7 +35,6 @@ export default {
   methods: {
     getFile: function(event) {
       this.file = event.target.files[0];
-      console.log(this.file);
     },
     submit: function(event) {
       //阻止元素发生默认的行为
@@ -58,7 +57,6 @@ export default {
       this.$http1
         .post("/register", formData)
         .then(res => {
-          console.log(res.data);
           if (res.data.code == 200) {
             this.$message({
               type: "success",
