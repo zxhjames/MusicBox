@@ -11,7 +11,7 @@
             }"
           >
             <el-avatar
-              :src="this.pic"
+              :src="this.user.avatarUrl"
               height="40"
               type="primary"
               style="margin-left: 0px;"
@@ -37,7 +37,9 @@
             <div v-html="this.item.content" class="content"></div>
           </div>
         </div>
-        <div v-if="this.item.type == 1"><m-repost></m-repost></div>
+        <div v-if="this.item.type == 1">
+          <m-repost :username="this.item.title"></m-repost>
+        </div>
       </div>
       <div>
         <svg class="icon1" aria-hidden="true" style="margin-left:10px">
@@ -53,7 +55,12 @@
           <use xlink:href="#icon-review"></use>
         </svg>
         {{ this.item.commentCount }}
-        <svg class="icon1" aria-hidden="true" style="margin-left:10px">
+        <svg
+          class="icon1"
+          aria-hidden="true"
+          style="margin-left:10px"
+          @click="repost"
+        >
           <use xlink:href="#icon-zhuanfa2"></use>
         </svg>
         <el-button
@@ -77,7 +84,8 @@
 // import { formatDate } from "../utils/data";
 export default {
   props: {
-    item: { type: Object, required: true }
+    item: { type: Object, required: true },
+    user: { type: Object, required: true }
   },
   data() {
     return {
@@ -97,13 +105,6 @@ export default {
       this.time = unixTimestamp.toLocaleString();
       console.log(this.item);
       this.id = parseInt(this.item.id);
-      //判断是用户打开自己动态还是用户打开社区动态
-      if (!this.item.user) {
-        this.pic = JSON.parse(localStorage.getItem("usermsg")).avatar;
-      } else {
-        this.pic = this.$store.state.resources + this.item.user.avatarUrl;
-        // console.log(this.pic);
-      }
     },
     showComments() {
       this.flag = !this.flag;
@@ -130,6 +131,37 @@ export default {
           this.$message({
             type: "info",
             message: "已取消删除"
+          });
+        });
+    },
+
+    //转发动态
+    repost() {
+      this.$confirm("确定要转发这条动态?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消"
+      })
+        .then(async () => {
+          this.item.type = 1;
+          this.item.creator = "dd";
+          let res = await this.$http1.post("/actions", this.item);
+          if (res.data.code == 200) {
+            this.$message({
+              type: "success",
+              message: "转发成功!"
+            });
+            this.$router.push("/Community");
+          } else {
+            this.$message({
+              type: "error",
+              message: res.data.message
+            });
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消转发"
           });
         });
     }

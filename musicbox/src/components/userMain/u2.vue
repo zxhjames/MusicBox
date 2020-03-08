@@ -5,21 +5,19 @@
       :key="index"
       style="margin-bottom:3rem"
     >
-      <m-action :item="item"></m-action>
+      <m-action :item="item" :user="user"></m-action>
     </div>
   </div>
 </template>
 <script>
 export default {
   props: {
-    uname: { type: String, required: true }
+    user: { type: Object, required: true }
     // type: { type: Boolean, required: true }
   },
   data() {
     return {
-      actions: [],
-      len: "",
-      username: ""
+      actions: [{}]
     };
   },
 
@@ -29,10 +27,13 @@ export default {
   methods: {
     async fetch() {
       //获得用户所有的动态
-      this.username = this.uname;
-      let res = await this.$http1.get(`/getUserActions/${this.username}`);
+      console.log("我自己的动态........................................");
+      console.log(this.user);
+      const res = await this.$http1.get(
+        `/getUserActions/${this.user.username}`
+      );
       this.actions = res.data;
-      console.log(this.actions);
+      // console.log("我的动态....................................");
     }
   }
 };

@@ -4,7 +4,7 @@
       <!-- 歌手头像 -->
       <el-main>
         <img
-          :src="this.usermsg.avatar"
+          :src="this.usermsg.avatarUrl"
           width="100px"
           height="100px"
           class="img-circle"
@@ -41,7 +41,7 @@
 
       <el-tab-pane>
         <span slot="label"><i class="el-icon-s-custom"></i> 我的动态</span>
-        <m-u2 :uname="this.usermsg.username" :type="true"></m-u2>
+        <m-u2 :user="this.usermsg" :type="true"></m-u2>
       </el-tab-pane>
       <el-tab-pane>
         <span slot="label"><i class="el-icon-s-help"></i> 好友动态</span>

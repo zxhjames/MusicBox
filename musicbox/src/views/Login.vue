@@ -42,11 +42,13 @@ export default {
             username: this.model.username,
             token: res.data.data.token,
             rank: res.data.data.rank,
-            avatar: this.$store.state.resources + res.data.data.avatarUrl,
+            avatarUrl: res.data.data.avatarUrl,
             concerns: res.data.data.concerns,
             followers: res.data.data.followers
           };
           usermsg = JSON.stringify(usermsg);
+          console.log("登录信息");
+          console.log(usermsg);
           localStorage.setItem("usermsg", usermsg);
         }
         this.$message({

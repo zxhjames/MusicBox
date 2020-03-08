@@ -35,13 +35,72 @@
     <!-- 要不要做个组件 -->
     <el-tabs type="border-card">
       <el-tab-pane>
-        <span slot="label"><i class="el-icon-s-home"></i> 我的曲库</span>
+        <span slot="label"><i class="el-icon-s-home"></i> ta的曲库</span>
         <m-u1></m-u1>
       </el-tab-pane>
 
       <el-tab-pane>
         <span slot="label"><i class="el-icon-s-custom"></i> 他的动态</span>
-        <m-u2 :uname="this.$route.query.username"></m-u2>
+        <div
+          v-for="item in this.actions"
+          :key="item"
+          style="margin-bottom:3rem"
+        >
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <div class=" d-flex ai-center ">
+                <el-avatar
+                  :src="usermsg.avatarUrl"
+                  height="40"
+                  type="primary"
+                  style="margin-left: 0px;"
+                />
+
+                <div class="pl-2 flex-1">
+                  <div class="text-black">{{ item.title }}</div>
+                  <div class="text-grey fs-xxs pr-1">
+                    By&nbsp;{{ item.creator }} |时间:{{
+                      new Date(item.gmtCreate).toLocaleString()
+                    }}
+                    |浏览:{{ item.viewCount }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div v-if="item.type == 0">
+                <div
+                  class="text-black"
+                  style="word-wrap:break-word; word-break:break-all;"
+                >
+                  <div v-html="item.content" class="content"></div>
+                </div>
+              </div>
+              <div v-if="item.type == 1"><m-repost></m-repost></div>
+            </div>
+            <div>
+              <svg class="icon1" aria-hidden="true" style="margin-left:10px">
+                <use xlink:href="#icon-dianzan1"></use>
+              </svg>
+              {{ item.likeCount }}
+              <svg
+                class="icon1"
+                aria-hidden="true"
+                style="margin-left:10px"
+                @click="showComments"
+              >
+                <use xlink:href="#icon-review"></use>
+              </svg>
+              {{ item.commentCount }}
+              <svg class="icon1" aria-hidden="true" style="margin-left:10px">
+                <use xlink:href="#icon-zhuanfa2"></use>
+              </svg>
+            </div>
+          </el-card>
+          <div v-if="flag">
+            <m-firstcomments :id="item.id" :type="0"></m-firstcomments>
+          </div>
+        </div>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -51,7 +110,12 @@ export default {
   data() {
     return {
       status: "关注他",
-      usermsg: {}
+      usermsg: {},
+      actions: [{}],
+      flag: false,
+      time: "",
+      pic: "",
+      id: ""
     };
   },
   created() {
@@ -65,7 +129,10 @@ export default {
         `/getUserInfoByUsername/${this.$route.query.username}`
       );
       this.usermsg = res.data;
-      console.log(this.usermsg);
+      const act = await this.$http1.get(
+        `/getUserActions/${this.usermsg.username}`
+      );
+      this.actions = act.data;
     },
     concern() {
       if (this.status == "关注他") {
@@ -75,6 +142,9 @@ export default {
         this.status = "关注他";
         document.getElementById("Concern").style.backgroundColor = "#409eff";
       }
+    },
+    showComments() {
+      this.flag = !this.flag;
     }
   }
 };

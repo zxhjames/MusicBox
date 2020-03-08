@@ -87,7 +87,7 @@ export default {
       //评论上传之后直接在回调数组中添加实时评论
       let obj = {
         user: {
-          avatarUrl: JSON.parse(localStorage.getItem("usermsg")).avatar
+          avatarUrl: JSON.parse(localStorage.getItem("usermsg")).avatarUrl
         },
         gmtCreate: new Date().getTime(),
         likeCount: 0,

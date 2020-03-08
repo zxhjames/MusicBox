@@ -59,7 +59,8 @@ import U2 from './components/userMain/u2'
 Vue.component('m-u2', U2)
 import U4 from './components/userMain/u4'
 Vue.component('m-u4', U4)
-
+import O2 from './components/others/o2.vue'
+Vue.component('m-o2', O2)
 //用户动态组件
 import Action from './components/actions/Action.vue'
 Vue.component('m-action', Action)

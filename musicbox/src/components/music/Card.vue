@@ -1,4 +1,3 @@
-// 卡片布局
 <template>
   <div class="card p-3 bg-white mt-3">
     <div class="card-header d-flex ai-center pb-3">
@@ -30,7 +29,6 @@ export default {
   .card-header {
     border-bottom: 1px solid $border-color;
   }
-
   border-bottom: 1px solid $border-color;
 }
 </style>

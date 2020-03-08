@@ -2,41 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebf4fd73-121c-4e13-9533-6973e8937192" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/JamesApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/config/CorsConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/config/MyWebMvcConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/config/RedisConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/controller/AuthorizeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/controller/ResourcesController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/dto/LoginAndRegistDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/dto/ResultDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/exception/CustomizeErrorCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/exception/CustomizeException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/exception/ICustomizeErrorCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/model/UserExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/18629025511602039.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/u=1260600660,2295906787&amp;fm=26&amp;gp=0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/u=1474924983,1588911749&amp;fm=26&amp;gp=0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/u=1748182773,1985951104&amp;fm=11&amp;gp=0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/u=1812298390,1314441564&amp;fm=26&amp;gp=0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/u=2068443316,4120665877&amp;fm=26&amp;gp=0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/u=2939307157,2029661047&amp;fm=15&amp;gp=0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uploads/u=3983426537,2366676252&amp;fm=15&amp;gp=0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/neteasecommunity/james/JamesApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../musicbox/src/components/user/userBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../musicbox/src/components/user/userBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/JamesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/JamesApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/config/MyWebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/config/MyWebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/controller/AuthorizeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/controller/AuthorizeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/controller/ResourcesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/controller/ResourcesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/dto/LoginAndRegistDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/dto/LoginAndRegistDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/dto/ResultDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/dto/ResultDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/exception/CustomizeErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/exception/CustomizeErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/model/UserExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/model/UserExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neteasecommunity/james/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/neteasecommunity/james/JamesApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/neteasecommunity/james/JamesApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,28 +58,21 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="acc@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="acc: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="comment: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="acc@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="acc: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="flyway_schema_history: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="acc@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="acc: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="question: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="Community: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="acc@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="Community: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="comments: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="acc@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="Community: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="share: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -111,8 +88,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="spring-beans.schema" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -149,8 +127,8 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ActionINJDK_EIGHT" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -165,7 +143,20 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.JamesApplication">
-    <configuration name="JamesApplicationTests.JudgeInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LikedUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.neteasecommunity.james.util.LikedUtil" />
+      <module name="musicClub" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.neteasecommunity.james.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JamesApplicationTests.test04" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="musicClub" />
       <extension name="coverage">
         <pattern>
@@ -175,13 +166,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.neteasecommunity.james" />
       <option name="MAIN_CLASS_NAME" value="com.neteasecommunity.james.JamesApplicationTests" />
-      <option name="METHOD_NAME" value="JudgeInsert" />
+      <option name="METHOD_NAME" value="test04" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JamesApplicationTests.testRedis" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JamesApplicationTests.test05" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="musicClub" />
       <extension name="coverage">
         <pattern>
@@ -191,23 +182,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.neteasecommunity.james" />
       <option name="MAIN_CLASS_NAME" value="com.neteasecommunity.james.JamesApplicationTests" />
-      <option name="METHOD_NAME" value="testRedis" />
+      <option name="METHOD_NAME" value="test05" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserReposityTest.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JamesApplicationTests.test6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="musicClub" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.neteasecommunity.james.repository.*" />
+          <option name="PATTERN" value="com.neteasecommunity.james.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.neteasecommunity.james.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.neteasecommunity.james.repository.UserReposityTest" />
-      <option name="METHOD_NAME" value="findAll" />
+      <option name="PACKAGE_NAME" value="com.neteasecommunity.james" />
+      <option name="MAIN_CLASS_NAME" value="com.neteasecommunity.james.JamesApplicationTests" />
+      <option name="METHOD_NAME" value="test6" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JamesApplicationTests.test8" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="musicClub" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.neteasecommunity.james.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.neteasecommunity.james" />
+      <option name="MAIN_CLASS_NAME" value="com.neteasecommunity.james.JamesApplicationTests" />
+      <option name="METHOD_NAME" value="test8" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -222,9 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.JamesApplicationTests.testRedis" />
-        <item itemvalue="JUnit.JamesApplicationTests.JudgeInsert" />
-        <item itemvalue="JUnit.UserReposityTest.findAll" />
+        <item itemvalue="Application.LikedUtil" />
+        <item itemvalue="JUnit.JamesApplicationTests.test8" />
+        <item itemvalue="JUnit.JamesApplicationTests.test6" />
+        <item itemvalue="JUnit.JamesApplicationTests.test05" />
+        <item itemvalue="JUnit.JamesApplicationTests.test04" />
       </list>
     </recent_temporary>
   </component>
@@ -233,7 +242,27 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:acc@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:acc@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@43820ee3" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:acc@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@2ab77af3" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:acc@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@26fa5115" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -263,7 +292,27 @@
       <workItem from="1582723164474" duration="13882000" />
       <workItem from="1582803030339" duration="3012000" />
       <workItem from="1582865462330" duration="3059000" />
-      <workItem from="1582888175885" duration="1396000" />
+      <workItem from="1582888175885" duration="1251000" />
+      <workItem from="1582889590276" duration="17542000" />
+      <workItem from="1582978200390" duration="3144000" />
+      <workItem from="1583022375416" duration="18712000" />
+      <workItem from="1583062778828" duration="7734000" />
+      <workItem from="1583149486232" duration="9739000" />
+      <workItem from="1583201951756" duration="37000" />
+      <workItem from="1583212459884" duration="7014000" />
+      <workItem from="1583225844373" duration="9744000" />
+      <workItem from="1583243029811" duration="681000" />
+      <workItem from="1583291037734" duration="4818000" />
+      <workItem from="1583319242855" duration="2418000" />
+      <workItem from="1583395546865" duration="21000" />
+      <workItem from="1583413652547" duration="1540000" />
+      <workItem from="1583465835617" duration="1692000" />
+      <workItem from="1583478839927" duration="5445000" />
+      <workItem from="1583498851400" duration="1991000" />
+      <workItem from="1583545297660" duration="17514000" />
+      <workItem from="1583582411422" duration="7945000" />
+      <workItem from="1583594801302" duration="14046000" />
+      <workItem from="1583652587766" duration="6622000" />
     </task>
     <servers />
   </component>
@@ -275,95 +324,122 @@
       <screen x="270" y="1080" width="1366" height="768" />
     </state>
     <state x="548" y="1138" width="800" height="673" key="#com.intellij.execution.impl.EditConfigurationsDialog/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582375783651" />
-    <state x="761" y="1184" width="374" height="581" key="#com.intellij.ide.util.MemberChooser" timestamp="1582425822232">
-      <screen x="270" y="1080" width="1366" height="768" />
+    <state x="1366" y="438" width="374" height="581" key="#com.intellij.ide.util.MemberChooser" timestamp="1583563645170">
+      <screen x="0" y="337" width="3286" height="743" />
     </state>
+    <state x="1366" y="438" width="374" height="581" key="#com.intellij.ide.util.MemberChooser/0.337.3286.743@0.337.3286.743" timestamp="1583563645170" />
     <state x="761" y="1184" width="374" height="581" key="#com.intellij.ide.util.MemberChooser/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582425822232" />
     <state x="740" y="1105" width="886" height="743" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582438325126">
       <screen x="270" y="1080" width="1366" height="768" />
     </state>
     <state x="740" y="1105" width="886" height="743" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582438325126" />
-    <state x="416" y="475" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582695530340">
+    <state x="416" y="475" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583593917701">
       <screen x="0" y="337" width="1366" height="743" />
     </state>
-    <state x="416" y="475" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582695530340" />
+    <state x="416" y="475" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583593917701" />
     <state x="686" y="1223" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582440526463" />
-    <state x="466" y="1234" width="424" height="480" key="FileChooserDialogImpl" timestamp="1582597171785">
-      <screen x="0" y="1080" width="1366" height="768" />
+    <state x="466" y="1095" width="380" height="327" key="FileChooserDialogImpl" timestamp="1583487086364">
+      <screen x="0" y="946" width="1366" height="743" />
     </state>
     <state x="466" y="1234" key="FileChooserDialogImpl/0.1080.1366.768/1366.0.554.1080@0.1080.1366.768" timestamp="1582597171785" />
+    <state x="2021" y="217" key="FileChooserDialogImpl/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583201994400" />
+    <state x="466" y="1095" width="380" height="327" key="FileChooserDialogImpl/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487086364" />
     <state x="736" y="1234" width="424" height="480" key="FileChooserDialogImpl/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582457461203" />
-    <state width="1866" height="296" key="GridCell.Tab.0.bottom" timestamp="1582889578185">
+    <state width="1866" height="283" key="GridCell.Tab.0.bottom" timestamp="1583657147847">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755004" />
     <state width="1312" height="168" key="GridCell.Tab.0.bottom/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464216" />
     <state width="1312" height="305" key="GridCell.Tab.0.bottom/0.25.1366.743@0.25.1366.743" timestamp="1582553394279" />
-    <state width="1312" height="146" key="GridCell.Tab.0.bottom/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144663" />
-    <state width="1866" height="296" key="GridCell.Tab.0.bottom/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578185" />
+    <state width="1312" height="27" key="GridCell.Tab.0.bottom/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647390" />
+    <state width="1866" height="283" key="GridCell.Tab.0.bottom/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147847" />
+    <state width="1866" height="332" key="GridCell.Tab.0.bottom/0.337.3286.743@0.337.3286.743" timestamp="1583580352304" />
+    <state width="1312" height="290" key="GridCell.Tab.0.bottom/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089439" />
+    <state width="1167" height="226" key="GridCell.Tab.0.bottom/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067473" />
     <state width="1046" height="65" key="GridCell.Tab.0.bottom/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044337" />
-    <state width="1866" height="296" key="GridCell.Tab.0.center" timestamp="1582889578184">
+    <state width="1866" height="283" key="GridCell.Tab.0.center" timestamp="1583657147847">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.0.center/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755003" />
     <state width="1312" height="168" key="GridCell.Tab.0.center/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464216" />
     <state width="1312" height="305" key="GridCell.Tab.0.center/0.25.1366.743@0.25.1366.743" timestamp="1582553394278" />
-    <state width="1312" height="146" key="GridCell.Tab.0.center/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144663" />
-    <state width="1866" height="296" key="GridCell.Tab.0.center/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578184" />
+    <state width="1312" height="27" key="GridCell.Tab.0.center/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647390" />
+    <state width="1866" height="283" key="GridCell.Tab.0.center/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147847" />
+    <state width="1866" height="332" key="GridCell.Tab.0.center/0.337.3286.743@0.337.3286.743" timestamp="1583580352303" />
+    <state width="1312" height="290" key="GridCell.Tab.0.center/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089439" />
+    <state width="1167" height="226" key="GridCell.Tab.0.center/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067473" />
     <state width="1046" height="65" key="GridCell.Tab.0.center/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044337" />
-    <state width="1866" height="296" key="GridCell.Tab.0.left" timestamp="1582889578184">
+    <state width="1866" height="283" key="GridCell.Tab.0.left" timestamp="1583657147847">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.0.left/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755003" />
     <state width="1312" height="168" key="GridCell.Tab.0.left/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464215" />
     <state width="1312" height="305" key="GridCell.Tab.0.left/0.25.1366.743@0.25.1366.743" timestamp="1582553394277" />
-    <state width="1312" height="146" key="GridCell.Tab.0.left/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144663" />
-    <state width="1866" height="296" key="GridCell.Tab.0.left/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578184" />
+    <state width="1312" height="27" key="GridCell.Tab.0.left/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647390" />
+    <state width="1866" height="283" key="GridCell.Tab.0.left/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147847" />
+    <state width="1866" height="332" key="GridCell.Tab.0.left/0.337.3286.743@0.337.3286.743" timestamp="1583580352303" />
+    <state width="1312" height="290" key="GridCell.Tab.0.left/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089439" />
+    <state width="1167" height="226" key="GridCell.Tab.0.left/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067473" />
     <state width="1046" height="65" key="GridCell.Tab.0.left/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044336" />
-    <state width="1866" height="296" key="GridCell.Tab.0.right" timestamp="1582889578185">
+    <state width="1866" height="283" key="GridCell.Tab.0.right" timestamp="1583657147847">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.0.right/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755004" />
     <state width="1312" height="168" key="GridCell.Tab.0.right/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464216" />
     <state width="1312" height="305" key="GridCell.Tab.0.right/0.25.1366.743@0.25.1366.743" timestamp="1582553394278" />
-    <state width="1312" height="146" key="GridCell.Tab.0.right/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144663" />
-    <state width="1866" height="296" key="GridCell.Tab.0.right/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578185" />
+    <state width="1312" height="27" key="GridCell.Tab.0.right/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647390" />
+    <state width="1866" height="283" key="GridCell.Tab.0.right/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147847" />
+    <state width="1866" height="332" key="GridCell.Tab.0.right/0.337.3286.743@0.337.3286.743" timestamp="1583580352304" />
+    <state width="1312" height="290" key="GridCell.Tab.0.right/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089439" />
+    <state width="1167" height="226" key="GridCell.Tab.0.right/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067473" />
     <state width="1046" height="65" key="GridCell.Tab.0.right/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044337" />
-    <state width="1866" height="296" key="GridCell.Tab.1.bottom" timestamp="1582889578186">
+    <state width="1866" height="283" key="GridCell.Tab.1.bottom" timestamp="1583657147848">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.1.bottom/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755005" />
     <state width="1312" height="168" key="GridCell.Tab.1.bottom/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464216" />
     <state width="1312" height="305" key="GridCell.Tab.1.bottom/0.25.1366.743@0.25.1366.743" timestamp="1582553394280" />
-    <state width="1312" height="146" key="GridCell.Tab.1.bottom/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144664" />
-    <state width="1866" height="296" key="GridCell.Tab.1.bottom/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578186" />
+    <state width="1312" height="27" key="GridCell.Tab.1.bottom/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647391" />
+    <state width="1866" height="283" key="GridCell.Tab.1.bottom/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147848" />
+    <state width="1866" height="332" key="GridCell.Tab.1.bottom/0.337.3286.743@0.337.3286.743" timestamp="1583580352305" />
+    <state width="1334" height="292" key="GridCell.Tab.1.bottom/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089430" />
+    <state width="1167" height="226" key="GridCell.Tab.1.bottom/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067474" />
     <state width="1046" height="65" key="GridCell.Tab.1.bottom/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044337" />
-    <state width="1866" height="296" key="GridCell.Tab.1.center" timestamp="1582889578185">
+    <state width="1866" height="283" key="GridCell.Tab.1.center" timestamp="1583657147848">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.1.center/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755005" />
     <state width="1312" height="168" key="GridCell.Tab.1.center/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464216" />
     <state width="1312" height="305" key="GridCell.Tab.1.center/0.25.1366.743@0.25.1366.743" timestamp="1582553394279" />
-    <state width="1312" height="146" key="GridCell.Tab.1.center/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144664" />
-    <state width="1866" height="296" key="GridCell.Tab.1.center/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578185" />
+    <state width="1312" height="27" key="GridCell.Tab.1.center/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647391" />
+    <state width="1866" height="283" key="GridCell.Tab.1.center/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147848" />
+    <state width="1866" height="332" key="GridCell.Tab.1.center/0.337.3286.743@0.337.3286.743" timestamp="1583580352304" />
+    <state width="1334" height="292" key="GridCell.Tab.1.center/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089430" />
+    <state width="1167" height="226" key="GridCell.Tab.1.center/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067474" />
     <state width="1046" height="65" key="GridCell.Tab.1.center/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044337" />
-    <state width="1866" height="296" key="GridCell.Tab.1.left" timestamp="1582889578185">
+    <state width="1866" height="283" key="GridCell.Tab.1.left" timestamp="1583657147847">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.1.left/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755004" />
     <state width="1312" height="168" key="GridCell.Tab.1.left/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464216" />
     <state width="1312" height="305" key="GridCell.Tab.1.left/0.25.1366.743@0.25.1366.743" timestamp="1582553394279" />
-    <state width="1312" height="146" key="GridCell.Tab.1.left/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144663" />
-    <state width="1866" height="296" key="GridCell.Tab.1.left/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578185" />
+    <state width="1312" height="27" key="GridCell.Tab.1.left/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647390" />
+    <state width="1866" height="283" key="GridCell.Tab.1.left/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147847" />
+    <state width="1866" height="332" key="GridCell.Tab.1.left/0.337.3286.743@0.337.3286.743" timestamp="1583580352304" />
+    <state width="1334" height="292" key="GridCell.Tab.1.left/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089430" />
+    <state width="1167" height="226" key="GridCell.Tab.1.left/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067473" />
     <state width="1046" height="65" key="GridCell.Tab.1.left/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044337" />
-    <state width="1866" height="296" key="GridCell.Tab.1.right" timestamp="1582889578186">
+    <state width="1866" height="283" key="GridCell.Tab.1.right" timestamp="1583657147848">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1312" height="244" key="GridCell.Tab.1.right/0.0.1920.1848@0.0.1920.1848" timestamp="1582558755005" />
     <state width="1312" height="168" key="GridCell.Tab.1.right/0.25.1366.743/1366.358.1080.1920@0.25.1366.743" timestamp="1582636464216" />
     <state width="1312" height="305" key="GridCell.Tab.1.right/0.25.1366.743@0.25.1366.743" timestamp="1582553394280" />
-    <state width="1312" height="146" key="GridCell.Tab.1.right/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582775144664" />
-    <state width="1866" height="296" key="GridCell.Tab.1.right/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582889578186" />
+    <state width="1312" height="27" key="GridCell.Tab.1.right/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583634647391" />
+    <state width="1866" height="283" key="GridCell.Tab.1.right/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583657147848" />
+    <state width="1866" height="332" key="GridCell.Tab.1.right/0.337.3286.743@0.337.3286.743" timestamp="1583580352305" />
+    <state width="1334" height="292" key="GridCell.Tab.1.right/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583487089430" />
+    <state width="1167" height="226" key="GridCell.Tab.1.right/0.946.1366.743/1366.0.1080.1920@1366.0.1080.1920" timestamp="1583416067474" />
     <state width="1046" height="65" key="GridCell.Tab.1.right/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582465044337" />
     <state width="1312" height="340" key="GridCell.Tab.2.bottom" timestamp="1582722643997">
       <screen x="0" y="337" width="1366" height="743" />
@@ -389,26 +465,41 @@
       <screen x="270" y="1080" width="1366" height="768" />
     </state>
     <state width="273" height="606" key="HiddenNamespacesPopup/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582375793954" />
-    <state x="486" y="1134" width="924" height="680" key="Maven.ArtifactSearchDialog" timestamp="1582458258237">
-      <screen x="270" y="1080" width="1366" height="768" />
+    <state x="216" y="998" width="924" height="680" key="Maven.ArtifactSearchDialog" timestamp="1583483299543">
+      <screen x="0" y="946" width="1366" height="743" />
     </state>
+    <state x="216" y="998" key="Maven.ArtifactSearchDialog/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583483299543" />
     <state x="486" y="1134" width="924" height="680" key="Maven.ArtifactSearchDialog/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582458258237" />
-    <state x="1814" y="0" width="566" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1582888947019">
+    <state x="2682" y="248" width="440" height="580" key="RollbackChangesDialog" timestamp="1582974510472">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
-    <state x="319" y="337" width="566" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582695435571" />
-    <state x="1814" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582888947019" />
+    <state x="2682" y="248" width="440" height="580" key="RollbackChangesDialog/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582974510472" />
+    <state x="164" y="343" key="SettingsEditor" timestamp="1583582274380">
+      <screen x="0" y="337" width="3286" height="743" />
+    </state>
+    <state x="164" y="343" key="SettingsEditor/0.337.3286.743@0.337.3286.743" timestamp="1583582274380" />
+    <state x="2075" y="332" width="491" height="411" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1582894246996">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2075" y="332" width="491" height="411" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582894246996" />
+    <state x="319" y="337" width="552" height="778" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1583589335088">
+      <screen x="0" y="337" width="1366" height="743" />
+    </state>
+    <state x="319" y="337" width="566" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1583589335088" />
+    <state x="1691" y="153" width="552" height="778" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583067658931" />
     <state x="589" y="1105" width="552" height="743" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582439475583" />
     <state x="799" y="1223" width="298" height="503" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1582438806649">
       <screen x="270" y="1080" width="1366" height="768" />
     </state>
     <state x="799" y="1223" width="298" height="503" key="com.intellij.database.view.ui.DbObjectDialog/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582438806649" />
-    <state x="1840" y="315" key="com.intellij.ide.util.TipDialog" timestamp="1582888191741">
+    <state x="1840" y="315" key="com.intellij.ide.util.TipDialog" timestamp="1583652628809">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state x="337" y="1304" key="com.intellij.ide.util.TipDialog/0.1080.1366.768/0.0.1920.1080@0.1080.1366.768" timestamp="1582596294804" />
+    <state x="337" y="242" key="com.intellij.ide.util.TipDialog/0.25.1366.743@0.25.1366.743" timestamp="1583545302404" />
     <state x="337" y="554" key="com.intellij.ide.util.TipDialog/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582687324549" />
-    <state x="1840" y="315" key="com.intellij.ide.util.TipDialog/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582888191741" />
+    <state x="1840" y="315" key="com.intellij.ide.util.TipDialog/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583652628809" />
+    <state x="337" y="1163" key="com.intellij.ide.util.TipDialog/0.946.1366.743/1366.0.1080.1920@0.946.1366.743" timestamp="1583465837248" />
     <state x="607" y="1304" key="com.intellij.ide.util.TipDialog/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582463555126" />
     <state x="859" y="1105" width="767" height="743" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582439241653">
       <screen x="270" y="1080" width="1366" height="768" />
@@ -428,10 +519,16 @@
     </state>
     <state x="0" y="25" width="1366" height="743" key="new project wizard/0.1080.1366.768/0.25.1920.1055@0.25.1920.1055" timestamp="1582597330545" />
     <state x="270" y="1176" width="1356" height="596" key="new project wizard/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582460701479" />
-    <state x="346" y="423" width="672" height="656" key="search.everywhere.popup" timestamp="1582697361190">
-      <screen x="0" y="337" width="1366" height="743" />
+    <state x="1990" y="247" key="run.anything.popup" timestamp="1582955325570">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1990" y="247" key="run.anything.popup/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582955325570" />
+    <state x="832" y="423" width="1618" height="657" key="search.everywhere.popup" timestamp="1583560674673">
+      <screen x="0" y="337" width="3286" height="743" />
     </state>
     <state x="346" y="423" width="672" height="656" key="search.everywhere.popup/0.337.1366.743/1366.0.1920.1080@0.337.1366.743" timestamp="1582697361190" />
+    <state x="1852" y="125" width="945" height="954" key="search.everywhere.popup/0.337.1366.743/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583068896350" />
+    <state x="832" y="423" width="1618" height="657" key="search.everywhere.popup/0.337.3286.743@0.337.3286.743" timestamp="1583560674673" />
     <state x="616" y="1169" width="672" height="678" key="search.everywhere.popup/270.1080.1366.768/0.0.1920.1080@270.1080.1366.768" timestamp="1582429539932" />
   </component>
 </project>

@@ -3,7 +3,7 @@
     <el-dropdown trigger="click">
       <span class="el-dropdown-link">
         <el-avatar
-          :src="this.usermsg.avatar"
+          :src="this.usermsg.avatarUrl"
           height="40"
           type="primary"
           style="margin-left: 0px;"

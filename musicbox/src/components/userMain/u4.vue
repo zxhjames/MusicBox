@@ -32,8 +32,7 @@ export default {
           type: "success",
           message: res.data.message
         });
-        //刷新页面
-        this.clear();
+        this.$router.push("/Community");
       } else {
         this.$message({
           type: "error",

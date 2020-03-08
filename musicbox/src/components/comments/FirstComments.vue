@@ -22,13 +22,20 @@
       <!-- {{ item.id }}...{{ item.type }} -->
       <div class="d-flex pt-3">
         <div class=" d-flex ai-center ">
-          <el-avatar
-            :src="item.user.avatarUrl"
-            shape="square"
-            :size="30"
-            type="primary"
-            style="margin-left: 0px;"
-          />
+          <router-link
+            :to="{
+              path: '/OthersMain',
+              query: { username: item.user.username }
+            }"
+          >
+            <el-avatar
+              :src="item.user.avatarUrl"
+              shape="square"
+              :size="30"
+              type="primary"
+              style="margin-left: 0px;"
+            />
+          </router-link>
           <div class="pl-2 flex-1">
             <div class="text-black">{{ item.commentator }}</div>
             <div class="text-grey fs-xxs ">
@@ -90,6 +97,7 @@ export default {
   },
   data() {
     return {
+      avatarUrl: JSON.parse(localStorage.getItem("usermsg")).avatarUrl,
       mark: false,
       textarea: "",
       comments: {
@@ -113,11 +121,11 @@ export default {
       //页面临时刷新数据，如何把数据放到数组前面？防止用户多次刷新
       let obj = {
         user: {
-          avatarUrl: JSON.parse(localStorage.getItem("usermsg")).avatar
+          avatarUrl: this.avatarUrl
         },
         gmtCreate: new Date().getTime(),
         likeCount: 0,
-        commentator: this.commentator,
+        commentator: this.comments.commentator,
         content: this.comments.content
       };
 
