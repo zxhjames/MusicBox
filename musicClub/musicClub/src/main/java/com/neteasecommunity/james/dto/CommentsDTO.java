@@ -13,6 +13,6 @@ public class CommentsDTO {
     private String commentator;
     private String content;
     private Integer likeCount;
-//    private Integer replyCount;
+    //    private Integer replyCount;
     private User user;
 }

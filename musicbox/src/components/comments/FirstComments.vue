@@ -130,7 +130,7 @@ export default {
       };
 
       //插入到数组的前面
-      if (!this.Allcomments) {
+      if (this.Allcomments.length == 0) {
         this.Allcomments.push(obj);
       } else {
         this.Allcomments.unshift(obj);

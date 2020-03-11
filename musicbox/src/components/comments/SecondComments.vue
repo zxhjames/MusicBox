@@ -20,7 +20,7 @@
           <div class="pl-2 flex-1">
             <div class="text-black fs-xs">{{ item.commentator }}</div>
             <div class="text-grey fs-xxs pr-1">
-              {{ new Date(item.gmtCreate).toLocaleString() }}
+              {{}}
             </div>
           </div>
         </div>

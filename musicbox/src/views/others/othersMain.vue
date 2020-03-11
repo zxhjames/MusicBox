@@ -109,13 +109,10 @@
 export default {
   data() {
     return {
+      flag: false,
       status: "关注他",
       usermsg: {},
-      actions: [{}],
-      flag: false,
-      time: "",
-      pic: "",
-      id: ""
+      actions: [{}]
     };
   },
   created() {
@@ -129,10 +126,14 @@ export default {
         `/getUserInfoByUsername/${this.$route.query.username}`
       );
       this.usermsg = res.data;
+      console.log("我是usermsg");
+      console.log(this.usermsg);
       const act = await this.$http1.get(
         `/getUserActions/${this.usermsg.username}`
       );
       this.actions = act.data;
+      console.log("我是actions");
+      console.log(this.actions);
     },
     concern() {
       if (this.status == "关注他") {

@@ -5,7 +5,6 @@ import com.neteasecommunity.james.model.ShareExample;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 @Component
 public interface ShareExtMapper {
     //根据用户名查询所有动态,根据发布时间降序排列

@@ -4,19 +4,28 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <div class=" d-flex ai-center ">
-          <el-avatar
-            :src="this.user.avatarUrl"
-            height="40"
-            type="primary"
-            style="margin-left: 0px;"
-          />
+          <router-link
+            :to="{
+              path: '/OthersMain',
+              query: { username: this.item.user.username }
+            }"
+          >
+            <el-avatar
+              :src="this.item.user.avatarUrl"
+              :size="30"
+              type="primary"
+              shape="square"
+              style="margin-left: 0px;"
+            />
+          </router-link>
 
           <div class="pl-2 flex-1">
             <div class="text-black">{{ this.item.title }}</div>
             <div class="text-grey fs-xxs pr-1">
-              By&nbsp;{{ this.item.creator }} |时间:{{ this.time }} |浏览:{{
-                this.item.viewCount
+              By&nbsp;{{ this.item.creator }} |时间:{{
+                new Date(this.item.gmtCreate).toLocaleString()
               }}
+              |浏览:{{ this.item.viewCount }}
             </div>
           </div>
         </div>
@@ -35,7 +44,7 @@
 <script>
 export default {
   props: {
-    username: { type: String, required: true }
+    sid: { type: Number, required: true }
   },
   data() {
     return {
@@ -48,8 +57,8 @@ export default {
   methods: {
     async fetch() {
       //获取单个动态
-      // let res = await this.$http1.get(`/getU/${this.username}`);
-      // this.item = res.data;
+      let res = await this.$http1.get(`/getRepostByParentId/${this.sid}`);
+      this.item = res.data;
     }
   }
 };

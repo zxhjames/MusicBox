@@ -2,6 +2,8 @@ package com.neteasecommunity.james.controller;
 
 import com.neteasecommunity.james.dto.ActionsDTO;
 import com.neteasecommunity.james.dto.CommentsDTO;
+import com.neteasecommunity.james.dto.ResultDTO;
+import com.neteasecommunity.james.dto.UserInfoDTO;
 import com.neteasecommunity.james.model.Comments;
 import com.neteasecommunity.james.model.Share;
 import com.neteasecommunity.james.model.User;
@@ -48,17 +50,23 @@ public class ResourcesController {
         return shareService.getAllUserActions();
     }
 
+    //获取单条转发的动态
+    @GetMapping("/getRepostByParentId/{sid}")
+    public ActionsDTO getRepostByParentId(@PathVariable(name = "sid") Integer sid){
+        return shareService.getRepostByParentId(sid);
+    }
+
+
     //用户删除自己的一条动态
     @DeleteMapping("/deleteActions/{id}")
     public Object deleteActions(@PathVariable(name="id") Integer id){
-        System.out.println(id);
         return shareService.deleteOneActionByActionId(id);
     }
 
     //用户发布评论
     @PostMapping("/pushComments")
     public Object pushComments(@RequestBody Comments comments){
-        System.out.println(comments.getType());
+//        System.out.println(comments.getType());
         return commentService.pushComments(comments);
     }
 

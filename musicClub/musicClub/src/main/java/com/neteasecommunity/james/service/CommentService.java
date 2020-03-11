@@ -25,7 +25,7 @@ public class CommentService {
     private UserMapper userMapper;
     //插入一条评论
     public Object pushComments(Comments comments) {
-        Integer parentId  = comments.getParentId();
+//        Integer parentId  = comments.getParentId();
 
         //在share表中,将id为parentId的share的commentCount加一,可以和点赞一起做成一个函数吗?
         comments.setGmtCreate(System.currentTimeMillis());
@@ -35,6 +35,7 @@ public class CommentService {
     }
 
     public List<CommentsDTO> getAllcommentsById(Integer id, Integer type) {
+        System.out.println(id+"    "+type);
         CommentsExample commentsExample = new CommentsExample();
         commentsExample.createCriteria().andParentIdEqualTo(id).andTypeEqualTo(type);
         commentsExample.setOrderByClause("gmt_modified");
@@ -43,13 +44,14 @@ public class CommentService {
             return null;
         }
         List<CommentsDTO> commentsDTOList = new ArrayList<>();
+        CommentsDTO commentsDTO ;
+        UserExample userExample ;
+        List<User> users ;
         for(Comments cm : comments){
-            CommentsDTO commentsDTO = new CommentsDTO();
-            UserExample userExample = new UserExample();
+            commentsDTO = new CommentsDTO();
+            userExample = new UserExample();
             userExample.createCriteria().andUsernameEqualTo(cm.getCommentator());
-            List<User> users = userMapper.selectByExample(userExample);
-            String realUrl = "http://localhost:8081/img/user/" + users.get(0).getAvatarUrl();
-            users.get(0).setAvatarUrl(realUrl)  ;
+            users = userMapper.selectByExample(userExample);
             commentsDTO.setUser(users.get(0));
             BeanUtils.copyProperties(cm, commentsDTO);
             commentsDTOList.add(commentsDTO);

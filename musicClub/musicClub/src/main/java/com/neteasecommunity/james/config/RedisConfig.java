@@ -1,5 +1,9 @@
 package com.neteasecommunity.james.config;
 
+import com.neteasecommunity.james.dto.ActionsDTO;
+import com.neteasecommunity.james.model.Comments;
+import com.neteasecommunity.james.model.Share;
+import com.neteasecommunity.james.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -49,17 +53,90 @@ public class RedisConfig {
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
         //使用StringRedisSerializer来序列化和反序列化redis的key值
         redisTemplate.setKeySerializer(new StringRedisSerializer());
-
         redisTemplate.setHashKeySerializer(jackson2JsonRedisSerializer);
         redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
-
         redisTemplate.setDefaultSerializer(jackson2JsonRedisSerializer);
         redisTemplate.setEnableDefaultSerializer(true);
         redisTemplate.afterPropertiesSet();
-
         //开启事务支持
         redisTemplate.setEnableTransactionSupport(true);
         return redisTemplate;
+    }
+
+    /**
+     *
+     * @param redisConnectionFactory
+     * @return 自定义的User工具类
+     */
+    @Bean
+    public RedisTemplate<Object, User> UserRedisTemplate(
+            RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object, User> redistemplate = new RedisTemplate<>();
+        redistemplate.setConnectionFactory(redisConnectionFactory);
+        Jackson2JsonRedisSerializer<User> ser = new Jackson2JsonRedisSerializer<>(User.class);
+        redistemplate.setDefaultSerializer(ser);
+        redistemplate.setEnableDefaultSerializer(true);
+        redistemplate.afterPropertiesSet();
+        //开启事务支持
+        redistemplate.setEnableTransactionSupport(true);
+        return redistemplate;
+    }
+
+    /**
+     *
+     * @param redisConnectionFactory
+     * @return 自定义的Share工具类
+     */
+    @Bean
+    public RedisTemplate<Object, Share> ShareRedisTemplate(
+            RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object, Share> redistemplate = new RedisTemplate<>();
+        redistemplate.setConnectionFactory(redisConnectionFactory);
+        Jackson2JsonRedisSerializer<Share> ser = new Jackson2JsonRedisSerializer<>(Share.class);
+        redistemplate.setDefaultSerializer(ser);
+        redistemplate.setEnableDefaultSerializer(true);
+        redistemplate.afterPropertiesSet();
+        //开启事务支持
+        redistemplate.setEnableTransactionSupport(true);
+        return redistemplate;
+    }
+
+    /**
+     *
+     * @param redisConnectionFactory
+     * @return 自定义的Comments工具类
+     */
+    @Bean
+    public RedisTemplate<Object, Comments> CommentsRedisTemplate(
+            RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object,Comments> redistemplate = new RedisTemplate<>();
+        redistemplate.setConnectionFactory(redisConnectionFactory);
+        Jackson2JsonRedisSerializer<Comments> ser = new Jackson2JsonRedisSerializer<>(Comments.class);
+        redistemplate.setDefaultSerializer(ser);
+        redistemplate.setEnableDefaultSerializer(true);
+        redistemplate.afterPropertiesSet();
+        //开启事务支持
+        redistemplate.setEnableTransactionSupport(true);
+        return redistemplate;
+    }
+
+    /**
+     *
+     * @param redisConnectionFactory
+     * @return 自定义的User工具类
+     */
+    @Bean
+    public RedisTemplate<Object,ActionsDTO> ActionsDTORedisTemplate(
+            RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object, ActionsDTO> redistemplate = new RedisTemplate<>();
+        redistemplate.setConnectionFactory(redisConnectionFactory);
+        Jackson2JsonRedisSerializer<ActionsDTO> ser = new Jackson2JsonRedisSerializer<>(ActionsDTO.class);
+        redistemplate.setDefaultSerializer(ser);
+        redistemplate.setEnableDefaultSerializer(true);
+        redistemplate.afterPropertiesSet();
+        //开启事务支持
+        redistemplate.setEnableTransactionSupport(true);
+        return redistemplate;
     }
 
 

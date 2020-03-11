@@ -1,23 +1,20 @@
 package com.neteasecommunity.james;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.neteasecommunity.james.model.BType;
+import com.neteasecommunity.james.dto.ActionsDTO;
 import com.neteasecommunity.james.model.Comments;
+import com.neteasecommunity.james.model.User;
 import com.neteasecommunity.james.service.RedisService;
-import com.neteasecommunity.james.util.RedisKeyUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.*;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 @SpringBootTest
@@ -46,8 +43,12 @@ class JamesApplicationTests {
     @Resource
     private RedisService redisService;
 
+    @Autowired
+    private  RedisTemplate<Object, ActionsDTO> actionsDTORedisTemplate;
+
+
     @Test
-    public void testObj() throws Exception{
+    public void testObj() {
         Comments comments = new Comments();
         comments.setId(1);
         comments.setParentId(10);
@@ -63,6 +64,11 @@ class JamesApplicationTests {
 //        Comments co = (Comments)operations.get(key);
 //        System.out.println(co);
 
+    }
+
+    @Test
+    public void t1(){
+        System.out.println("k");
     }
 
     @Test
@@ -219,6 +225,61 @@ class JamesApplicationTests {
 
     @Test
     public void test8(){
-        System.out.println(BType.LIKE_VIDEO);
+        //获取所有评论/动态
+        Comments comments1 = new Comments();
+        comments1.setId(11);
+        comments1.setCommentator("james");
+        Comments comments2 = new Comments();
+        comments2.setId(3);
+        comments2.setCommentator("wade");
+        hashOperations.put("hash:comment",comments1.getCommentator(),comments1);
+        hashOperations.put("hash:comment",comments2.getCommentator(),comments2);
+        redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(Comments.class));
+        List<Comments> list = redisTemplate.boundHashOps("hash:comment").values();
+        list.stream().map(comments -> {return comments.getCommentator();}).forEach(System.out::println);
+
+    }
+
+    @Test
+    public void test9(){
+        //删除hash的m某个key
+        hashOperations.delete("hash:comment","james");
+    }
+
+    @Test
+    public void test10(){
+        //获取某个id的值
+        redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(Comments.class));
+        List<Comments> list = redisTemplate.boundHashOps("hash:comment").values();
+        list.stream().filter(c -> "wade".equals(c.getCommentator())).map(comments -> {return comments.getCommentator();}).forEach(System.out::println);
+
+    }
+
+//    @Test
+//    public void test11(){
+//        //操作list
+//        User user1 = new User();
+//        user1.setId(2);
+//        user1.setUsername("hehe");
+//        userRedisTemplate.opsForList().rightPush("list:user",user1);
+//        System.out.println(userRedisTemplate.opsForList().range("list:user",0,-1));
+//
+//    }
+
+    @Test
+    public void test12(){
+
+        redisTemplate.setDefaultSerializer(new Jackson2JsonRedisSerializer<>(ActionsDTO.class));
+        List<ActionsDTO> actionsDTOList = actionsDTORedisTemplate.opsForList().range("Table_Share",0,-1);
+        System.out.println(actionsDTOList.get(0).getTitle());
+    }
+
+    @Autowired
+    private RedisTemplate<Object,User> template;
+    @Test
+    public void test13(){
+        redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(User.class));
+        List<User> users = redisTemplate.boundHashOps("Table_User").values();
+        users.stream().map(User::getUsername).forEach(System.out::println);
     }
 }

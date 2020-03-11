@@ -19,16 +19,27 @@
           </router-link>
 
           <div class="pl-2 flex-1">
-            <div class="text-black">{{ this.item.title }}</div>
+            <div class="text-black">
+              {{ this.item.title }}
+              <svg
+                class="icon1"
+                aria-hidden="true"
+                style="margin-left:10px"
+                v-if="this.item.type == 1"
+              >
+                <use xlink:href="#icon-zhuanfa3"></use>
+              </svg>
+            </div>
             <div class="text-grey fs-xxs pr-1">
-              By&nbsp;{{ this.item.creator }} |时间:{{ this.time }} |浏览:{{
-                this.item.viewCount
+              By&nbsp;{{ this.item.creator }} |时间:{{
+                new Date(item.gmtCreate).toLocaleString()
               }}
+              |浏览:{{ this.item.viewCount }}
             </div>
           </div>
         </div>
       </div>
-      <div>
+      <div class="pb-3">
         <div v-if="this.item.type == 0">
           <div
             class="text-black"
@@ -38,7 +49,7 @@
           </div>
         </div>
         <div v-if="this.item.type == 1">
-          <m-repost :username="this.item.title"></m-repost>
+          <m-repost :sid="this.item.parentId"></m-repost>
         </div>
       </div>
       <div>
@@ -63,6 +74,7 @@
         >
           <use xlink:href="#icon-zhuanfa2"></use>
         </svg>
+        {{ this.item.repostCount }}
         <el-button
           v-if="!this.item.user"
           style="float: right; padding: 3px 0"
@@ -143,7 +155,10 @@ export default {
       })
         .then(async () => {
           this.item.type = 1;
-          this.item.creator = "dd";
+          this.item.parentId = this.item.id;
+          this.item.creator = JSON.parse(
+            localStorage.getItem("usermsg")
+          ).username;
           let res = await this.$http1.post("/actions", this.item);
           if (res.data.code == 200) {
             this.$message({

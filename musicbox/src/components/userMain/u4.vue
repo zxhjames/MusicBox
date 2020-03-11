@@ -17,9 +17,17 @@ export default {
   data() {
     return {
       form: {
+        user: {
+          avatarUrl: JSON.parse(localStorage.getItem("usermsg")).avatarUrl,
+          username: JSON.parse(localStorage.getItem("usermsg")).username,
+          rank: JSON.parse(localStorage.getItem("usermsg")).rank,
+          concerns: JSON.parse(localStorage.getItem("usermsg")).concerns,
+          followers: JSON.parse(localStorage.getItem("usermsg")).followers
+        },
         creator: JSON.parse(localStorage.getItem("usermsg")).username,
         title: "",
-        content: ""
+        content: "",
+        type: 0
       }
     };
   },
