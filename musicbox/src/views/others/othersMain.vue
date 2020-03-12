@@ -76,30 +76,42 @@
                   <div v-html="item.content" class="content"></div>
                 </div>
               </div>
-              <div v-if="item.type == 1"><m-repost></m-repost></div>
+              <div v-if="item.type == 1">
+                <m-repost :sid="item.parentId"></m-repost>
+              </div>
             </div>
             <div>
               <svg class="icon1" aria-hidden="true" style="margin-left:10px">
                 <use xlink:href="#icon-dianzan1"></use>
               </svg>
               {{ item.likeCount }}
-              <svg
-                class="icon1"
-                aria-hidden="true"
-                style="margin-left:10px"
-                @click="showComments"
-              >
-                <use xlink:href="#icon-review"></use>
-              </svg>
-              {{ item.commentCount }}
+
               <svg class="icon1" aria-hidden="true" style="margin-left:10px">
                 <use xlink:href="#icon-zhuanfa2"></use>
               </svg>
+
+              <el-collapse v-model="activeName">
+                <el-collapse-item>
+                  <template slot="title">
+                    <el-button type="text" class="text-grey fs-s"
+                      ><svg
+                        class="icon1"
+                        aria-hidden="true"
+                        style="margin-left:10px"
+                        @click="showComments()"
+                      >
+                        <use xlink:href="#icon-review"></use>
+                      </svg>
+                      {{ item.commentCount }}
+                    </el-button>
+                  </template>
+                  <div>
+                    <m-firstcomments :id="item.id" :type="0"></m-firstcomments>
+                  </div>
+                </el-collapse-item>
+              </el-collapse>
             </div>
           </el-card>
-          <div v-if="flag">
-            <m-firstcomments :id="item.id" :type="0"></m-firstcomments>
-          </div>
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -144,9 +156,7 @@ export default {
         document.getElementById("Concern").style.backgroundColor = "#409eff";
       }
     },
-    showComments() {
-      this.flag = !this.flag;
-    }
+    showComments() {}
   }
 };
 </script>

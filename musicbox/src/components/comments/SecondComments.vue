@@ -20,7 +20,11 @@
           <div class="pl-2 flex-1">
             <div class="text-black fs-xs">{{ item.commentator }}</div>
             <div class="text-grey fs-xxs pr-1">
-              {{}}
+              {{ new Date(item.gmtCreate).toLocaleString() }}
+              <svg class="icon1" aria-hidden="true" style="margin-left:10px">
+                <use xlink:href="#icon-dianzan1"></use>
+              </svg>
+              {{ item.likeCount }}
             </div>
           </div>
         </div>

@@ -11,4 +11,6 @@ public interface ShareExtMapper {
     List<Share> selectByExampleWithDate(ShareExample shareExample);
     //查询出所有的动态,根据发布时间降序排列
     List<Share> selectAllByExampleWithDate(ShareExample shareExample);
+    //处理点赞的行为
+    int updateLikeCount(Integer id,Integer type,Integer action);
 }

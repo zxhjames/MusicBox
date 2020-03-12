@@ -17,4 +17,6 @@ public class ActionsDTO {
     private Integer commentCount;//评论数
     private Integer viewCount;//浏览数
     private Integer likeCount;//点赞数
+    private Integer repostCount;
+    private Integer parentId;
 }

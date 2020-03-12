@@ -2,7 +2,10 @@ package com.neteasecommunity.james;
 
 import com.alibaba.fastjson.JSON;
 import com.neteasecommunity.james.dto.ActionsDTO;
+import com.neteasecommunity.james.mapper.ShareMapper;
 import com.neteasecommunity.james.model.Comments;
+import com.neteasecommunity.james.model.Share;
+import com.neteasecommunity.james.model.ShareExample;
 import com.neteasecommunity.james.model.User;
 import com.neteasecommunity.james.service.RedisService;
 import org.junit.jupiter.api.Test;
@@ -45,7 +48,8 @@ class JamesApplicationTests {
 
     @Autowired
     private  RedisTemplate<Object, ActionsDTO> actionsDTORedisTemplate;
-
+    @Autowired
+    private ShareMapper shareMapper;
 
     @Test
     public void testObj() {
@@ -281,5 +285,17 @@ class JamesApplicationTests {
         redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(User.class));
         List<User> users = redisTemplate.boundHashOps("Table_User").values();
         users.stream().map(User::getUsername).forEach(System.out::println);
+    }
+
+
+    @Test
+    public void test14(){
+        /**
+         * 测试数据库更新操作
+         */
+        Share share = shareMapper.selectByPrimaryKey(1);
+        System.out.println(share.getCreator());
+        share.setCommentCount(share.getCommentCount()+1);
+        shareMapper.updateByPrimaryKey(share);
     }
 }

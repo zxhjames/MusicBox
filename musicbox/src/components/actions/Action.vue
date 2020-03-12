@@ -53,7 +53,12 @@
         </div>
       </div>
       <div>
-        <svg class="icon1" aria-hidden="true" style="margin-left:10px">
+        <svg
+          @click="giveLike"
+          class="icon1"
+          aria-hidden="true"
+          style="margin-left:10px"
+        >
           <use xlink:href="#icon-dianzan1"></use>
         </svg>
         {{ this.item.likeCount }}
@@ -104,7 +109,14 @@ export default {
       flag: false,
       time: "",
       pic: "",
-      id: ""
+      id: "",
+      countDTO: {
+        id: this.item.id,
+        Commentator: JSON.parse(localStorage.getItem("usermsg")).username
+          .toLocaleString,
+        type: 0,
+        status: 0
+      }
     };
   },
   created() {
@@ -165,6 +177,9 @@ export default {
               type: "success",
               message: "转发成功!"
             });
+            //发送转发请求
+            this.countDTO.type = 2;
+            this.giveLike();
             this.$router.push("/Community");
           } else {
             this.$message({
@@ -179,6 +194,14 @@ export default {
             message: "已取消转发"
           });
         });
+    },
+
+    async giveLike() {
+      //发送点赞请求
+      // console.log(id + "  " + this.me);
+      this.countDTO.id = this.item.id;
+      var res = await this.$http1.post("/likeWanted", this.countDTO);
+      console.log(res);
     }
   }
 };

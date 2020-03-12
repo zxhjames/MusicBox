@@ -19,7 +19,6 @@
     <el-divider></el-divider>
     <!-- 一级评论 -->
     <div v-for="(item, index) in this.Allcomments" :key="index">
-      <!-- {{ item.id }}...{{ item.type }} -->
       <div class="d-flex pt-3">
         <div class=" d-flex ai-center ">
           <router-link
@@ -105,7 +104,14 @@ export default {
         type: this.type,
         parentId: this.id
       },
-      Allcomments: [{}]
+      Allcomments: [{}],
+      countDTO: {
+        id: this.id,
+        Commentator: JSON.parse(localStorage.getItem("usermsg")).username
+          .toLocaleString,
+        type: 1,
+        status: 0
+      }
     };
   },
   created() {
@@ -117,7 +123,7 @@ export default {
       // console.log(this.comments);
       let res = await this.$http1.post(`/pushComments`, this.comments);
       // console.log(res.data);
-
+      this.giveLike();
       //页面临时刷新数据，如何把数据放到数组前面？防止用户多次刷新
       let obj = {
         user: {
@@ -141,6 +147,8 @@ export default {
           type: "success",
           message: "评论成功!"
         });
+        //增加一个评论数
+
         this.clear();
         //刷新页面
       } else {
@@ -151,7 +159,13 @@ export default {
         this.clear();
       }
     },
-
+    async giveLike() {
+      //发送点赞请求
+      // console.log(id + "  " + this.me);
+      this.countDTO.id = this.id;
+      var res = await this.$http1.post("/likeWanted", this.countDTO);
+      console.log(res);
+    },
     //清空评论板
     clear() {
       this.textarea = "";
@@ -169,7 +183,7 @@ export default {
       );
       //要将数组转换为json
       this.Allcomments = res.data;
-      this.Allcomments.reverse();
+      this.Allcomments;
     }
   }
 };

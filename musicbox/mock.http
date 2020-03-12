@@ -54,3 +54,13 @@ post {{http}}/login
     password:123456,
     token:''
 }
+
+###
+post {{http}}/likeWanted
+
+{
+    id:1,
+    Commentator:'qq',
+    type:0,
+    status:0
+}
