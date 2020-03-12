@@ -1,4 +1,4 @@
-# MusicBox
+# MusicBox(仿网易云音乐app)
 ### 技术栈(Springboot+Vue+mybatis+mysql+redis)
 还有一些问题待优化,由于是自己写的,项目现在有点臃肿,有一些脏代码
 * 数据库查询优化
