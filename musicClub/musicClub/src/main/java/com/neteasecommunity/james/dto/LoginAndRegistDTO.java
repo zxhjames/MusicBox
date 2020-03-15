@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 //用户注册登录工具类
 public class LoginAndRegistDTO {
+    private Integer id;
     private String username;
     private String password;
     private String avatarUrl;

@@ -122,9 +122,11 @@ export default {
   data() {
     return {
       flag: false,
-      status: "关注他",
+      status: "",
       usermsg: {},
-      actions: [{}]
+      actions: [{}],
+      me: JSON.parse(localStorage.getItem("usermsg")),
+      judge: ""
     };
   },
   created() {
@@ -138,22 +140,47 @@ export default {
         `/getUserInfoByUsername/${this.$route.query.username}`
       );
       this.usermsg = res.data;
-      console.log("我是usermsg");
-      console.log(this.usermsg);
       const act = await this.$http1.get(
         `/getUserActions/${this.usermsg.username}`
       );
       this.actions = act.data;
-      console.log("我是actions");
-      console.log(this.actions);
+      const relationDTO = {
+        uname1: this.me.username,
+        uname2: this.usermsg.username
+      };
+      res = await this.$http1.post(`/judgeRelationShip`, relationDTO);
+      this.status = res.data.data == "yes" ? "已关注" : "关注ta";
     },
-    concern() {
-      if (this.status == "关注他") {
+    async concern() {
+      if (this.status == "关注ta") {
         this.status = "已关注";
         document.getElementById("Concern").style.backgroundColor = "lightcoral";
-      } else {
-        this.status = "关注他";
+        //同时增加一个被关注用户的粉丝数和关注用户的一个关注数
+        //1.增加用户
+        const relationDTO = {
+          uname1: this.me.username,
+          uname2: this.usermsg.username
+        };
+        //2.插入数据库
+        let res = await this.$http1.post(`/addRelationShip`, relationDTO);
+        if (res.data.code == 200) {
+          JSON.parse(localStorage.getItem("usermsg")).concerns += 1;
+          (this.usermsg.id += 1), alert("关注成功");
+        }
+        //3.增加关注数
+      } else if (this.status == "已关注") {
+        this.status = "关注ta";
         document.getElementById("Concern").style.backgroundColor = "#409eff";
+        const relationDTO = {
+          uname1: this.me.username,
+          uname2: this.usermsg.username
+        };
+        //2.插入数据库
+        let res = await this.$http1.post(`/addRelationShip`, relationDTO);
+        if (res.data.code == 200) {
+          JSON.parse(localStorage.getItem("usermsg")).concerns += 1;
+          (this.usermsg.id += 1), alert("你取消了关注");
+        }
       }
     },
     showComments() {}

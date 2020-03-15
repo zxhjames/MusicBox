@@ -39,6 +39,7 @@ export default {
         if (res.data.data != "loginCache") {
           //客户端存储用户本地信息
           let usermsg = {
+            id: res.data.data.id,
             username: this.model.username,
             token: res.data.data.token,
             rank: res.data.data.rank,

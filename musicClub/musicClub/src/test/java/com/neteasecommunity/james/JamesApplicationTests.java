@@ -3,10 +3,7 @@ package com.neteasecommunity.james;
 import com.alibaba.fastjson.JSON;
 import com.neteasecommunity.james.dto.ActionsDTO;
 import com.neteasecommunity.james.mapper.ShareMapper;
-import com.neteasecommunity.james.model.Comments;
-import com.neteasecommunity.james.model.Share;
-import com.neteasecommunity.james.model.ShareExample;
-import com.neteasecommunity.james.model.User;
+import com.neteasecommunity.james.model.*;
 import com.neteasecommunity.james.service.RedisService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -298,4 +295,17 @@ class JamesApplicationTests {
         share.setCommentCount(share.getCommentCount()+1);
         shareMapper.updateByPrimaryKey(share);
     }
+
+    @Test
+    public void test15(){
+        Relationship relationship = new Relationship();
+        relationship.setId(0);
+        relationship.setUid1(1);
+        relationship.setUid2(2);
+        relationship.setType(1);
+        HashOperations<String,Integer,Integer> map= redisTemplate.opsForHash();
+        map.put("relationShip",relationship.getUid1(),relationship.getUid2());
+        System.out.println(map.get("relationShip",relationship.getUid1()));
+    }
+
 }

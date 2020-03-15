@@ -13,6 +13,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,6 +43,8 @@ public class ShareService {
     private String redis_Share;
     @Autowired
     private UserService userService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
     /**
      * 插入一条新的动态
      *
@@ -74,10 +77,22 @@ public class ShareService {
         User user = userService.getUserInfo(actionsDTO.getCreator());
         actionsDTO.setUser(user);
         int status = shareMapper.insert(share);
+        redisTemplate.opsForList().leftPush(redis_Share,actionsDTO);
+//        /**
+//         * 插入用户动态队列
+//         */
+        String key = actionsDTO.getCreator()+"_Actions";
+        redisTemplate.opsForList().leftPush(key,share);
         return status == 1 ? ResultDTO.okOf("发布成功") : ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
     }
 
     public List<Share> getUserActionsByName(String username) {
+        String key = username + "_Actions";
+        if (stringRedisTemplate.hasKey(key)) {
+            List<Share> shares = redisTemplate.opsForList().range(key, 0, -1);
+            System.out.println("缓存中取得所有用户动态");
+            return shares;
+        } else{
             ShareExample shareExample = new ShareExample();
             /**
              * 这里如果数据库的content要使用blob字段
@@ -87,12 +102,22 @@ public class ShareService {
             shareExample.createCriteria().andCreatorEqualTo(username);
             List<Share> shares = shareMapper.selectByExampleWithBLOBs(shareExample)
                     .stream().sorted(Comparator.comparing(Share::getGmtModified).reversed()).collect(Collectors.toList());
+            shares.stream().forEach(share -> {redisTemplate.opsForList().rightPush(key,share);});
             System.out.println("插入缓存用户动态");
             return shares;
+            }
     }
 
 
     public List<ActionsDTO> getAllUserActions() {
+        /**
+         * 先寻找缓存
+         */
+        if (stringRedisTemplate.hasKey(redis_Share)) {
+            System.out.println("缓存中取得所有动态");
+            List<ActionsDTO> actionsDTOList = redisTemplate.opsForList().range(redis_Share, 0, -1);
+            return actionsDTOList;
+        } else {
             ShareExample shareExample = new ShareExample();
             List<Share> shares = shareMapper.selectByExampleWithBLOBs(shareExample).stream().
                     sorted(Comparator.comparing(Share::getGmtModified).reversed()).collect(Collectors.toList());
@@ -110,11 +135,12 @@ public class ShareService {
                 //每次复制给bean时候,就插入一条到缓存列表中
                 System.out.println("插入缓存所有动态");
                 actionsDTOList.add(actionsDTO);
+                redisTemplate.opsForList().rightPush(redis_Share, actionsDTO);
             }
             //存储缓存副本
             return actionsDTOList;
         }
-
+    }
 
     public Object deleteOneActionByActionId(Integer id) {
         return shareMapper.deleteByPrimaryKey(id) == 1?ResultDTO.okOf():ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);

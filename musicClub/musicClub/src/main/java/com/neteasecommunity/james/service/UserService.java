@@ -99,6 +99,7 @@ public class UserService {
         String username = loginAndRegistDTO.getUsername();
         String pwd = loginAndRegistDTO.getPassword();
         String token = loginAndRegistDTO.getToken();
+        System.out.println(username + " " + pwd + " " + token);
         String accessToken = stringRedisTemplate.opsForValue().get(username);
         //之前遇到的坑
         if (accessToken != null && accessToken.equals(token)) {
@@ -117,6 +118,9 @@ public class UserService {
             System.out.println("缓存取对象");
             dbUsers = new ArrayList<>();
             dbUsers.add(u);
+            System.out.println(dbUsers.get(0).getPassword());
+            System.out.println(dbUsers.get(0).getPassword() == pwd);
+            System.out.println(pwd.equals(dbUsers.get(0).getPassword()));
         }else{
             System.out.println("从数据库中取User");
             UserExample userExample = new UserExample();
@@ -136,7 +140,7 @@ public class UserService {
             BeanUtils.copyProperties(dbUsers.get(0),u);
             /**
              * 同时存入对象
-             */
+//             */
             HashOperations<String,String,User> map= redisTemplate.opsForHash();
             map.put(Table_User,dbUsers.get(0).getUsername(),dbUsers.get(0));
             u.setToken(userToken);
@@ -154,18 +158,18 @@ public class UserService {
      * @return
      */
     public User getUserInfo(String username) {
+        HashOperations<String,String,User> map= redisTemplate.opsForHash();
         System.out.println("需要"+username);
         User user = null;
-        if(redisTemplate.hasKey(username)){
+        if(map.get(Table_User,username)!=null){
             System.out.println("获取了一个用户信息");
-            Object json = redisTemplate.opsForHash().get(Table_User,username);
+            Object json = map.get(Table_User,username);
             user = JSON.parseObject(JSON.toJSONString(json),User.class);
         }else{
             UserExample userExample = new UserExample();
             userExample.createCriteria().andUsernameEqualTo(username);
             user = userMapper.selectByExample(userExample).get(0);
             user.setPassword("");
-            HashOperations<String,String,User> map= redisTemplate.opsForHash();
             map.put(Table_User,user.getUsername(),user);
             System.out.println("从数据库招信息");
         }

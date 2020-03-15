@@ -45,7 +45,7 @@
       </el-tab-pane>
       <el-tab-pane>
         <span slot="label"><i class="el-icon-s-help"></i> 好友动态</span>
-        我的行程
+        <m-u3></m-u3>
       </el-tab-pane>
       <el-tab-pane>
         <span slot="label"><i class="el-icon-plus"></i> 发布动态</span>
@@ -69,6 +69,7 @@ export default {
         document.getElementById("Concern").style.backgroundColor = "lightcoral";
       } else {
         this.status = "关注他";
+        //取消这个操作
         document.getElementById("Concern").style.backgroundColor = "#409eff";
       }
     }

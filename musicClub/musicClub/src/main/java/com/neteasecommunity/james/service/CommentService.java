@@ -11,7 +11,9 @@ import com.neteasecommunity.james.model.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +33,8 @@ public class CommentService {
     private String Table_Comment;
     @Autowired
     private UserService userService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * 插入一条评论的功能,这个评论可能是一级评论,也可能是二级评论
@@ -43,6 +47,20 @@ public class CommentService {
         comments.setGmtModified(comments.getGmtCreate());
         comments.setLikeCount(0);
         int status = commentsMapper.insert(comments);
+
+        /**
+         * 同时插入缓存中
+         */
+//        /**
+//         * 插入用户动态队列
+//         */
+        CommentsDTO commentsDTO = new CommentsDTO();
+        User user = userService.getUserInfo(comments.getCommentator());
+        commentsDTO.setUser(user);
+        BeanUtils.copyProperties(comments,commentsDTO);
+        String key = comments.getId()+"_comments";
+        redisTemplate.opsForList().leftPush(key,commentsDTO);
+        System.out.println("插入缓存评论");
         return status == 1? ResultDTO.okOf():ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
     }
 
@@ -54,21 +72,29 @@ public class CommentService {
      * @return
      */
     public List<CommentsDTO> getAllcommentsById(Integer id, Integer type) {
+        String key = id + "_comments";
+        ListOperations<String,CommentsDTO> redistemplate = redisTemplate.opsForList();
+        if (stringRedisTemplate.hasKey(key)) {
+            System.out.println("获取缓存评论");
+            return redisTemplate.opsForList().range(key, 0, -1);
+        } else {
             CommentsExample commentsExample = new CommentsExample();
             commentsExample.createCriteria().andParentIdEqualTo(id).andTypeEqualTo(type);
             List<Comments> comments = commentsMapper.selectByExampleWithBLOBs(commentsExample);
-            if(comments == null || comments.size()==0){
+            if (comments == null || comments.size() == 0) {
                 return null;
             }
             List<CommentsDTO> commentsDTOList = new ArrayList<>();
-            CommentsDTO commentsDTO ;
-            User user ;
-            for(Comments cm : comments){
+            CommentsDTO commentsDTO;
+            User user;
+            for (Comments cm : comments) {
                 commentsDTO = new CommentsDTO();
                 user = userService.getUserInfo(cm.getCommentator());
                 commentsDTO.setUser(user);
                 BeanUtils.copyProperties(cm, commentsDTO);
                 commentsDTOList.add(commentsDTO);
+                redisTemplate.opsForList().rightPush(key,commentsDTO);
+                System.out.println("插入缓存的评论");
             }
             /**
              * 再次插入到缓存片中
@@ -77,6 +103,7 @@ public class CommentService {
             System.out.println("插入数据库中评论");
             return commentsDTOList;
         }
+    }
 
     }
 

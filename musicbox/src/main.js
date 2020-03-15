@@ -59,6 +59,8 @@ import U2 from './components/userMain/u2'
 Vue.component('m-u2', U2)
 import U4 from './components/userMain/u4'
 Vue.component('m-u4', U4)
+import U3 from './components/userMain/u3.vue'
+Vue.component('m-u3', U3)
 import O2 from './components/others/o2.vue'
 Vue.component('m-o2', O2)
 //用户动态组件
