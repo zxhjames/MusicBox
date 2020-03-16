@@ -52,6 +52,8 @@ import Search from './components/music/Search.vue'
 Vue.component('m-search', Search)
 import UserBar from './components/user/userBar.vue'
 Vue.component('m-userBar', UserBar)
+import SingerDetail from './components/music/SingerDetail.vue'
+Vue.component('m-singerDetail', SingerDetail)
 // //用户主页曲库组件
 import U1 from './components/userMain/u1'
 Vue.component('m-u1', U1)

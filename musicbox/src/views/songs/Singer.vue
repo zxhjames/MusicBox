@@ -16,35 +16,40 @@
     <!-- 要不要做个组件 -->
     <el-tabs type="border-card">
       <el-tab-pane label="歌手歌曲">
-        <table class="table table-condensed">
-          <tr
-            border="1px"
-            v-for="(item, index) in singer.hotSongs"
-            :key="index"
-          >
-            <th>
-              <hr />
-              <span
-                ><div>{{ item.name }}</div></span
-              >
-            </th>
-            <th>
-              <div class="pt-5">
-                <i @click="audio(item.id)" class="el-icon-video-play"></i>
+        <div v-for="(item, index) in singer.hotSongs" :key="index">
+          <div class="box-card">
+            <div slot="header" class="clearfix text-grey">
+              <div class=" d-flex ai-center ">
+                <el-avatar
+                  :src="item.al.picUrl"
+                  :size="50"
+                  type="primary"
+                  shape="square"
+                  style="margin-left: 0px;"
+                />
+
+                <div class="pl-2 flex-1">
+                  <div class="text-black fs-s pb-3">{{ item.name }}</div>
+                  <span v-for="it in item.ar" :key="it"
+                    >{{ it.name }}&nbsp;</span
+                  >
+                </div>
+                <el-button
+                  icon="el-icon-video-play"
+                  circle
+                  @click="audio(item.id)"
+                ></el-button>
+                <!-- <i @click="audio(item.id)" class="el-icon-video-play"></i> -->
               </div>
-            </th>
-          </tr>
-        </table>
+            </div>
+          </div>
+          <el-divider></el-divider>
+        </div>
       </el-tab-pane>
 
       <el-tab-pane label="歌手专辑">
         <div v-for="item in album" :key="item">
-          <el-image
-            :src="item.picUrl"
-            style="width: 50px; height: 50px"
-            :fit="fit"
-          ></el-image>
-          <hr />
+          <m-singerAlbum :item="item"></m-singerAlbum>
         </div>
       </el-tab-pane>
       <el-tab-pane label="歌手Mv">
@@ -52,7 +57,9 @@
           <m-video :id="item.id" :name="item.name" :pic="item.imgurl"></m-video>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="歌手详情"> </el-tab-pane>
+      <el-tab-pane label="歌手详情">
+        <m-singerDetail :detail="this.singerDetail"></m-singerDetail>
+      </el-tab-pane>
     </el-tabs>
 
     <!-- <m-player></m-player> -->
@@ -81,8 +88,8 @@ export default {
       activeName: "first",
       singer: [],
       album: [],
-      mvs: []
-      //mv播放器的配置
+      mvs: [],
+      singerDetail: {}
     };
   },
   created() {
@@ -119,13 +126,20 @@ export default {
         });
 
       // 获取歌手mv
-
       const res = await this.$http.get("/artist/mv", {
         params: {
           id: this.$route.query.id
         }
       });
       this.mvs = res.data.mvs;
+
+      //获取歌手的详细介绍
+      const detail = await this.$http.get("/artist/desc", {
+        params: {
+          id: this.$route.query.id
+        }
+      });
+      this.singerDetail = detail.data;
     },
 
     //异步播放
@@ -146,15 +160,9 @@ export default {
             src: this.$store.state.MusicUrl + id + ".mp3",
             lrc: ""
           };
-          // this.musicBox.flag = true;
-          // this.musicBox.music.pic = res.data.songs[0].al.picUrl;
-          // this.musicBox.music.title = res.data.songs[0].name;
-          // this.musicBox.music.artist = res.data.songs[0].ar[0].name;
-          // this.musicBox.music.src = this.$store.state.MusicUrl + id + ".mp3";
         });
       const res = await this.$http.get("/lyric?id=" + id);
       curMusic.lrc = res.data.lrc.lyric;
-
       await this.$store.commit("addMusic", curMusic);
     }
   }

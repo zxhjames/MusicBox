@@ -2,6 +2,7 @@ package com.neteasecommunity.james;
 
 import com.alibaba.fastjson.JSON;
 import com.neteasecommunity.james.dto.ActionsDTO;
+import com.neteasecommunity.james.dto.RelationDTO;
 import com.neteasecommunity.james.mapper.ShareMapper;
 import com.neteasecommunity.james.model.*;
 import com.neteasecommunity.james.service.RedisService;
@@ -13,10 +14,11 @@ import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @SpringBootTest
 class JamesApplicationTests {
     @Autowired
@@ -308,4 +310,48 @@ class JamesApplicationTests {
         System.out.println(map.get("relationShip",relationship.getUid1()));
     }
 
+    @Test
+    public void test16(){
+        List<String> list = new ArrayList<>();
+        String name = "qq";
+        SetOperations<String, RelationDTO> set = redisTemplate.opsForSet();
+        Set<RelationDTO> members = set.members("relationship");
+        Iterator<RelationDTO> iterator = members.iterator();
+        while(iterator.hasNext()){
+            RelationDTO it =  JSON.parseObject(JSON.toJSONString(iterator.next()),RelationDTO.class);
+            if(it.getUname1().equals("qq")){
+                System.out.println(it.getUname2());
+            }
+        }
+
+    }
+
+    @Test
+    public void test17(){
+        List<String> list = new ArrayList<>();
+        SetOperations<String, RelationDTO> set = redisTemplate.opsForSet();
+        Set<RelationDTO> members = set.members("relationship");
+        Iterator<RelationDTO> iterator = members.iterator();
+        while(iterator.hasNext()){
+            RelationDTO it =  JSON.parseObject(JSON.toJSONString(iterator.next()),RelationDTO.class);
+            if(it.getUname1().equals("qq")){
+
+            }
+        }
+        /**
+         * 关注的好友已经找到了,接下来去筛选出好友
+         */
+        if(list.size() == 0) return;
+        List<User> users = new ArrayList<>();
+        list.stream().forEach(s -> {
+            users.add(JSON.parseObject(JSON.toJSONString(redisTemplate.opsForHash().get("Table_User",s)),User.class));
+        });
+        users.stream().forEach(System.out::print);
+    }
+
+    @Test
+    public void test18(){
+        System.out.println(redisTemplate.opsForHash().hasKey("Table_User","jj"));
+
+    }
 }

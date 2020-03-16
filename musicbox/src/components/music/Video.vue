@@ -1,16 +1,18 @@
 <template>
   <div>
-    <video-player
-      class="video-player-box"
-      ref="videoPlayer"
-      :options="playerOptions"
-      :playsinline="true"
-      style="object-fit:fill"
-      :x5-video-player-fullscreen="true"
-      customEventName="customstatechangedeventname"
-    >
-    </video-player>
-    <div>{{ name }}</div>
+    <el-card class="box-card">
+      <div slot="header" class="clearfix text-grey">{{ name }}</div>
+      <video-player
+        class="video-player-box"
+        ref="videoPlayer"
+        :options="playerOptions"
+        :playsinline="true"
+        style="object-fit:fill"
+        :x5-video-player-fullscreen="true"
+        customEventName="customstatechangedeventname"
+      >
+      </video-player>
+    </el-card>
   </div>
 </template>
 

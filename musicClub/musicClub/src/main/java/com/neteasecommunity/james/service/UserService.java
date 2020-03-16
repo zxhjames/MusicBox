@@ -25,7 +25,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 
 @Component
@@ -33,7 +32,7 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate redisTemplate;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
     @Value("${prop.upload-folder}")
@@ -50,6 +49,9 @@ public class UserService {
      * @return
      */
     public ResultDTO UserRegister(HttpServletRequest request){
+        /**
+         * 头像上传
+         */
         MultipartHttpServletRequest params = ((MultipartHttpServletRequest)request);
         MultipartFile file = params.getFile("file");
         try {
@@ -99,7 +101,6 @@ public class UserService {
         String username = loginAndRegistDTO.getUsername();
         String pwd = loginAndRegistDTO.getPassword();
         String token = loginAndRegistDTO.getToken();
-        System.out.println(username + " " + pwd + " " + token);
         String accessToken = stringRedisTemplate.opsForValue().get(username);
         //之前遇到的坑
         if (accessToken != null && accessToken.equals(token)) {
@@ -109,20 +110,15 @@ public class UserService {
          * 同样,先去缓存中寻找,找不到再去数据库里招
          */
         List<User> dbUsers = null;
-        if(redisTemplate.boundHashOps(Table_User).hasKey(username)){
+        if(stringRedisTemplate.boundHashOps(Table_User).hasKey(username)){
             /**
              * 序列化操作取出的数据,再返回User对象
              */
             Object json = redisTemplate.opsForHash().get(Table_User,username);
             User u = JSON.parseObject(JSON.toJSONString(json),User.class);
-            System.out.println("缓存取对象");
             dbUsers = new ArrayList<>();
             dbUsers.add(u);
-            System.out.println(dbUsers.get(0).getPassword());
-            System.out.println(dbUsers.get(0).getPassword() == pwd);
-            System.out.println(pwd.equals(dbUsers.get(0).getPassword()));
         }else{
-            System.out.println("从数据库中取User");
             UserExample userExample = new UserExample();
             userExample.createCriteria().andUsernameEqualTo(username);
             dbUsers = userMapper.selectByExample(userExample);
@@ -135,7 +131,7 @@ public class UserService {
         if(dbUsers.get(0).getPassword().equals(pwd)){
             String userToken = UUID.randomUUID().toString();
             //设置token在缓存中的过期时间为10分钟
-            stringRedisTemplate.opsForValue().set(username,userToken,10, TimeUnit.MINUTES);
+            stringRedisTemplate.opsForValue().set(username,userToken);
             LoginAndRegistDTO u = new LoginAndRegistDTO();
             BeanUtils.copyProperties(dbUsers.get(0),u);
             /**
@@ -159,10 +155,8 @@ public class UserService {
      */
     public User getUserInfo(String username) {
         HashOperations<String,String,User> map= redisTemplate.opsForHash();
-        System.out.println("需要"+username);
         User user = null;
-        if(map.get(Table_User,username)!=null){
-            System.out.println("获取了一个用户信息");
+        if(stringRedisTemplate.opsForHash().get(Table_User,username)!=null){
             Object json = map.get(Table_User,username);
             user = JSON.parseObject(JSON.toJSONString(json),User.class);
         }else{
@@ -171,7 +165,6 @@ public class UserService {
             user = userMapper.selectByExample(userExample).get(0);
             user.setPassword("");
             map.put(Table_User,user.getUsername(),user);
-            System.out.println("从数据库招信息");
         }
         return user;
     }

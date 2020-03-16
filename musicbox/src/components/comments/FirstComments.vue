@@ -183,7 +183,6 @@ export default {
       );
       //要将数组转换为json
       this.Allcomments = res.data;
-      this.Allcomments;
     }
   }
 };

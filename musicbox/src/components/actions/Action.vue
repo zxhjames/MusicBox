@@ -112,7 +112,7 @@ export default {
       id: "",
       countDTO: {
         id: this.item.id,
-        Commentator: JSON.parse(localStorage.getItem("usermsg")).username
+        username: JSON.parse(localStorage.getItem("usermsg")).username
           .toLocaleString,
         type: 0,
         status: 0
@@ -128,7 +128,6 @@ export default {
       var unixTimestamp = new Date(this.item.gmtCreate);
       this.time = unixTimestamp.toLocaleString();
       console.log(this.item);
-      this.id = parseInt(this.item.id);
     },
     showComments() {
       this.flag = !this.flag;
@@ -142,7 +141,9 @@ export default {
       })
         .then(async () => {
           //执行删除操作
-          let res = await this.$http1.delete(`/deleteActions/${this.item.id}`);
+          let res = await this.$http1.delete(
+            `/deleteActions/${this.item.id}/${this.item.creator}`
+          );
           if (res.data.code == 200) {
             this.$message({
               type: "success",
@@ -180,7 +181,7 @@ export default {
             //发送转发请求
             this.countDTO.type = 2;
             this.giveLike();
-            this.$router.push("/Community");
+            this.$router.go(0);
           } else {
             this.$message({
               type: "error",
@@ -196,11 +197,13 @@ export default {
         });
     },
 
-    async giveLike() {
+    giveLike() {
       //发送点赞请求
-      // console.log(id + "  " + this.me);
       this.countDTO.id = this.item.id;
-      var res = await this.$http1.post("/likeWanted", this.countDTO);
+      this.countDTO.Commentator = JSON.parse(
+        localStorage.getItem("usermsg")
+      ).username.toLocaleString;
+      let res = this.$http1.post("/likeWanted", this.countDTO);
       console.log(res);
     }
   }

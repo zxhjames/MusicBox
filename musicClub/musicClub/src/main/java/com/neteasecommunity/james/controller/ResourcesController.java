@@ -58,9 +58,10 @@ public class ResourcesController {
 
 
     //用户删除自己的一条动态
-    @DeleteMapping("/deleteActions/{id}")
-    public Object deleteActions(@PathVariable(name="id") Integer id){
-        return shareService.deleteOneActionByActionId(id);
+    @DeleteMapping("/deleteActions/{id}/{creator}")
+    public Object deleteActions(@PathVariable(name="id") Integer id,
+    @PathVariable(name="creator") String creator){
+        return shareService.deleteOneActionByActionId(id,creator);
     }
 
     //用户发布评论
@@ -76,6 +77,11 @@ public class ResourcesController {
         //id 动态的id或者是一级评论的id
         //type 表示id是来自动态还是来自一级id
         return commentService.getAllcommentsById(id,type);
+    }
+
+    @GetMapping("/getRelation/{username}")
+    public List<User> getRelationAction(@PathVariable(name = "username") String username){
+        return shareService.getRelationAction(username);
     }
 
 }
