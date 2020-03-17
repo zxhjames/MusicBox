@@ -1,26 +1,29 @@
 <template>
-  <div class="pl-3 pr-4">
-    <table class="table table-condensed">
-      <tr border="1px" v-for="(item, index) in list" :key="index">
-        <th>
-          <hr />
-          <span>
-            <div>
-              <font size="2rem" color="grey">{{ item.name }}</font>
-            </div></span
-          >
-        </th>
-        <hr />
-        <span v-for="elem in item.artists" :key="elem">
-          <font size="1rem" color="grey">{{ elem.name }}</font>
-        </span>
-        <th>
-          <div class="pt-5">
-            <i @click="audio(item.id)" class="el-icon-video-play"></i>
+  <div>
+    <div v-for="(item, index) in list" :key="index" class="pt-2">
+      <div class="box-card">
+        <div slot="header" class="clearfix text-grey">
+          <div class=" d-flex ai-center ">
+            <div class="pl-2 flex-1">
+              <div class="text-black fs-s pb-3">{{ item.name }}</div>
+              <span v-for="it in item.artists" :key="it">
+                <router-link :to="{ path: 'singer', query: { id: it.id } }">
+                  {{ it.name }}</router-link
+                >&nbsp;</span
+              >
+              <el-divider direction="vertical"></el-divider>
+              [{{ item.album.name }}]
+            </div>
+            <el-button
+              icon="el-icon-video-play"
+              circle
+              @click="audio(item.id)"
+            ></el-button>
           </div>
-        </th>
-      </tr>
-    </table>
+        </div>
+      </div>
+      <el-divider></el-divider>
+    </div>
   </div>
 </template>
 
@@ -28,7 +31,7 @@
 export default {
   data() {
     return {
-      list: []
+      list: [{}]
     };
   },
   created() {

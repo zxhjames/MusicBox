@@ -11,6 +11,7 @@ import Regist from '../views/Regist.vue'
 import UserMain from '../views/user/userMain.vue'
 import Community from '../views/Community.vue'
 import OthersMain from '../views/others/othersMain.vue'
+import AlbumSinger from '../views/songs/AlbumSinger.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -63,13 +64,20 @@ const router = new Router({
         name: 'User',
         component: UserMain
       }, {
+        //社区主页
         path: '/Community',
         name: 'Comminuty',
         component: Community
       }, {
+        //好友主页
         path: '/OthersMain',
         name: 'OthersMain',
         component: OthersMain
+      }, {
+        //歌曲专辑网页
+        path: '/album/singer',
+        name: 'AlbumSinger',
+        component: AlbumSinger
       }
     ]
   }]

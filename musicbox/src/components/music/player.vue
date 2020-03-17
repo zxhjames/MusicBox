@@ -71,7 +71,7 @@ export default {
 </script>
 <style lang="scss">
 .bottombar {
-  // position: sticky;
+  position: sticky;
   bottom: 0;
   z-index: 999;
 }

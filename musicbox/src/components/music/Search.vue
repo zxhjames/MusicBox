@@ -7,7 +7,7 @@
       filterable="true"
       remote="true"
       reserve-keyword
-      placeholder="请输入关键词"
+      placeholder="歌曲名/歌手名"
       :remote-method="remoteMethod"
       :loading="loading"
     >

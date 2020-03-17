@@ -9,7 +9,7 @@ Vue.prototype.$http = axios.create({
   baseURL: "http://192.168.0.105:3000"
 })
 
-//服务器地址
+//服务器地址n
 Vue.prototype.$http1 = axios.create({
   //定义后端接口的根地址
   baseURL: "http://192.168.0.105:8081"

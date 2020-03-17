@@ -33,13 +33,14 @@
                   <span v-for="it in item.ar" :key="it"
                     >{{ it.name }}&nbsp;</span
                   >
+                  <el-divider direction="vertical"></el-divider>
+                  [{{ item.al.name }}]
                 </div>
                 <el-button
                   icon="el-icon-video-play"
                   circle
                   @click="audio(item.id)"
                 ></el-button>
-                <!-- <i @click="audio(item.id)" class="el-icon-video-play"></i> -->
               </div>
             </div>
           </div>
@@ -48,10 +49,45 @@
       </el-tab-pane>
 
       <el-tab-pane label="歌手专辑">
-        <div v-for="item in album" :key="item">
-          <m-singerAlbum :item="item"></m-singerAlbum>
+        <div v-for="(item, index) in this.album" :key="index">
+          <div class="box-card">
+            <div slot="header" class="clearfix text-grey">
+              <div class=" d-flex ai-center ">
+                <el-avatar
+                  :src="item.blurPicUrl"
+                  :size="50"
+                  type="primary"
+                  shape="square"
+                  style="margin-left: 0px;"
+                />
+
+                <div class="pl-2 flex-1">
+                  <div class="text-black fs-s pb-3">{{ item.name }}</div>
+                  <span v-for="it in item.artists" :key="it"
+                    >{{ it.name }}&nbsp;</span
+                  >
+                </div>
+
+                <el-button
+                  icon="el-icon-service"
+                  circle
+                  @click="getSongs(item.id, index)"
+                ></el-button>
+              </div>
+
+              <div class="pt-3" v-if="flag">
+                <el-card class="box-card">
+                  <div v-for="item in songs" :key="item">
+                    {{ item.al.name }}
+                  </div>
+                </el-card>
+              </div>
+            </div>
+            <el-divider></el-divider>
+          </div>
         </div>
       </el-tab-pane>
+
       <el-tab-pane label="歌手Mv">
         <div v-for="item in this.mvs" :key="item">
           <m-video :id="item.id" :name="item.name" :pic="item.imgurl"></m-video>
@@ -74,6 +110,7 @@ export default {
   // components: { aplayer: aplayer },
   data() {
     return {
+      flag: false,
       musicBox: {
         flag: false,
         music: {
@@ -87,7 +124,8 @@ export default {
 
       activeName: "first",
       singer: [],
-      album: [],
+      album: [{}],
+      songs: [{}],
       mvs: [],
       singerDetail: {}
     };
@@ -140,6 +178,18 @@ export default {
         }
       });
       this.singerDetail = detail.data;
+    },
+
+    //获取专辑里面的所有歌曲
+    async getSongs(id, index) {
+      this.flag = !this.flag;
+      alert(index);
+      const res = await this.$http.get("/album", {
+        params: {
+          id: id
+        }
+      });
+      this.songs = res.data.album;
     },
 
     //异步播放
