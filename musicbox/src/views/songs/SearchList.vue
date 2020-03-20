@@ -5,14 +5,18 @@
         <div slot="header" class="clearfix text-grey">
           <div class=" d-flex ai-center ">
             <div class="pl-2 flex-1">
-              <div class="text-black fs-s pb-3">{{ item.name }}</div>
-              <span v-for="it in item.artists" :key="it">
+              <div class="text-black fs-x pb-3">{{ item.name }}</div>
+              <span
+                class="text-grey fs-xs pb-3"
+                v-for="it in item.artists"
+                :key="it"
+              >
                 <router-link :to="{ path: 'singer', query: { id: it.id } }">
                   {{ it.name }}</router-link
                 >&nbsp;</span
               >
               <el-divider direction="vertical"></el-divider>
-              [{{ item.album.name }}]
+              <span class="text-grey fs-xs pb-3"> [{{ item.album.name }}]</span>
             </div>
             <el-button
               icon="el-icon-video-play"

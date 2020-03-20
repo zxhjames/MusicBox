@@ -24,7 +24,6 @@ export default {
       let res = await this.$http1.get(`/getAllUserActions`);
       this.actions = res.data;
       // this.user = this.actions.user;
-      console.log(this.actions);
     }
   }
 };

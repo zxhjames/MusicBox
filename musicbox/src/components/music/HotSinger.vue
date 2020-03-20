@@ -8,10 +8,12 @@
           style="display:inline-block;margin:1%;width:60px;height:60px;
       "
         >
-          <router-link :to="{ path: '/album', query: { id: item.id } }">
-            <el-avatar :src="item.coverImgUrl" type="primary" shape="square" />
+          <router-link :to="{ path: 'singer', query: { id: item.id } }">
+            <el-avatar :src="item.picUrl" type="primary" shape="square" />
           </router-link>
-          <div class="text-grey fs-xxs">{{ item.name.slice(0, 5) }}...</div>
+          <div class="text-grey fs-xxs ">
+            {{ item.name }}
+          </div>
         </div>
       </swiper-slide>
     </swiper>
@@ -36,7 +38,7 @@ export default {
   },
   methods: {
     async fetch() {
-      let res = await this.$http.get("/top/playlist", {
+      let res = await this.$http.get("/top/artists", {
         params: {
           offset: 0,
           limit: 40
@@ -45,7 +47,7 @@ export default {
       for (let i = 0; i < 4; ++i) {
         let begin = i * 10;
         let end = (i + 1) * 10;
-        this.data.push(res.data.playlists.slice(begin, end));
+        this.data.push(res.data.artists.slice(begin, end));
       }
     }
   }

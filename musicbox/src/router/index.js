@@ -12,6 +12,10 @@ import UserMain from '../views/user/userMain.vue'
 import Community from '../views/Community.vue'
 import OthersMain from '../views/others/othersMain.vue'
 import AlbumSinger from '../views/songs/AlbumSinger.vue'
+import SingerCategory from '../views/singer/singerCategory.vue'
+import Toprank from '../views/rank/Toprank.vue'
+import Store from '../views/Store.vue'
+import RecommendSongs from '../views/TopBar/recommendSongs.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -78,6 +82,24 @@ const router = new Router({
         path: '/album/singer',
         name: 'AlbumSinger',
         component: AlbumSinger
+      },
+      {
+        path: '/singerCategory',
+        name: 'singerCategory',
+        component: SingerCategory
+      }, {
+        path: '/topRank',
+        name: 'toprank',
+        component: Toprank
+      }, {
+        //商城首页
+        path: '/Store',
+        name: 'store',
+        component: Store
+      }, {
+        path: '/recommendSongs',
+        name: 'recommendSongs',
+        component: RecommendSongs
       }
     ]
   }]

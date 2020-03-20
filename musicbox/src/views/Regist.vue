@@ -1,8 +1,8 @@
 <template>
   <div class="login-container">
-    <el-card header="请先登录/注册" class="login-card" style="width:80%">
+    <el-card header="请先登录/注册" class="login-card" style="width:90%">
       <el-form>
-        <el-form-item label="头像文件">
+        <el-form-item label="请上传一张头像">
           <input type="file" @change="getFile($event)" />
         </el-form-item>
         <el-form-item label="用户名">
@@ -12,12 +12,7 @@
         <el-form-item label="密码">
           <el-input type="password" v-model="model.password"></el-input>
         </el-form-item>
-        <button
-          class="button button-primary button-pill button-small"
-          @click="submit($event)"
-        >
-          提交
-        </button>
+        <el-button @click="submit($event)">提交</el-button>
       </el-form>
     </el-card>
   </div>
@@ -45,6 +40,7 @@ export default {
       formData.append("password", this.model.password);
       if (
         this.file == null ||
+        this.file == "" ||
         this.model.username == "" ||
         this.model.password == ""
       ) {

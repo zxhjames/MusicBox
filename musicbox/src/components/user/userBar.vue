@@ -33,6 +33,8 @@ export default {
   methods: {
     loginOut() {
       localStorage.removeItem("usermsg");
+      localStorage.removeItem("check");
+      localStorage.removeItem("username");
       this.$router.push("/Login");
     }
   }

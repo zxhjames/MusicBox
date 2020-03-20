@@ -75,7 +75,6 @@ export default {
     async submit() {
       this.comments.content = this.input;
       let res = await this.$http1.post(`/pushComments`, this.comments);
-      console.log(res);
       if (res.data.code == 200) {
         this.$message({
           type: "success",

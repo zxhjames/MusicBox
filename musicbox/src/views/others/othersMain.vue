@@ -62,7 +62,6 @@
                     By&nbsp;{{ item.creator }} |时间:{{
                       new Date(item.gmtCreate).toLocaleString()
                     }}
-                    |浏览:{{ item.viewCount }}
                   </div>
                 </div>
               </div>
@@ -93,16 +92,8 @@
               <el-collapse v-model="activeName">
                 <el-collapse-item>
                   <template slot="title">
-                    <el-button type="text" class="text-grey fs-s"
-                      ><svg
-                        class="icon1"
-                        aria-hidden="true"
-                        style="margin-left:10px"
-                        @click="showComments()"
-                      >
-                        <use xlink:href="#icon-review"></use>
-                      </svg>
-                      {{ item.commentCount }}
+                    <el-button type="text" class="text-grey fs-xs"
+                      >评论 ({{ item.commentCount }})
                     </el-button>
                   </template>
                   <div>
@@ -115,7 +106,6 @@
         </div>
       </el-tab-pane>
     </el-tabs>
-    {{ this.me }}
   </div>
 </template>
 <script>
@@ -164,7 +154,6 @@ export default {
         //2.插入数据库
         let res = await this.$http1.post(`/addRelationShip`, relationDTO);
         if (res.data.code == 200) {
-          // localStorage.setItem("usermsg", this.me);
           alert("关注成功");
         }
         //3.增加关注数

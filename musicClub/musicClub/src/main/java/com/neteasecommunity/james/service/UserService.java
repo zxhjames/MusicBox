@@ -35,10 +35,8 @@ public class UserService {
     private RedisTemplate redisTemplate;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
-    @Value("${prop.upload-folder}")
+    @Value("${web.upload-path}")
     private String UPLOAD_FOLDER; //静态资源地址
-    @Value(("${props.redis.Table_User}"))
-    private String Table_User;
     @Value(("${prop.avatarUrl}"))
     private String AvatarUrl;
     @Autowired
@@ -56,10 +54,13 @@ public class UserService {
         MultipartFile file = params.getFile("file");
         try {
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
+            /**
+             * 不知道怎么回事
+             */
+            Path path = Paths.get("/home/zxh/桌面/shop/avatar/" + file.getOriginalFilename());
             //如果没有files文件夹，则创建
             if (!Files.isWritable(path)) {
-                Files.createDirectories(Paths.get(UPLOAD_FOLDER));
+                Files.createDirectories(Paths.get("/home/zxh/桌面/shop/avatar/"));
             }
             //文件写入指定路径
             Files.write(path, bytes);
@@ -79,14 +80,7 @@ public class UserService {
         user.setGmtCreate(System.currentTimeMillis());
         user.setGmtModified(user.getGmtCreate());
         user.setAvatarUrl(AvatarUrl+file.getOriginalFilename());
-        int status =  userMapper.insert(user);
-        /**
-         * 插入缓存
-         */
-        HashOperations<String,String,User> map= redisTemplate.opsForHash();
-        map.put(Table_User,user.getUsername(),user);
-
-        return status == 1?  ResultDTO.okOf():ResultDTO.errorOf(CustomizeErrorCode.EXIST_USER);
+        return  userMapper.insert(user) == 1?  ResultDTO.okOf():ResultDTO.errorOf(CustomizeErrorCode.EXIST_USER);
     }
 
 
@@ -106,23 +100,11 @@ public class UserService {
         if (accessToken != null && accessToken.equals(token)) {
             return ResultDTO.okOf("loginCache");
         }
-        /**
-         * 同样,先去缓存中寻找,找不到再去数据库里招
-         */
+
         List<User> dbUsers = null;
-        if(stringRedisTemplate.boundHashOps(Table_User).hasKey(username)){
-            /**
-             * 序列化操作取出的数据,再返回User对象
-             */
-            Object json = redisTemplate.opsForHash().get(Table_User,username);
-            User u = JSON.parseObject(JSON.toJSONString(json),User.class);
-            dbUsers = new ArrayList<>();
-            dbUsers.add(u);
-        }else{
-            UserExample userExample = new UserExample();
-            userExample.createCriteria().andUsernameEqualTo(username);
-            dbUsers = userMapper.selectByExample(userExample);
-        }
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(username);
+        dbUsers = userMapper.selectByExample(userExample);
 
         if(dbUsers.size() == 0){
             //用户不存在
@@ -134,11 +116,6 @@ public class UserService {
             stringRedisTemplate.opsForValue().set(username,userToken);
             LoginAndRegistDTO u = new LoginAndRegistDTO();
             BeanUtils.copyProperties(dbUsers.get(0),u);
-            /**
-             * 同时存入对象
-//             */
-            HashOperations<String,String,User> map= redisTemplate.opsForHash();
-            map.put(Table_User,dbUsers.get(0).getUsername(),dbUsers.get(0));
             u.setToken(userToken);
             return ResultDTO.okOf(u);
         }
@@ -154,18 +131,11 @@ public class UserService {
      * @return
      */
     public User getUserInfo(String username) {
-        HashOperations<String,String,User> map= redisTemplate.opsForHash();
         User user = null;
-        if(stringRedisTemplate.opsForHash().get(Table_User,username)!=null){
-            Object json = map.get(Table_User,username);
-            user = JSON.parseObject(JSON.toJSONString(json),User.class);
-        }else{
-            UserExample userExample = new UserExample();
-            userExample.createCriteria().andUsernameEqualTo(username);
-            user = userMapper.selectByExample(userExample).get(0);
-            user.setPassword("");
-            map.put(Table_User,user.getUsername(),user);
-        }
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(username);
+        user = userMapper.selectByExample(userExample).get(0);
+        user.setPassword("");
         return user;
     }
 

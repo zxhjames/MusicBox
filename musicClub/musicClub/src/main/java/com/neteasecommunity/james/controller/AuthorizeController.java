@@ -24,6 +24,7 @@ import java.util.UUID;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/api")
 public class AuthorizeController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;

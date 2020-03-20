@@ -27,13 +27,10 @@ export default {
   methods: {
     async fetch() {
       //获得用户所有的动态
-      console.log("我自己的动态........................................");
-      console.log(this.user);
       const res = await this.$http1.get(
         `/getUserActions/${this.user.username}`
       );
       this.actions = res.data;
-      // console.log("我的动态....................................");
     }
   }
 };

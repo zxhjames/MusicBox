@@ -34,7 +34,6 @@ public class CountService {
         Integer id = countDTO.getId();
         Integer type = countDTO.getType();
         Integer status = countDTO.getStatus();
-        System.out.println(username+" "+id+" "+type+" "+status);
         Share share = shareMapper.selectByPrimaryKey(id);
         if (status == 0) {
             //处理动态点赞
@@ -46,8 +45,6 @@ public class CountService {
                 share.setRepostCount(share.getRepostCount() + 1);
             }
             int a = shareMapper.updateByPrimaryKey(share);
-//            redisTemplate.delete(redis_Share);
-//            redisTemplate.delete(username+"_Actions");
             return a == 1 ? ResultDTO.okOf() : ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
         }
         return null;

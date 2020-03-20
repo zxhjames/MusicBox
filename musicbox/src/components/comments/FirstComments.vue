@@ -163,8 +163,7 @@ export default {
       //发送点赞请求
       // console.log(id + "  " + this.me);
       this.countDTO.id = this.id;
-      var res = await this.$http1.post("/likeWanted", this.countDTO);
-      console.log(res);
+      await this.$http1.post("/likeWanted", this.countDTO);
     },
     //清空评论板
     clear() {

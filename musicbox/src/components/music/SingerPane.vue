@@ -1,79 +1,24 @@
 <template>
   <div>
-    <div
-      class="nav-icons bg-white mt-3 d-flex flex-wrap text-center pt-3 text-dark"
-    >
-      <div class="flexbox" style="margin-right:3%;margin-left:1%">
-        <i class="el-icon-d-arrow-left" @click="change('back')"></i>
-      </div>
-      <el-col
-        :span="4"
-        style="margin-right:2%;margin-left:2%"
-        v-for="item in singer.artists"
-        :key="item"
-      >
-        <router-link :to="{ path: 'singer', query: { id: item.id } }"
-          ><el-card :body-style="{ padding: '0' }">
-            <img :src="item.img1v1Url" class="image" />
-            <font size="1%">{{ item.name }}</font>
-          </el-card>
-        </router-link>
-      </el-col>
-      <div class="flexbox" style="margin-right:1%;margin-left:3%">
-        <i class="el-icon-d-arrow-right" @click="change('next')"></i>
-      </div>
-    </div>
+    {{ id }}
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    id: { type: Number, required: true }
+    id: {
+      type: Number,
+      required: true
+    }
   },
-
   data() {
     return {
-      singer: [],
-      cur: this.COMMON.Page.singerPage
+      singer: []
     };
   },
-
-  created() {
-    this.fetch();
-  },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.swiper;
-    }
-  },
-  methods: {
-    async fetch() {
-      await this.$http
-        .get("/artist/list", {
-          params: {
-            cat: this.id,
-            limit: 4,
-            offset: this.COMMON.Page.singerPage
-          }
-        })
-        .then(res => {
-          this.singer = res.data;
-        });
-    },
-
-    change(status) {
-      if (status == "back" && this.COMMON.Page.singerPage >= 4) {
-        this.COMMON.Page.singerPage -= 4;
-      } else if (status == "next") {
-        this.COMMON.Page.singerPage += 4;
-      }
-      // this.COMMON.Page.singerPage = status;
-      // this.$forceUpdate();
-      //暂时没有想到更好的方法，我想要的是局部刷新
-      this.fetch();
-    }
-  }
+  created() {},
+  methods: {}
 };
 </script>
 <style lang="scss">

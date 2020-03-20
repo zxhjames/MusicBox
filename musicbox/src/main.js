@@ -6,19 +6,25 @@ import axios from 'axios'
 /* 网易云api的接入地址 */
 Vue.prototype.$http = axios.create({
   //定义后端接口的根地址
+
   baseURL: "http://192.168.0.105:3000"
 })
 
 //服务器地址n
+
 Vue.prototype.$http1 = axios.create({
-  //定义后端接口的根地址
-  baseURL: "http://192.168.0.105:8081"
+  //定义后端接口的根地址james
+  baseURL: "http://192.168.0.105:8081/api"
 })
 //引入 npm i element-ui -S
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
+import {
+  Swiper,
+  Slide
+} from 'vue-swiper-component';
 import './assets/iconfont/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 import './assets/scss/style.scss'
@@ -32,8 +38,7 @@ Vue.use(VueAwesomeSwiper)
 import vSelectSearch from 'v-select-search'
 Vue.use(vSelectSearch)
 //定义组件
-import Bar from './components/music/Bar.vue'
-Vue.component('m-bar', Bar)
+
 import Card from './components/music/Card.vue'
 Vue.component('m-card', Card)
 import ListCard from './components/music/ListCard.vue'
@@ -54,6 +59,8 @@ import UserBar from './components/user/userBar.vue'
 Vue.component('m-userBar', UserBar)
 import SingerDetail from './components/music/SingerDetail.vue'
 Vue.component('m-singerDetail', SingerDetail)
+import HotSinger from './components/music/HotSinger.vue'
+Vue.component('m-hotsinger', HotSinger)
 // //用户主页曲库组件
 import U1 from './components/userMain/u1'
 Vue.component('m-u1', U1)
@@ -126,5 +133,7 @@ new Vue({
   global_,
   router,
   axios,
+  Swiper,
+  Slide,
   render: h => h(App)
 }).$mount('#app')

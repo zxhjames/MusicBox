@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 //注入bean
 @Component
@@ -79,14 +78,7 @@ public class ShareService {
         share.setLikeCount(0);
         share.setType(actionsDTO.getType());
         User user = userService.getUserInfo(actionsDTO.getCreator());
-        actionsDTO.setUser(user);
         int status = shareMapper.insert(share);
-        redisTemplate.opsForList().leftPush(redis_Share,actionsDTO);
-        /**
-         * 插入用户动态队列
-         */
-        String key = actionsDTO.getCreator()+"_Actions";
-        redisTemplate.opsForList().leftPush(key,share);
         return status == 1 ? ResultDTO.okOf("发布成功") : ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
     }
 
@@ -96,24 +88,11 @@ public class ShareService {
      * @return
      */
     public List<Share> getUserActionsByName(String username) {
-        String key = username + "_Actions";
-        if (stringRedisTemplate.hasKey(key)) {
-            List<Share> shares = redisTemplate.opsForList().range(key, 0, -1);
-            System.out.println("缓存中取得所有用户动态");
-            return shares;
-        } else{
-            ShareExample shareExample = new ShareExample();
-            /**
-             * 这里如果数据库的content要使用blob字段
-             * 后来在手机上测试又改为了longText
-             * 根据时间降序排序
-             */
-            shareExample.createCriteria().andCreatorEqualTo(username);
-            List<Share> shares = shareMapper.selectByExampleWithBLOBs(shareExample)
-                    .stream().sorted(Comparator.comparing(Share::getGmtModified).reversed()).collect(Collectors.toList());
-            shares.stream().forEach(share -> {redisTemplate.opsForList().rightPush(key,share);});
-            return shares;
-            }
+        ShareExample shareExample = new ShareExample();
+        shareExample.createCriteria().andCreatorEqualTo(username);
+        List<Share> shares = shareMapper.selectByExampleWithBLOBs(shareExample)
+                .stream().sorted(Comparator.comparing(Share::getGmtModified).reversed()).collect(Collectors.toList());
+        return shares;
     }
 
 
@@ -125,31 +104,24 @@ public class ShareService {
         /**
          * 先寻找缓存
          */
-        if (stringRedisTemplate.hasKey(redis_Share)) {
-            List<ActionsDTO> actionsDTOList = redisTemplate.opsForList().range(redis_Share, 0, -1);
-            return actionsDTOList;
-        } else {
-            ShareExample shareExample = new ShareExample();
-            List<Share> shares = shareMapper.selectByExampleWithBLOBs(shareExample).stream().
-                    sorted(Comparator.comparing(Share::getGmtModified).reversed()).collect(Collectors.toList());
-            //每次遍历一次单条动态,同时拷贝到ActionsDTO中,返回给前端
-            List<ActionsDTO> actionsDTOList = new ArrayList<>();
-            User user;
-            ActionsDTO actionsDTO;
-            for (Share share : shares) {
-                //如何处理多次查询
-                user = userService.getUserInfo(share.getCreator());
-                actionsDTO = new ActionsDTO();
-                user.setPassword("");
-                actionsDTO.setUser(user);
-                BeanUtils.copyProperties(share, actionsDTO);
-                //每次复制给bean时候,就插入一条到缓存列表中
-                actionsDTOList.add(actionsDTO);
-                redisTemplate.opsForList().rightPush(redis_Share, actionsDTO);
-            }
-            //存储缓存副本
-            return actionsDTOList;
+        ShareExample shareExample = new ShareExample();
+        List<Share> shares = shareMapper.selectByExampleWithBLOBs(shareExample).stream().
+                sorted(Comparator.comparing(Share::getGmtModified).reversed()).collect(Collectors.toList());
+        //每次遍历一次单条动态,同时拷贝到ActionsDTO中,返回给前端
+        List<ActionsDTO> actionsDTOList = new ArrayList<>();
+        User user;
+        ActionsDTO actionsDTO;
+        for (Share share : shares) {
+            //如何处理多次查询
+            user = userService.getUserInfo(share.getCreator());
+            actionsDTO = new ActionsDTO();
+            user.setPassword("");
+            actionsDTO.setUser(user);
+            BeanUtils.copyProperties(share, actionsDTO);
+            //每次复制给bean时候,就插入一条到缓存列表中
+            actionsDTOList.add(actionsDTO);
         }
+        return actionsDTOList;
     }
 
 
@@ -168,9 +140,6 @@ public class ShareService {
         /**
          * 淘汰缓存
          */
-        String key = creator+"_Actions";
-        redisTemplate.delete(key);
-        redisTemplate.delete(redis_Share);
         return a==1?ResultDTO.okOf():ResultDTO.errorOf(CustomizeErrorCode.SERVER_ERROR);
     }
 
@@ -185,7 +154,6 @@ public class ShareService {
         if(share==null){
             return errorActions();
         }
-        System.out.println(share.getCreator());
         User user = userService.getUserInfo(share.getCreator());
         ActionsDTO actionsDTO = new ActionsDTO();
         BeanUtils.copyProperties(share,actionsDTO);

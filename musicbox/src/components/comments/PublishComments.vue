@@ -37,7 +37,6 @@ export default {
   methods: {
     async submit() {
       this.comments.content = this.textarea;
-      console.log(this.comments);
       let res = await this.$http1.post(`/pushComments`, this.comments);
       // console.log(res.data);
       if (res.data.code == 200) {

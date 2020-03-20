@@ -19,7 +19,7 @@
         <el-divider direction="vertical"></el-divider>
         <span>粉丝 {{ this.usermsg.followers }}</span>
         <el-divider direction="vertical"></el-divider>
-        <span>
+        <!-- <span>
           <el-button
             id="Concern"
             type="primary"
@@ -28,27 +28,27 @@
             @click="concern"
             >{{ this.status }}</el-button
           >
-        </span>
+        </span> -->
       </el-footer>
     </el-container>
 
     <!-- 要不要做个组件 -->
     <el-tabs type="border-card">
       <el-tab-pane>
-        <span slot="label"><i class="el-icon-s-home"></i> 我的曲库</span>
+        <span slot="label"><i class="el-icon-s-home"></i> 曲库</span>
         <m-u1></m-u1>
       </el-tab-pane>
 
       <el-tab-pane>
-        <span slot="label"><i class="el-icon-s-custom"></i> 我的动态</span>
+        <span slot="label"><i class="el-icon-s-custom"></i> 动态</span>
         <m-u2 :user="this.usermsg" :type="true"></m-u2>
       </el-tab-pane>
       <el-tab-pane>
-        <span slot="label"><i class="el-icon-s-help"></i> 好友动态</span>
+        <span slot="label"><i class="el-icon-s-help"></i> 圈子</span>
         <m-u3 :username="this.usermsg.username"></m-u3>
       </el-tab-pane>
       <el-tab-pane>
-        <span slot="label"><i class="el-icon-plus"></i> 发布动态</span>
+        <span slot="label"><i class="el-icon-plus"></i> 发布</span>
         <m-u4></m-u4>
       </el-tab-pane>
     </el-tabs>

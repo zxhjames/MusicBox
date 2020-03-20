@@ -10,10 +10,20 @@
           <el-input type="password" v-model="model.password"></el-input>
         </el-form-item>
 
-        <el-form-item>
-          <el-button type="primary" @click="login()">登录</el-button>
-          <el-button type="primary" @click="regist()">注册</el-button>
-        </el-form-item>
+        <div class="d-flex">
+          <div style="width:95%">
+            <el-form-item>
+              <el-button type="primary" @click="login()">登录</el-button>
+            </el-form-item>
+          </div>
+          <div>
+            <el-form-item>
+              <el-button type="primary" @click="regist()"
+                >注册</el-button
+              ></el-form-item
+            >
+          </div>
+        </div>
       </el-form>
     </el-card>
   </div>
@@ -32,6 +42,8 @@ export default {
   },
   methods: {
     async login() {
+      //判断签到
+
       //发送登录请求
       this.model.token = localStorage.getItem("token");
       const res = await this.$http1.post("/login", this.model);
@@ -47,10 +59,16 @@ export default {
             concerns: res.data.data.concerns,
             followers: res.data.data.followers
           };
+          var str = usermsg.username;
+
           usermsg = JSON.stringify(usermsg);
-          console.log("登录信息");
-          console.log(usermsg);
           localStorage.setItem("usermsg", usermsg);
+          const flag = await this.$http1.get(`/CheckDateOnline/${str}`);
+          if (flag.data.code == 200) {
+            localStorage.setItem("check", "已签到");
+          } else {
+            localStorage.setItem("check", "未签到");
+          }
         }
         this.$message({
           message: "登录成功",

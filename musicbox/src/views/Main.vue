@@ -3,8 +3,12 @@
     <div class=" topbar bg-dark d-flex ai-center bar pb-2 pt-2">
       <m-userBar></m-userBar>
       <div class="pl-2 flex-1">
-        <div class="text-white">云音乐</div>
-        <div class="text-white fs-xxs">音乐改变人生</div>
+        <div class="text-white">{{ usermsg.username }}</div>
+        <div class="text-white fs-xxs">
+          LV.{{ usermsg.rank }}&nbsp;<span @click="dateCheck">{{
+            this.check
+          }}</span>
+        </div>
       </div>
       <div><m-search></m-search></div>
     </div>
@@ -25,7 +29,7 @@
 
         <div class="nav-item">
           <!-- 表示首页一个链接 -->
-          <router-link to="/" class="nav-link" tag="div">宝贝</router-link>
+          <router-link to="/Store" class="nav-link" tag="div">宝贝</router-link>
         </div>
       </div>
     </div>
@@ -41,15 +45,29 @@ export default {
   //传入user
   data() {
     return {
-      username: localStorage.getItem("username"),
-      items: {}
+      username: localStorage.getItem("usermsg").username,
+      items: {},
+      usermsg: JSON.parse(localStorage.getItem("usermsg")),
+      check: localStorage.getItem("check")
     };
   },
   methods: {
-    //获取用户的用户名，头像
-    // async getAvatar(){
-    //   let res = await this.$http1.get('/getAvatar');
-    // }
+    async dateCheck() {
+      if (this.check == "已签到") {
+        this.$message({
+          message: "你已经签到了哦",
+          type: "warn"
+        });
+      } else {
+        await this.$http1.get(`/pushDateOnline/${this.usermsg.username}`);
+        localStorage.setItem("check", "已签到");
+        this.check = "已签到";
+        this.$message({
+          message: "签到成功!坚持每日登录有机会抽奖哦",
+          type: "success"
+        });
+      }
+    }
   }
 };
 </script>

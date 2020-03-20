@@ -34,7 +34,6 @@
               By&nbsp;{{ this.item.creator }} |时间:{{
                 new Date(item.gmtCreate).toLocaleString()
               }}
-              |浏览:{{ this.item.viewCount }}
             </div>
           </div>
         </div>
@@ -127,7 +126,6 @@ export default {
       //转换时间
       var unixTimestamp = new Date(this.item.gmtCreate);
       this.time = unixTimestamp.toLocaleString();
-      console.log(this.item);
     },
     showComments() {
       this.flag = !this.flag;
@@ -162,7 +160,7 @@ export default {
 
     //转发动态
     repost() {
-      this.$confirm("确定要转发这条动态?", "提示", {
+      this.$confirm("确定要转发吗?", {
         confirmButtonText: "确定",
         cancelButtonText: "取消"
       })
@@ -203,8 +201,11 @@ export default {
       this.countDTO.Commentator = JSON.parse(
         localStorage.getItem("usermsg")
       ).username.toLocaleString;
-      let res = this.$http1.post("/likeWanted", this.countDTO);
-      console.log(res);
+      this.$http1.post("/likeWanted", this.countDTO);
+      this.$message({
+        type: "success",
+        message: "点赞成功!"
+      });
     }
   }
 };
