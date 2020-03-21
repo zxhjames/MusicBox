@@ -1,14 +1,19 @@
 # MusicBox(仿网易云音乐app)
-### 技术栈(Springboot+Vue+mybatis+mysql+redis)
-还有一些问题待优化,由于是自己写的,项目现在有点臃肿,有一些脏代码
-* 数据库查询优化
-* 前端js代码优化
-* redis与mysql从主一致性,使用延迟加载要保证数据一致性
-* 组件复用性
+### 技术栈(Springboot+Vuejs+mysql+redis+nginx+网易云开源接口)
+从无到有造了这个轮子,花了挺长时间,代码不是很优雅,未来或许会重构
+### 优化部分
+* 使用nginx存储网站静态资源,部署了三台tomcat做负载均衡
+* redis存储高热点数据,用户token等,缓解mysql压力
+* vue组件多采用父子组件通信策略,解除各组件之间依赖,达到复用效果
+* 页面懒加载,加快页面响应速度
+* 前后端分离架构
+### 尚未解决
+* mysql,redis主从一致
+* 高并发
 > gitclone https://github.com/zxhjames/MusicBox
-
->cd musicbox && npm run serve 
->cd NeteaseCloudMusicApi-master && node app.js
+> cd musicbox 
+> npm run serve 
+> cd NeteaseCloudMusicApi-master && node app.js
 
 ```sql
 create table Community.user
