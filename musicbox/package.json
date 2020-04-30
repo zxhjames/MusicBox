@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "element-ui": "^2.13.0",
     "express": "^5.0.0-alpha.7",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-cookie": "^2.2.1",
     "v-select-search": "^0.3.6",
     "videojs-flash": "^2.2.1",
