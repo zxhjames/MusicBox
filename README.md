@@ -12,10 +12,13 @@
 ### 尚未解决
 * mysql,redis主从一致
 * 高并发
-> gitclone https://github.com/zxhjames/MusicBox
-> cd musicbox 
-> npm run serve 
-> cd NeteaseCloudMusicApi-master && node app.js
+
+```shell
+gitclone https://github.com/zxhjames/MusicBox
+cd musicbox 
+npm run serve 
+cd NeteaseCloudMusicApi-master && node app.js
+```
 
 ```sql
 create table Community.user
