@@ -1,5 +1,8 @@
 # MusicBox(仿网易云音乐app)
-### 项目演示地址(http://129.28.198.23)
+
+![](https://img-blog.csdnimg.cn/20200331143305856.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3NzU2MzEw,size_16,color_FFFFFF,t_70)
+
+### 项目演示地址(~~http://129.28.198.23~~)
 ### 适配手机，电脑未适配
 ### 技术栈(Springboot+Vuejs+mysql+redis+nginx+网易云开源接口)
 从无到有造了这个轮子,花了挺长时间,代码不是很优雅,未来或许会重构
