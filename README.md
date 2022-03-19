@@ -2,6 +2,10 @@
 
 ![](https://img-blog.csdnimg.cn/20200331143305856.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3NzU2MzEw,size_16,color_FFFFFF,t_70)
 
+
+![](https://img-blog.csdnimg.cn/20200331143438613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3NzU2MzEw,size_16,color_FFFFFF,t_70)
+
+
 ### 项目演示地址(~~http://129.28.198.23~~)
 ### 适配手机，电脑未适配
 ### 技术栈(Springboot+Vuejs+mysql+redis+nginx+网易云开源接口)
